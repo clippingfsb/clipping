@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clipping de Notícias - Final TV/Rádio</title>
+  <title>Clipping de Notícias</title>
   <style>
-    /* Todo o seu CSS original permanece INALTERADO aqui */
     :root {
       --primary-color: #4a90e2;
       --secondary-color: #f5f7fa;
@@ -128,7 +127,6 @@
     .btn-success:hover { background-color: #2fb34f; transform: translateY(-1px); }
     .btn-outline { background-color: transparent; border: 2px solid var(--border-color); color: var(--text-muted); }
     .btn-outline:hover { border-color: var(--primary-color); color: var(--primary-color); }
-
     #btn-colar-link {
       background-color: var(--primary-color);
       color: white;
@@ -137,7 +135,6 @@
       background-color: #357abd;
       transform: translateY(-1px);
     }
-
     #btn-colar-materia {
       display: block;
       margin: 12px auto 0;
@@ -150,7 +147,6 @@
       background-color: #059669;
       transform: translateY(-1px);
     }
-
     .shortlink-container {
       display: flex;
       gap: 10px;
@@ -328,12 +324,11 @@
           <div class="radio-group" id="classificacao">
             <div class="radio-option"><input type="radio" name="classificacao" id="option1" value="🗞" /><label for="option1">Impresso</label></div>
             <div class="radio-option"><input type="radio" name="classificacao" id="option2" value="🌐" checked /><label for="option2">Online Nacional</label></div>
-            <div class="radio-option"><input type="radio" name="classificacao" id="option5" value="Internacional" /><label for="option5">Internacional</label></div>
+            <div class="radio-option"><input type="radio" name="classificacao" id="option5" value="🌐" /><label for="option5">Internacional</label></div>
             <div class="radio-option"><input type="radio" name="classificacao" id="option3" value="📺" /><label for="option3">TV</label></div>
             <div class="radio-option"><input type="radio" name="classificacao" id="option4" value="📻" /><label for="option4">Rádio</label></div>
           </div>
         </div>
-
         <div class="form-group full-width">
           <p class="title">Link curto (cole aqui para preencher os campos abaixo automaticamente) <span id="loading">Processando...</span></p>
           <div class="shortlink-container">
@@ -343,30 +338,25 @@
             </div>
           </div>
         </div>
-
         <div class="form-group">
           <p class="title">Veículo</p>
           <input class="veiculos" type="text" placeholder="Ex: CNN Brasil online" list="veiculo-dropdown" />
           <datalist id="veiculo-dropdown"></datalist>
         </div>
-
         <div class="form-group">
           <p class="title">Blog / Coluna</p>
           <input class="blog-coluna" type="text" placeholder="Ex: Tainá Falcão" list="coluna-dropdown" />
           <datalist id="coluna-dropdown"></datalist>
         </div>
-
         <div class="form-group full-width">
           <p class="title">Notícia</p>
           <textarea id="tag-input" placeholder="Digite ou cole a notícia aqui..."></textarea>
           <button class="btn btn-secondary" id="btn-colar-materia" type="button">📄 Colar notícia</button>
         </div>
-
         <div class="form-group full-width">
           <p class="title">Data/Hora de Publicação <small>(obrigatória para Comunicações - DD/MM/YYYY HH:MM)</small></p>
           <input id="data-hora-publicacao" type="text" placeholder="Ex: 26/01/2026 14:30" />
         </div>
-
         <div class="form-group">
           <p class="title">Cargo</p>
           <select id="tipo-ministro">
@@ -376,7 +366,6 @@
             <option value="ministra">Ministra</option>
           </select>
         </div>
-
         <div class="form-group">
           <p class="title">Órgão / Ministério</p>
           <select id="ministerio">
@@ -384,7 +373,6 @@
           </select>
         </div>
       </div>
-
       <div class="preview-box">
         <p class="title" style="color: var(--primary-color)">Prévia da Mensagem</p>
         <div id="preview-area" class="preview-content"></div>
@@ -395,7 +383,6 @@
         </div>
       </div>
     </section>
-
     <section class="section-tabela">
       <h2 class="title" style="font-size: 1.2rem; margin-bottom: 15px;">Histórico de mensagens</h2>
       <div class="table-wrapper">
@@ -412,7 +399,6 @@
       </div>
     </section>
   </div>
-
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <script>
     "use strict";
@@ -434,11 +420,10 @@
     const ministerioSelect = document.querySelector("#ministerio");
     const loading = document.querySelector("#loading");
     const previewArea = document.querySelector("#preview-area");
-
     const vehiclesByClassification = {
       "Impresso": ["Folha de S.Paulo", "O Estado de S. Paulo", "O Globo", "Valor Econômico", "Correio Braziliense"],
-      "Online": [
-        "Agência Brasil", "Agência Câmara", "Agência Senado", "BBC News Brasil", "Bloomberg Brasil",
+      "Online Nacional": [
+       "Agência Brasil", "Agência Câmara", "Agência Senado", "BBC News Brasil", "Bloomberg Brasil",
         "Bloomberg Línea", "Brasil 247", "Carta Capital online", "CBN", "CNN Brasil online",
         "Congresso em Foco", "Correio Braziliense online", "Crusoé", "Época Negócios", "Época Online",
         "Estadão online", "Exame on-line", "Exame online", "Extra online", "FDR", "Folha online",
@@ -475,9 +460,7 @@
       "TV": ["TV AgroMais", "TV BandNews", "TV Band", "TV Brasil", "TV Câmara", "TV CNN Brasil", "TV Cultura", "TV GloboNews", "TV Jovem Pan News", "TV NBR", "TV Record", "TV Record News", "TV Rede Globo Nacional", "TV RedeTV!", "TV SBT", "TV Senado", "TV Times Brasil CNBC"],
       "Rádio": ["Rádio BandNews FM", "Rádio Bandeirantes FM", "Rádio CBN FM", "Rádio Jovem Pan FM", "Rádio Nacional FM"]
     };
-
     const veiculoBlogColunaMap = {
-      // Seu mapa completo original continua aqui (sem alteração)
       "BBC News Brasil": [],
       "Bloomberg Brasil": [],
       "Bloomberg Línea": [],
@@ -492,25 +475,224 @@
       "Correio Braziliense online": ["Blog da Denise", "Blog do Vicente", "Blog CB Poder"],
       "Crusoé": [],
       "Estadão online": [
-        // ... todo o resto do seu Estadão, Folha, etc. continua igual
+        "Adriano Pires", "Albert Fishlow", "Alexandre Chiavegatto Filho", "Alexandre Schwartsman",
+        "Alvaro Gribel", "Antônio Penteado Mendonça", "Blog do Fausto Macedo", "Bolívar Lamounier",
+        "Bruno Soller", "Camila Farani", "Carlos Alberto Di Franco", "Carlos Andreazza",
+        "Carlos Pereira", "Carolina Brígido", "Celso Lafer", "Celso Ming",
+        "Claudio Adilson Gonçalez", "Claudio de Moura Castro", "Cláudio Considera", "Coluna do Estadão",
+        "Demi Getschko", "Denis Lerrer Rosenfield", "Diogo Schelp", "Dom Odilo Pedro Scherer",
+        "Duquesa de Tax", "E-Investidor", "Eduardo Barretto", "Elena Landau",
+        "Eliane Cantanhêde", "Everardo Maciel", "Fabiano Lana", "Fábio Alves",
+        "Fabio Gallo", "Fabio Giambiagi", "Fausto Macedo", "Felipe Salto",
+        "Fernando Dantas", "Fernando Gabeira", "Fernando Henrique Cardoso", "Fernando Schüler",
+        "Flávio Tavares", "Francisco Leali", "Gustavo H.B. Franco", "Guy Perelmuter",
+        "Henrique Meirelles", "Jorge Caldeira", "Jorge J. Okubaro", "José Márcio Camargo",
+        "José Pastore", "José Roberto Mendonça de Barros", "José Serra", "Leticia Fernandes",
+        "Luiz Carlos Trabuco Cappi", "Luiz Guilherme Schymura", "Maílson da Nóbrega", "Manoel Ventura",
+        "Marcelo de Paiva Abreu", "Marcelo Trindade", "Marcos Lisboa", "Marcos Troyjo",
+        "Maria Cristina Frias", "Maria Hermínia Tavares de Almeida", "Mauro Calliari", "Milton Seligman",
+        "Modesto Carvalhosa", "Murillo de Aragão", "Nelson Marconi", "Nizan Guanaes",
+        "Oscar Vilhena Vieira", "Paulo Furquim de Azevedo", "Paulo Hartung", "Pedro Hallal",
+        "Pedro Malan", "Pedro Passos", "Raquel Landim", "Ricardo Musse",
+        "Roberto Macedo", "Roberto Rodrigues", "Ronaldo Lemos", "Samuel Pessôa",
+        "Sérgio Fausto", "Silvio Meira", "Vera Magalhães", "William Waack",
+        "Zeina Latif"
       ],
-      // ... (mantenha exatamente o seu veiculoBlogColunaMap original)
+      "Exame on-line": [],
+      "Exame online": [],
+      "Extra online": [],
+      "FDR": [],
+      "Folha online": [
+        "Afonso Benites", "Alexandre Schwartsman", "Ana Estela Haddad", "André Lara Resende",
+        "Angela Alonso", "Antonio Delfim Netto", "Antonio Prata", "Bernardo Mello Franco",
+        "Bruno Boghossian", "Cacique Almir Suruí", "Camila Rocha", "Carlos Andreazza",
+        "Carlos Melo", "Celso Rocha de Barros", "Christian Dunker", "Claudio Angelo",
+        "Conrado Hübner Mendes", "Cristina Serra", "Dadá Coelho", "Demétrio Magnoli",
+        "Diego Viana", "Djamila Ribeiro", "Edmar Bacha", "Eduardo Giannetti",
+        "Eliane Cantanhêde", "Elias Jabbour", "Érica Fraga", "Fabio Barbosa",
+        "Fábio Giambiagi", "Felipe Nunes", "Felipe Salto", "Fernando Canzian",
+        "Fernando Reinach", "Fernando Schüler", "Flavia Lima", "Gregorio Duvivier",
+        "Guilherme Casarões", "Gustavo Ioschpe", "Hélio Schwartsman", "Igor Gielow",
+        "Joel Pinheiro da Fonseca", "José Henrique Mariante", "Juliana Sayuri", "Laura Carvalho",
+        "Laura Mattos", "Leandro Karnal", "Lilia Schwarcz", "Luiz Felipe Pondé",
+        "Manoel Ventura", "Marcos Lisboa", "Marcos Nobre", "Maria Hermínia Tavares de Almeida",
+        "Maria Inês Dolci", "Mariliz Pereira Jorge", "Marina Izidro", "Mario Sergio Conti",
+        "Martin Wolf", "Maternar", "Mauricio Portugal Ribeiro", "Mauricio Stycer",
+        "Mauro Calliari", "Mensageiro Sideral", "Michael França", "Mirian Goldenberg",
+        "Mise-en-scène", "Mônica Bergamo", "Morte Sem Tabu", "Muniz Sodré",
+        "Músculo", "Música em Letras", "Nação churrasqueira", "Natalia Beauty",
+        "Não Tem Cabimento", "No Corre", "Novo em Folha", "O Mundo É uma Bola",
+        "Oscar Vilhena Vieira", "Outro Canal", "Painel", "Painel das Letras",
+        "Painel S.A.", "Papo de Responsa", "Plástico", "Políticas e Justiça",
+        "Praça do Leitor", "Pretos Olhares", "Primeira Pele", "Priscilla Bacalhau",
+        "Que imposto é esse", "Reinaldo José Lopes", "Ricardo Araújo Pereira", "Roberto Campos Neto",
+        "Rodrigo Tavares", "Rogério Gentile", "Rômulo Saraiva", "Ronaldo Lemos",
+        "Rosana Hermann", "Ross Douthat", "Rui Tavares", "Ruy Castro",
+        "Samuel Pessôa", "Saúde Mental", "Sérgio Rodrigues", "Sobre Trilhos",
+        "Solange Srour", "Sons da Perifa", "Suzana Herculano-Houzel", "Sylvia Colombo",
+        "Tati Bernardi", "Thiago Amparo", "Thiago Stivaletti", "Thomas L. Friedman",
+        "Tom Farias", "Tostão", "Transparência pública", "Tudo + um pouco",
+        "Txai Suruí", "Vaivém das Commodities", "Vera Iaconelli", "Vida de Alcoólatra",
+        "Vidas Atípicas", "Vinicius Mota", "Vinicius Torres Freire", "Virada Psicodélica",
+        "Wilson Gomes", "X de Sexo por Bruna Maia", "Zeca Camargo"
+      ],
+      "g1": [
+        "Blog da Ana Flor", "Blog do André Trigueiro", "Blog da Andréia Sadi", "Blog da Camila Bomfim",
+        "Blog da Daniela Lima", "Blog do Edimilson Ávila", "Blog do Gerson Camarotti", "Blog da Julia Duailibi",
+        "Blog da Mariza Tavares", "Blog do Mauro Ferreira", "Blog da Natuza Nery", "Blog do Octavio Guedes",
+        "Blog Pela Lente da Gente", "Blog da Sandra Cohen", "Blog do Valdo Cruz", "Legendado"
+      ],
+      "ICL Notícias": [],
+      "InfoMoney": [],
+      "iG": [],
+      "IstoÉ Dinheiro online": ["PlatôBR"],
+      "IstoÉ online": ["PlatôBR", "Coluna do Mazzini"],
+      "Jota": [],
+      "Jovem Pan online": [],
+      "Metrópoles": [
+        "Andreza Matais", "Blog do Noblat", "Carlos Carone", "Claudia Meireles",
+        "Dinheiro & Negócios", "Fábia Oliveira", "Grande Angular", "Igor Gadelha",
+        "Ilca Maria Estevão", "Isadora Teixeira", "Lilian Tahan", "Mario Sabino",
+        "Mirelle Pinheiro", "Paulo Cappelli", "Tácio Lorran", "Tiago Pavinatto"
+      ],
+      "Money Times": [],
+      "O Antagonista": [],
+      "O Bastidor": [],
+      "O Globo online": [
+        "Ana Carla Abrão", "Ancelmo.com", "Antônio Gois", "Bela Megale",
+        "Bernardo Mello Franco", "Bruno Astuto", "Capital", "Carlos Alberto Sardenberg",
+        "Carlos Eduardo Mansur", "Carlos Góes", "Carlota", "Clima Extremo",
+        "Conte mais uma", "Cora Rónai", "Correria", "Daniel Becker",
+        "Demétrio Magnoli", "Diogo Dantas", "Dorrit Harazim", "Eduardo Affonso",
+        "Elio Gaspari", "Espiritualidade e Bem-estar", "Fabio Giambiagi", "Fabio Graner",
+        "Fernando Gabeira", "Fernando Kallás", "Flávia Oliveira", "Fumus Boni Iuris",
+        "Guga Chacra", "Gustavo Franco", "Gustavo Pinheiro", "Gustavo Poli",
+        "IAí?", "Ingrid Guimarães", "Irapuã Santana", "Janaína Figueiredo",
+        "Joaquim Ferreira dos Santos", "José Eduardo Agualusa", "Julia Duailibi", "Julio Maria",
+        "Lauro Jardim", "Leo Aversa", "Luana Génot", "Luciana Fróes",
+        "Malu Gaspar", "Manoel Ventura", "Marcelo Barreto", "Marcelo Ninio",
+        "Martha Batalha", "Martha Medeiros", "Merval Pereira", "Meus Filhos, Minhas Regras?",
+        "Michel Alcoforado", "Miguel de Almeida", "Míriam Leitão", "Nelson Motta",
+        "Pablo Ortellado", "Patrícia Kogut", "Paulo Tafner", "Pedro Doria",
+        "Pedro Pacífico", "Pedro Parente", "Pense Grande", "Play",
+        "Portugal Giro", "Preto Zezé", "Priscila Cruz", "Pulso",
+        "Pé-Sujo & Pé-Limpo", "Receita de Médico", "Renata Agostini", "Repinique",
+        "Roberto DaMatta", "Rogério Furquim Werneck", "Ruth de Aquino", "Saideira",
+        "Segredos do crime", "Sonar", "Thales Machado", "Thaís Oyama",
+        "Thiago Gomide", "Tony Volpon", "Vera Magalhães", "Zeina Latif"
+      ],
+      "Poder360": ["Opinião"],
+      "R7": ["Christina Lemos", "R7 Planalto"],
+      "Terra": [],
+      "UOL": [
+        "Alexandre Borges", "Alicia Klein", "Amanda Cotrim", "Amanda Klein",
+        "André Santana", "Aline Sordili", "Carla Araújo", "Carlos Juliano Barros",
+        "Carlos Madeiro", "Casagrande", "Danilo Lavieri", "Daniela Lima",
+        "Fabio Serapião", "Felipe Salto", "Graciliano Rocha", "Jeferson Tenório",
+        "Joildo Santos", "Josias de Souza", "Josmar Jozino", "José Fucs",
+        "José Paulo Kupfer", "José Roberto de Toledo", "Juca Kfouri", "Julio Gomes",
+        "Leonardo Sakamoto", "Letícia Casado", "Marco Antonio Sabino", "Mariana Barbosa",
+        "Mariana Sanches", "Mauro Cezar", "Milly Lacombe", "Milton Neves",
+        "Natália Portinari", "Nelson de Sá", "Paulo Camargo", "Paulo Vinicius Coelho (PVC)",
+        "Presença Histórica", "Reinaldo Azevedo", "Ricardo Nunes", "Rodrigo Mattos",
+        "Rogério Gentile", "Ronilso Pacheco", "Sílvio Crespo", "Thais Bilenky",
+        "Thiago Herdy", "Tiago Mali", "Tilt", "Tostão",
+        "Wálter Maierovitch"
+      ],
+      "Valor online": [],
+      "Veja online": [
+        "Al Vino", "Alexandre Schwartsman", "Balanço Social", "Cannabiz",
+        "Conta-Gotas", "Em Cartaz", "Giro pelo Oriente", "Jorge Pontes",
+        "José Casado", "Letra de Médico", "Lucília Diniz", "Luiz Gustavo Bichara",
+        "Maquiavel", "Marcela Rahal", "Matheus Leitão", "Mens Sana",
+        "Mundialista", "Murillo de Aragão", "Na Ponta da Língua", "Neuza Sanches",
+        "O Som e a Fúria", "Planeta IA", "Radar", "Radar Econômico",
+        "Real Estate", "Tela Plana", "Veja Gente", "Vitrine",
+        "Virou Viral"
+      ],
+      "Yahoo!": []
     };
-
-    // ... (dominioVeiculoMap, orgaosPorCargo, nomeCompletoOrgao, nomeSimplificadoOrgao continuam iguais)
-
+    const dominioVeiculoMap = {
+      "bbc.com": "BBC News Brasil",
+      "bloomberg.com.br": "Bloomberg Brasil",
+      "bloomberglinea.com.br": "Bloomberg Línea",
+      "cartacapital.com.br": "Carta Capital online",
+      "correiobraziliense.com.br": "Correio Braziliense online",
+      "cnnbrasil.com.br": "CNN Brasil online",
+      "oglobo.globo.com": "O Globo online",
+      "epocanegocios.globo.com": "Época Negócios",
+      "estadao.com.br": "Estadão online",
+      "exame.com": "Exame online",
+      "folha.uol.com.br": "Folha online",
+      "g1.globo.com": "g1",
+      "iclnoticias.com.br": "ICL Notícias",
+      "infomoney.com.br": "InfoMoney",
+      "istoedinheiro.com.br": "IstoÉ Dinheiro online",
+      "istoe.com.br": "IstoÉ online",
+      "jota.info": "Jota",
+      "metropoles.com": "Metrópoles",
+      "poder360.com.br": "Poder360",
+      "noticias.uol.com.br": "UOL",
+      "valor.globo.com": "Valor online",
+      "veja.abril.com.br": "Veja online",
+      "brasil247.com": "Brasil 247",
+      "terra.com.br": "Terra",
+      "agenciabrasil.ebc.com.br": "Agência Brasil",
+      "r7.com": "R7",
+      "congressoemfoco.uol.com.br": "Congresso em Foco",
+      "oantagonista.com.br": "O Antagonista",
+      "crusoe.com.br": "Crusoé",
+      "cbn.globoradio.globo.com": "CBN",
+      "valorinveste.globo.com": "Valor Investe",
+      "agenciacamara.leg.br": "Agência Câmara",
+      "agenciasenado.leg.br": "Agência Senado",
+      "extra.globo.com": "Extra online",
+      "fdr.com.br": "FDR",
+      "ig.com.br": "iG",
+      "ultimosegundo.ig.com.br": "iG",
+      "jovempan.com.br": "Jovem Pan online",
+      "moneytimes.com.br": "Money Times",
+      "obastidor.com.br": "O Bastidor",
+      "yahoo.com": "Yahoo!",
+      "yahoo.com.br": "Yahoo!"
+    };
+    const orgaosPorCargo = {
+      nenhum: ["CAIXA", "CGU", "SRI", "Cultura", "Agricultura", "Desenvolvimento Social", "Comunicações", "MME", "CNI", "Turismo", "Embratur", "MPOR", "Esporte"],
+      presidente: ["CAIXA", "Câmara dos Deputados", "CNI", "Embratur"],
+      ministro: ["CGU", "Agricultura", "Desenvolvimento Social", "Comunicações", "MME", "Turismo", "MPOR", "Esporte"],
+      ministra: ["SRI", "Cultura"]
+    };
+    const nomeCompletoOrgao = {
+      CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "SRI",
+      Cultura: "Ministério da Cultura", Agricultura: "Ministério da Agricultura", "Desenvolvimento Social": "Ministério do Desenvolvimento Social",
+      Comunicações: "Ministério das Comunicações", MME: "MME", Turismo: "Ministério do Turismo", Embratur: "Embratur",
+      MPOR: "Portos e Aeroportos", Esporte: "Ministério do Esporte"
+    };
+    const nomeSimplificadoOrgao = {
+      CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "Relações Institucionais",
+      Cultura: "Cultura", Agricultura: "Agricultura", "Desenvolvimento Social": "Desenvolvimento Social",
+      Comunicações: "Comunicações", MME: "Minas e Energia", Turismo: "Turismo", Embratur: "Embratur",
+      MPOR: "Portos e Aeroportos", Esporte: "Esporte"
+    };
     function saveToLocal(materia) {
-      // sua função original
+      const materias = JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
+      const now = new Date();
+      const timestamp = now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      const id = Date.now();
+      const novoItem = { id, materia, timestamp };
+      materias.push(novoItem);
+      localStorage.setItem('materias_clipping_final_v5', JSON.stringify(materias));
+      return novoItem;
     }
-
     function deleteFromLocal(id) {
-      // sua função original
+      let materias = JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
+      materias = materias.filter(item => item.id != id);
+      localStorage.setItem('materias_clipping_final_v5', JSON.stringify(materias));
+      return true;
     }
-
     function loadFromLocal() {
-      // sua função original
+      return JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
     }
-
     function updateVehicleDropdown(classification) {
       const datalist = document.getElementById("veiculo-dropdown");
       datalist.innerHTML = "";
@@ -521,37 +703,413 @@
         datalist.appendChild(option);
       });
     }
-
     function updateColumnDropdown(classification, veiculo) {
-      // sua função original
+      const datalist = document.getElementById("coluna-dropdown");
+      datalist.innerHTML = "";
+      const columns = veiculo ? (veiculoBlogColunaMap[veiculo] || []) : [];
+      columns.forEach(column => {
+        const option = document.createElement("option");
+        option.value = column;
+        datalist.appendChild(option);
+      });
     }
-
     function updateMinisterioOptions() {
-      // sua função original
+      const selectedTipoMinistro = tipoMinistroSelect.value;
+      const orgaos = orgaosPorCargo[selectedTipoMinistro] || [];
+      ministerioSelect.innerHTML = '<option value="">Selecionar o órgão</option>';
+      orgaos.forEach(orgao => {
+        const option = document.createElement("option");
+        option.value = orgao;
+        option.textContent = orgao;
+        ministerioSelect.appendChild(option);
+      });
+      atualizarTexto();
     }
-
     function atualizarTexto() {
-      // sua função original
+      const tipoMinistro = tipoMinistroSelect.value;
+      const ministerio = ministerioSelect.value;
+      let ministerioStr = "";
+      let alertaPrefix = "";
+      if (ministerio) {
+        const nomeComp = nomeCompletoOrgao[ministerio];
+        const nomeSimp = nomeSimplificadoOrgao[ministerio];
+        if (tipoMinistro === "presidente") {
+          ministerioStr = `Presidência da ${nomeComp}`;
+        } else if (tipoMinistro === "ministro") {
+          ministerioStr = `Ministro da ${nomeSimp}`;
+        } else if (tipoMinistro === "ministra") {
+          ministerioStr = `Ministra da ${nomeSimp}`;
+        } else {
+          ministerioStr = nomeComp;
+        }
+        if (ministerio === "Comunicações") alertaPrefix = "🔔 ";
+        else if (ministerio === "CGU") alertaPrefix = "🔎 ";
+        else if (ministerio === "MME") alertaPrefix = "⚡ ";
+        else if (ministerio === "Turismo") alertaPrefix = "✈️ ";
+        else if (ministerio === "Embratur") alertaPrefix = "🇧🇷 ";
+        else if (ministerio === "MPOR") alertaPrefix = "⚓ ";
+        else if (ministerio === "Esporte") alertaPrefix = "🏅 ";
+      }
+      blueParrot.tipoMinistro = tipoMinistro;
+      blueParrot.ministerio = ministerio;
+      blueParrot.ministerioStr = ministerioStr;
+      blueParrot.alertaPrefix = alertaPrefix;
+      renderPreview();
     }
-
     function renderPreview() {
-      // sua função original
+      const classif = blueParrot.classificação.trim();
+      const isSingleLine = (classif === "🗞" || classif === "📺" || classif === "📻");
+      let html = "";
+      html += `<span>${blueParrot.alertaPrefix}</span><strong>ALERTA DE IMPRENSA</strong>`;
+      if (blueParrot.ministerioStr) html += ` <span>${blueParrot.ministerioStr}</span>`;
+      html += "\n";
+      html += `<span>${blueParrot.classificação}</span><strong>${blueParrot.veiculo}</strong>`;
+      if (blueParrot.coluna) {
+        const colunaLimpa = blueParrot.coluna.replace(/ - _|_$/g, "").trim();
+        html += `<span> - ${colunaLimpa}</span>`;
+      }
+      if (isSingleLine) {
+        html += `<span> - _${blueParrot.tags}_</span>`;
+      } else {
+        html += `\n<span>${blueParrot.tags}</span>`;
+      }
+      if (blueParrot.linkCurto) html += `\n<span>${blueParrot.linkCurto}</span>`;
+      previewArea.innerHTML = html;
     }
-
     radioButtons.forEach(radio => {
       radio.addEventListener("change", (e) => {
         const val = e.target.value;
         const label = e.target.nextElementSibling.textContent;
         blueParrot.classificação = val + " ";
-        updateVehicleDropdown(label);  // Usa o LABEL (texto visível) que corresponde às chaves
+        updateVehicleDropdown(label);
         renderPreview();
       });
     });
-
-    // ... (todos os outros eventos: veiculos.input, blogColuna.input, tagInput.input, linkCurto.input, btn-colar-link, btn-colar-materia, processarShortlink, extrairTexto, etc. continuam exatamente iguais ao seu código funcional)
-
+    veiculos.addEventListener("input", (e) => {
+      const val = e.target.value.trim();
+      blueParrot.veiculo = val ? `*${val}*` : "";
+      const classifLabel = document.querySelector("input[name='classificacao']:checked").nextElementSibling.textContent;
+      updateColumnDropdown(classifLabel, val);
+      renderPreview();
+    });
+    blogColuna.addEventListener("input", (e) => {
+      const val = e.target.value.trim();
+      blueParrot.coluna = val ? ` - _${val}_` : "";
+      renderPreview();
+    });
+    tagInput.addEventListener("input", (e) => {
+      blueParrot.tags = e.target.value;
+      renderPreview();
+    });
+    linkCurto.addEventListener("input", (e) => {
+      const val = e.target.value.trim();
+      blueParrot.linkCurto = val;
+      renderPreview();
+      if (val) processarShortlink(val);
+    });
+    dataHoraInput.addEventListener("input", (e) => {
+      blueParrot.dataHoraPublicacao = e.target.value.trim();
+      dataHoraInput.classList.remove("auto-filled");
+    });
+    tipoMinistroSelect.addEventListener("change", updateMinisterioOptions);
+    ministerioSelect.addEventListener("change", atualizarTexto);
+    document.getElementById("btn-colar-link").addEventListener("click", async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        linkCurto.value = text.trim();
+        linkCurto.dispatchEvent(new Event('input'));
+      } catch (err) { alert("Erro ao acessar área de transferência."); }
+    });
+    document.getElementById("btn-colar-materia").addEventListener("click", async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        tagInput.value = text.trim();
+        tagInput.dispatchEvent(new Event('input'));
+      } catch (err) { alert("Erro ao acessar área de transferência."); }
+    });
+    async function processarShortlink(url) {
+      loading.style.display = "inline";
+      try {
+        const { veiculo, coluna } = await identificarVeiculoEColuna(url);
+        if (veiculo) {
+          veiculos.value = veiculo;
+          veiculos.dispatchEvent(new Event('input'));
+        }
+        if (coluna) {
+          blogColuna.value = coluna;
+          blogColuna.dispatchEvent(new Event('input'));
+        }
+        const texto = await extrairConteudo(url);
+        tagInput.value = texto;
+        tagInput.dispatchEvent(new Event('input'));
+        const { dataHora, isExtraida } = await extrairDataHora(url);
+        if (dataHora) {
+          dataHoraInput.value = dataHora;
+          blueParrot.dataHoraPublicacao = dataHora;
+          if (isExtraida) {
+            dataHoraInput.classList.add("auto-filled");
+            blueParrot.dataHoraPublicacaoExtraida = dataHora;
+          }
+        }
+      } catch (e) { console.error(e); }
+      finally { loading.style.display = "none"; }
+    }
+    async function extrairDataHora(url) {
+      try {
+        const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+        const response = await fetch(proxyUrl, { headers: { "X-Requested-With": "XMLHttpRequest" } });
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        let dataHora = "";
+        const selectors = [
+          'meta[property="article:published_time"]',
+          'meta[name="publish-date"]',
+          'time[datetime]',
+          '.p-time', '.entry-date', '.published-at'
+        ];
+        for (const s of selectors) {
+          const el = doc.querySelector(s);
+          if (el) {
+            const val = el.getAttribute("datetime") || el.getAttribute("content") || el.innerText;
+            if (val) {
+              const d = new Date(val);
+              if (!isNaN(d.getTime())) {
+                dataHora = d.toLocaleDateString('pt-BR') + ' ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                break;
+              }
+            }
+          }
+        }
+        return { dataHora, isExtraida: !!dataHora };
+      } catch (e) { return { dataHora: "", isExtraida: false }; }
+    }
+    async function extrairConteudo(url) {
+      try {
+        const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+        const response = await fetch(proxyUrl, { headers: { "X-Requested-With": "XMLHttpRequest" } });
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        ["script", "style", "nav", "footer", "header", "aside", ".ads", ".sidebar"].forEach(s => {
+          doc.querySelectorAll(s).forEach(el => el.remove());
+        });
+        let conteudo = "";
+        const selectors = ["article", ".content-body", ".entry-content", ".post-content", "main"];
+        for (const s of selectors) {
+          const el = doc.querySelector(s);
+          if (el) { conteudo = el.innerText; break; }
+        }
+        if (!conteudo) {
+          const todosP = Array.from(doc.querySelectorAll("p"))
+            .map(p => p.innerText.trim())
+            .filter(t =>
+              t.length > 40 &&
+              t.split(/\s+/).length > 10 &&
+              !t.toLowerCase().includes('gostaria de receber') &&
+              !t.toLowerCase().includes('minha folha') &&
+              !t.toLowerCase().includes('acessos por dia') &&
+              !t.toLowerCase().includes('assinante') &&
+              !t.toLowerCase().includes('paywall') &&
+              !t.includes('Você tem') &&
+              !t.includes('dar de presente')
+            );
+          conteudo = todosP.slice(0, 4).join(" ");
+        }
+        const palavras = conteudo.split(/\s+/);
+        if (palavras.length > 140) {
+          conteudo = palavras.slice(0, 140).join(" ") + " [...]";
+        }
+        conteudo = conteudo.replace(/\s+/g, ' ').trim();
+        return conteudo.length > 30
+          ? conteudo
+          : "Não foi possível extrair texto relevante (possível paywall ou página sem conteúdo acessível).";
+      } catch (err) {
+        console.error("Erro na extração:", err);
+        return "Erro ao processar a página: " + err.message;
+      }
+    }
+    async function identificarVeiculoEColuna(url) {
+      let veiculo = "", coluna = "";
+      try {
+        const urlObj = new URL(url);
+        const hostname = urlObj.hostname.toLowerCase();
+        for (const [dom, nome] of Object.entries(dominioVeiculoMap)) {
+          if (hostname.includes(dom)) { veiculo = nome; break; }
+        }
+        const path = urlObj.pathname.toLowerCase();
+        if (veiculo && veiculoBlogColunaMap[veiculo]) {
+          for (const col of veiculoBlogColunaMap[veiculo]) {
+            let norm = col.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+              .replace("blog da ", "").replace("blog do ", "")
+              .replace(/\s+/g, "");
+            if (veiculo.includes("Folha")) {
+              norm = norm.replace(/-/g, "");
+              let pathSemHifen = path.replace(/-/g, "");
+              if (pathSemHifen.includes(norm)) {
+                coluna = col;
+                break;
+              }
+            } else {
+              if (path.includes(norm)) {
+                coluna = col;
+                break;
+              }
+            }
+          }
+        }
+        if (!coluna) {
+          const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+          const response = await fetch(proxyUrl, { headers: { "X-Requested-With": "XMLHttpRequest" } });
+          const html = await response.text();
+          const doc = new DOMParser().parseFromString(html, "text/html");
+          const author = doc.querySelector('meta[name="author"], meta[property="article:author"]');
+          if (author) coluna = author.getAttribute("content");
+        }
+      } catch (err) {}
+      return { veiculo, coluna };
+    }
+    function determinarClassificacao(veiculo) {
+      for (const [cl, list] of Object.entries(vehiclesByClassification)) {
+        if (list.includes(veiculo)) {
+          if (cl === "Impresso") return "🗞";
+          if (cl === "Online Nacional" || cl === "Internacional") return "🌐";
+          if (cl === "TV") return "📺";
+          if (cl === "Rádio") return "📻";
+        }
+      }
+      return "🌐";
+    }
+    document.querySelector(".btn-copiar").addEventListener("click", () => {
+      if (!blueParrot.veiculo || !blueParrot.tags) return;
+      const classif = blueParrot.classificação.trim();
+      const isSingleLine = (classif === "🗞" || classif === "📺" || classif === "📻");
+      const isComunicacoes = blueParrot.ministerio === "Comunicações"
+        && (blueParrot.tipoMinistro === "nenhum" || blueParrot.tipoMinistro === "ministro");
+      const isCGU = blueParrot.ministerio === "CGU";
+      const veiculoLimpo = blueParrot.veiculo.replace(/^\*+|\*+$/g, '').trim();
+      const colunaLimpa = blueParrot.coluna.replace(/^\s*-?\s*_?|_?\s*-?\s*$/g, '').trim();
+      let linhaVeiculo = `${classif}*${veiculoLimpo}*`;
+      if (colunaLimpa) {
+        linhaVeiculo += ` - _${colunaLimpa}_`;
+      }
+      let linhaComLink = linhaVeiculo;
+      if (isComunicacoes && blueParrot.linkCurto) {
+        linhaComLink += ` - ${blueParrot.linkCurto}`;
+      }
+      let materia = "";
+      if (isComunicacoes) {
+        let dataHoraUsada = blueParrot.dataHoraPublicacao.trim() || blueParrot.dataHoraPublicacaoExtraida.trim();
+        if (!dataHoraUsada || !dataHoraUsada.match(/^\d{2}\/\d{2}\/\d{4}(\s+\d{2}:\d{2})?$/)) {
+          alert("Para Comunicações é obrigatória a Data/Hora de Publicação (DD/MM/YYYY HH:MM)");
+          return;
+        }
+        if (!dataHoraUsada.includes(":")) dataHoraUsada += " 00:00";
+        const [data, hora] = dataHoraUsada.split(" ");
+        const [dia, mes, ano] = data.split("/");
+        const [hh, mm] = hora.split(":");
+        const dateObj = new Date(`${ano}-${mes}-${dia}T${hh}:${mm}:00`);
+        const diasSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+        const diaSemana = diasSemana[dateObj.getDay()];
+        const formattedDateTime = `${diaSemana}, ${dia}/${mes}, ${hh}h${mm}`;
+        materia = `🚨 *ALERTA DE IMPRENSA* - ${formattedDateTime}\n\n` +
+                  `${blueParrot.alertaPrefix}${blueParrot.ministerioStr}\n\n` +
+                  `${linhaComLink}\n\n` +
+                  `${blueParrot.tags}`;
+      } else if (isCGU) {
+        const linhas = blueParrot.tags.trim().split('\n').filter(l => l.trim() !== '');
+        let conteudoFormatado = "";
+        if (linhas.length >= 1) {
+          conteudoFormatado += `*${linhas[0].trim()}*\n`;
+        }
+        if (linhas.length >= 2) {
+          conteudoFormatado += `_${linhas[1].trim()}_`;
+        }
+        if (linhas.length >= 3) {
+          conteudoFormatado += `\n${linhas.slice(2).join('\n')}`;
+        }
+        materia = `${blueParrot.alertaPrefix}*ALERTA DE IMPRENSA* ${blueParrot.ministerioStr ? blueParrot.ministerioStr : ""}\n` +
+                  `${linhaVeiculo}\n` +
+                  `${conteudoFormatado}\n` +
+                  `${blueParrot.linkCurto ? blueParrot.linkCurto : ""}`;
+      } else {
+        let tempMateria = `${blueParrot.alertaPrefix}*ALERTA DE IMPRENSA*${blueParrot.ministerioStr ? " " + blueParrot.ministerioStr : ""}\n`;
+        if (isSingleLine) {
+          tempMateria += `${linhaVeiculo.trim()} - _${blueParrot.tags.trim()}_`;
+        } else {
+          tempMateria += `${linhaVeiculo.trim()}\n${blueParrot.tags.trim()}`;
+        }
+        if (blueParrot.linkCurto) {
+          tempMateria += `\n${blueParrot.linkCurto}`;
+        }
+        materia = tempMateria;
+      }
+      navigator.clipboard.writeText(materia).then(() => {
+        const data = saveToLocal(materia);
+        adicionarMateriaTabela(data.id, materia, data.timestamp);
+      });
+    });
+    document.querySelector(".btn-resetar").addEventListener("click", () => {
+      backup = { ...blueParrot };
+      veiculos.value = ""; blogColuna.value = ""; tagInput.value = ""; linkCurto.value = "";
+      dataHoraInput.value = "";
+      dataHoraInput.classList.remove("auto-filled");
+      tipoMinistroSelect.value = "nenhum"; ministerioSelect.value = "";
+      [veiculos, blogColuna, tagInput, linkCurto, dataHoraInput, tipoMinistroSelect].forEach(el => el.dispatchEvent(new Event('input')));
+      updateMinisterioOptions();
+    });
+    document.querySelector(".btn-desfazer").addEventListener("click", () => {
+      if (Object.keys(backup).length) {
+        blueParrot = { ...backup };
+        veiculos.value = blueParrot.veiculo.replace(/\*/g, "");
+        blogColuna.value = blueParrot.coluna.replace(/ - _|_$/g, "").replace(" - ", "");
+        tagInput.value = blueParrot.tags;
+        linkCurto.value = blueParrot.linkCurto;
+        dataHoraInput.value = blueParrot.dataHoraPublicacao;
+        dataHoraInput.classList.remove("auto-filled");
+        if (blueParrot.dataHoraPublicacaoExtraida) {
+          dataHoraInput.classList.add("auto-filled");
+        }
+        tipoMinistroSelect.value = blueParrot.tipoMinistro;
+        updateMinisterioOptions();
+        ministerioSelect.value = blueParrot.ministerio;
+        [veiculos, blogColuna, tagInput, linkCurto, dataHoraInput, ministerioSelect].forEach(el => el.dispatchEvent(new Event('input')));
+      }
+    });
+    function adicionarMateriaTabela(id, materia, timestamp) {
+      const tbody = document.querySelector("#materias-tabela tbody");
+      const row = document.createElement("tr");
+      row.setAttribute("data-id", id);
+      const dataStr = timestamp.split(' ')[0].substring(0, 5) + " - " + timestamp.split(' ')[1] + "h";
+      const materiaEscapada = materia
+        .replace(/\\/g, '\\\\')
+        .replace(/'/g, "\\'")
+        .replace(/\n/g, "\\n")
+        .replace(/\r/g, "");
+      row.innerHTML = `
+        <td data-label="Data/Hora">${dataStr}</td>
+        <td data-label="Matéria Completa" class="materia-cell">${materia}</td>
+        <td data-label="Ações">
+          <button class="btn btn-outline" onclick="copiarTabela('${materiaEscapada}')" title="Copiar mensagem">🔗</button>
+          <button class="btn btn-outline" onclick="excluirTabela(${id}, this)" title="Excluir esta mensagem">🗑️</button>
+        </td>
+      `;
+      tbody.prepend(row);
+    }
+    window.copiarTabela = (txt) => {
+      try {
+        navigator.clipboard.writeText(txt);
+      } catch (err) {
+        console.error("Erro ao copiar:", err);
+        alert("Não foi possível copiar o texto.");
+      }
+    };
+    window.excluirTabela = (id, btn) => {
+      if (confirm("Tem certeza que deseja excluir esta mensagem?")) {
+        deleteFromLocal(id);
+        btn.closest("tr").remove();
+      }
+    };
     window.onload = () => {
-      updateVehicleDropdown("Online");  // Carrega Online por padrão (como no seu código)
+      updateVehicleDropdown("Online Nacional");
       updateMinisterioOptions();
       const historico = loadFromLocal();
       historico.forEach(item => {
