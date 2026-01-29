@@ -457,7 +457,7 @@
         "The Wall Street Journal Online", "The Washington Post", "The Washington Post Online", "The Washington Times",
         "The Yomiuri Shimbun", "Tuoi Tre Online", "USA Today", "Vanguard – Nigéria", "Viet Nam News", "VN Express"
       ],
-      "TV": ["TV AgroMais", "TV BandNews", "TV Band", "TV Brasil", "TV Câmara", "TV CNN Brasil", "TV Cultura", "TV GloboNews", "TV Jovem Pan News", "TV NBR", "TV Record", "TV Record News", "TV Rede Globo Nacional", "TV Record News", "TV Rede Globo Nacional", "TV RedeTV!", "TV SBT", "TV Senado", "TV Times Brasil CNBC"],
+      "TV": ["TV AgroMais", "TV BandNews", "TV Band", "TV Brasil", "TV Câmara", "TV CNN Brasil", "TV Cultura", "TV GloboNews", "TV Jovem Pan News", "TV NBR", "TV Record", "TV Record News", "TV Rede Globo Nacional", "TV RedeTV!", "TV SBT", "TV Senado", "TV Times Brasil CNBC"],
       "Rádio": ["Rádio BandNews FM", "Rádio Bandeirantes FM", "Rádio CBN FM", "Rádio Jovem Pan FM", "Rádio Nacional FM"]
     };
     const veiculoBlogColunaMap = {
@@ -827,32 +827,9 @@
         tagInput.dispatchEvent(new Event('input'));
       } catch (err) { alert("Erro ao acessar área de transferência."); }
     });
-    async function encurtarLink(urlLonga) {
-      const apiUrl = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(urlLonga)}`;
-      try {
-        const proxyUrl = `https://cors-anywhere.herokuapp.com/${apiUrl}`;
-        const response = await fetch(proxyUrl, { headers: { "X-Requested-With": "XMLHttpRequest" } });
-        if (!response.ok) return urlLonga;
-        const linkCurtoText = await response.text();
-        return linkCurtoText.startsWith("http") ? linkCurtoText : urlLonga;
-      } catch (error) {
-        console.error("Erro ao encurtar:", error);
-        return urlLonga;
-      }
-    }
     async function processarShortlink(url) {
       loading.style.display = "inline";
       try {
-        let urlParaProcessar = url;
-        if (url.length > 40 && !url.includes("tinyurl.com") && !url.includes("bit.ly") && !url.includes("t.co")) {
-          const linkEncurtado = await encurtarLink(url);
-          if (linkEncurtado !== url) {
-            urlParaProcessar = linkEncurtado;
-            linkCurto.value = linkEncurtado;
-            blueParrot.linkCurto = linkEncurtado;
-            renderPreview();
-          }
-        }
         const { veiculo, coluna } = await identificarVeiculoEColuna(url);
         if (veiculo) {
           veiculos.value = veiculo;
@@ -1142,3 +1119,4 @@
   </script>
 </body>
 </html>
+
