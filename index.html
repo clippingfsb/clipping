@@ -62,9 +62,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 12px 20px;
     }
-    @media (max-width: 768px) {
-      .form-grid { grid-template-columns: 1fr; gap: 10px; }
-    }
     .form-group { margin-bottom: 12px; }
     .form-group.full-width { grid-column: 1 / -1; }
     input, textarea, select {
@@ -190,7 +187,7 @@
       padding-top: 15px;
       border-top: 2px solid var(--border-color);
     }
-    .table-wrapper { overflow-x: auto; }
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -230,22 +227,61 @@
       border: 2px solid #ffcc00 !important;
       background-color: #fffacd !important;
     }
+
+    /* === RESPONSIVIDADE MELHORADA PARA CELULAR === */
     @media (max-width: 768px) {
-      .section-tabela { padding: 15px; }
-      tr { margin-bottom: 15px; padding: 10px; }
-      td { padding-left: 45%; min-height: 35px; }
-      .shortlink-container {
+      body { padding: 10px; font-size: 1rem; }
+      .form-grid { grid-template-columns: 1fr; gap: 16px; }
+      #btn-colar-materia { width: 100%; max-width: 240px; margin: 16px auto 0; }
+      .btn-container, .shortlink-container, .preview-actions {
         flex-direction: column;
+        gap: 12px;
         align-items: stretch;
       }
-      .shortlink-container input,
-      .shortlink-container .btn {
+      .shortlink-container input, .shortlink-container .btn, .btn {
         width: 100%;
       }
-      .btn-container {
-        flex-direction: column;
-        align-items: stretch;
+      .preview-actions .btn { justify-content: center; }
+
+      /* Tabela vira cartões verticais no mobile */
+      .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      #materias-tabela thead { display: none; }
+      #materias-tabela tr {
+        display: block;
+        margin-bottom: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       }
+      #materias-tabela td {
+        display: block;
+        text-align: left;
+        padding: 12px 16px;
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+      }
+      #materias-tabela td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 16px;
+        width: 45%;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+      #materias-tabela td:last-child {
+        border-bottom: none;
+        text-align: center;
+        padding: 12px;
+      }
+      .materia-cell { padding-left: 50% !important; white-space: pre-wrap; word-break: break-word; }
+    }
+
+    @media (max-width: 480px) {
+      body { font-size: 0.95rem; }
+      .title { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -271,7 +307,7 @@
           <div class="shortlink-container">
             <input id="link-curto" type="text" placeholder="Cole o link encurtado aqui">
             <div class="btn-container">
-              <button class="btn btn-secondary" id="btn-colar-link" type="button">Colar link curto</button>
+              <button class="btn btn-secondary" id="btn-colar-link" type="button">🔗 Colar link curto</button>
             </div>
           </div>
         </div>
@@ -876,6 +912,7 @@
       const isSingleLine = (classif === "🗞" || classif === "📺" || classif === "📻");
       const isComunicacoes = blueParrot.ministerio === "Comunicações"
         && (blueParrot.tipoMinistro === "nenhum" || blueParrot.tipoMinistro === "ministro");
+      const isCGU = blueParrot.ministerio === "CGU";
       const veiculoLimpo = blueParrot.veiculo.replace(/^\*+|\*+$/g, '').trim();
       const colunaLimpa = blueParrot.coluna.replace(/^\s*-?\s*_?|_?\s*-?\s*$/g, '').trim();
       let linhaVeiculo = `${classif}*${veiculoLimpo}*`;
@@ -901,17 +938,33 @@
         const diasSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
         const diaSemana = diasSemana[dateObj.getDay()];
         const formattedDateTime = `${diaSemana}, ${dia}/${mes}, ${hh}h${mm}`;
-        materia = `🚨 *ALERTA DE IMPRENSA* - ${formattedDateTime}\n\n` +
-                  `${blueParrot.alertaPrefix}${blueParrot.ministerioStr}\n\n` +
-                  `${linhaComLink}\n\n` +
+        materia = `🚨 *ALERTA DE IMPRENSA* - ${formattedDateTime}\n` +
+                  `${blueParrot.alertaPrefix}${blueParrot.ministerioStr}\n` +
+                  `${linhaComLink}\n` +
                   `${blueParrot.tags}`;
+      } else if (isCGU) {
+        const linhas = blueParrot.tags.trim().split('\n').filter(l => l.trim() !== '');
+        let conteudoFormatado = "";
+        if (linhas.length >= 1) {
+          conteudoFormatado += `*${linhas[0].trim()}*\n`;
+        }
+        if (linhas.length >= 2) {
+          conteudoFormatado += `_${linhas[1].trim()}_`;
+        }
+        if (linhas.length >= 3) {
+          conteudoFormatado += `\n${linhas.slice(2).join('\n')}`;
+        }
+        materia = `${blueParrot.alertaPrefix}*ALERTA DE IMPRENSA* ${blueParrot.ministerioStr ? blueParrot.ministerioStr : ""}\n` +
+                  `${linhaVeiculo}\n` +
+                  `${conteudoFormatado}\n` +
+                  `${blueParrot.linkCurto ? blueParrot.linkCurto : ""}`;
       } else {
         let tempMateria = `${blueParrot.alertaPrefix}*ALERTA DE IMPRENSA*${blueParrot.ministerioStr ? " " + blueParrot.ministerioStr : ""}\n`;
         if (isSingleLine) {
-                          tempMateria += `${linhaVeiculo.trim()} - _${blueParrot.tags.trim()}_`;
-                    } else {
-                          tempMateria += `${linhaVeiculo.trim()}\n${blueParrot.tags.trim()}`;
-                    }
+          tempMateria += `${linhaVeiculo.trim()} - _${blueParrot.tags.trim()}_`;
+        } else {
+          tempMateria += `${linhaVeiculo.trim()}\n${blueParrot.tags.trim()}`;
+        }
         if (blueParrot.linkCurto) {
           tempMateria += `\n${blueParrot.linkCurto}`;
         }
@@ -954,13 +1007,11 @@
       const row = document.createElement("tr");
       row.setAttribute("data-id", id);
       const dataStr = timestamp.split(' ')[0].substring(0, 5) + " - " + timestamp.split(' ')[1] + "h";
-
       const materiaEscapada = materia
         .replace(/\\/g, '\\\\')
         .replace(/'/g, "\\'")
         .replace(/\n/g, "\\n")
         .replace(/\r/g, "");
-
       row.innerHTML = `
         <td data-label="Data/Hora">${dataStr}</td>
         <td data-label="Matéria Completa" class="materia-cell">${materia}</td>
