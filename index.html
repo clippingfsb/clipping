@@ -344,13 +344,13 @@
 <div class="form-grid">
   <div class="form-group full-width">
     <p class="title">Classificação</p>
-    <div class="radio-group" id="classificacao">
-      <div class="radio-option"><input type="radio" name="classificacao" id="option1" value="🗞" /><label for="option1">Impresso</label></div>
-      <div class="radio-option"><input type="radio" name="classificacao" id="option2" value="🌐" checked /><label for="option2">Online Nacional</label></div>
-      <div class="radio-option"><input type="radio" name="classificacao" id="option5" value="🌐" /><label for="option5">Internacional</label></div>
-      <div class="radio-option"><input type="radio" name="classificacao" id="option3" value="📺" /><label for="option3">TV</label></div>
-      <div class="radio-option"><input type="radio" name="classificacao" id="option4" value="📻" /><label for="option4">Rádio</label></div>
-    </div>
+   <div class="radio-group" id="classificacao">
+  <div class="radio-option"><input type="radio" name="classificacao" id="option1" value="🗞" /><label for="option1">Impresso</label></div>
+  <div class="radio-option"><input type="radio" name="classificacao" id="option2" value="Online" checked /><label for="option2">Online Nacional</label></div>
+  <div class="radio-option"><input type="radio" name="classificacao" id="option5" value="Internacional" /><label for="option5">Internacional</label></div>
+  <div class="radio-option"><input type="radio" name="classificacao" id="option3" value="📺" /><label for="option3">TV</label></div>
+  <div class="radio-option"><input type="radio" name="classificacao" id="option4" value="📻" /><label for="option4">Rádio</label></div>
+</div>
   </div>
 
   <div class="form-group full-width">
@@ -916,14 +916,13 @@
       previewArea.innerHTML = html;
     }
     radioButtons.forEach(radio => {
-      radio.addEventListener("change", (e) => {
-        const val = e.target.value;
-        const label = e.target.nextElementSibling.textContent;
-        blueParrot.classificação = val + " ";
-        updateVehicleDropdown(label);
-        renderPreview();
-      });
-    });
+  radio.addEventListener("change", (e) => {
+    const val = e.target.value;  // Usa o value do radio ("Online", "Internacional", etc.)
+    blueParrot.classificação = "🌐 ";  // Mantém o emoji fixo como você pediu
+    updateVehicleDropdown(val);  // Passa o value direto
+    renderPreview();
+  });
+});
     veiculos.addEventListener("input", (e) => {
       const val = e.target.value.trim();
       blueParrot.veiculo = val ? `*${val}*` : "";
@@ -1362,6 +1361,7 @@
   </script>
 </body>
 </html>
+
 
 
 
