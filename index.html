@@ -42,14 +42,14 @@
     .cors-instruction {
       background-color: #fff3cd;
       border-left: 5px solid var(--warning-color);
-      color: #000000;
+      color: #856404;
       padding: 10px 20px;
       border-radius: 8px;
       margin-bottom: 15px;
       font-size: var(--font-size-small);
       box-shadow: var(--shadow);
     }
-    .cors-instruction a { color: #0000EE; font-weight: bold; text-decoration: underline; }
+    .cors-instruction a { color: #856404; font-weight: bold; text-decoration: underline; }
     .section-form, .section-tabela {
       background-color: var(--bg-card);
       border-radius: 12px;
@@ -329,6 +329,7 @@
             <div class="radio-option"><input type="radio" name="classificacao" id="option4" value="📻" /><label for="option4">Rádio</label></div>
           </div>
         </div>
+
         <div class="form-group full-width">
           <p class="title">Link curto (cole aqui para preencher os campos abaixo automaticamente) <span id="loading">Processando...</span></p>
           <div class="shortlink-container">
@@ -338,25 +339,30 @@
             </div>
           </div>
         </div>
+
         <div class="form-group">
           <p class="title">Veículo</p>
           <input class="veiculos" type="text" placeholder="Ex: CNN Brasil online" list="veiculo-dropdown" />
           <datalist id="veiculo-dropdown"></datalist>
         </div>
+
         <div class="form-group">
           <p class="title">Blog / Coluna</p>
           <input class="blog-coluna" type="text" placeholder="Ex: Tainá Falcão" list="coluna-dropdown" />
           <datalist id="coluna-dropdown"></datalist>
         </div>
+
         <div class="form-group full-width">
           <p class="title">Notícia</p>
           <textarea id="tag-input" placeholder="Digite ou cole a notícia aqui..."></textarea>
           <button class="btn btn-secondary" id="btn-colar-materia" type="button">📄 Colar notícia</button>
         </div>
+
         <div class="form-group full-width">
           <p class="title">Data/Hora de Publicação <small>(obrigatória para Comunicações - DD/MM/YYYY HH:MM)</small></p>
           <input id="data-hora-publicacao" type="text" placeholder="Ex: 26/01/2026 14:30" />
         </div>
+
         <div class="form-group">
           <p class="title">Cargo</p>
           <select id="tipo-ministro">
@@ -366,6 +372,7 @@
             <option value="ministra">Ministra</option>
           </select>
         </div>
+
         <div class="form-group">
           <p class="title">Órgão / Ministério</p>
           <select id="ministerio">
@@ -373,6 +380,7 @@
           </select>
         </div>
       </div>
+
       <div class="preview-box">
         <p class="title" style="color: var(--primary-color)">Prévia da Mensagem</p>
         <div id="preview-area" class="preview-content"></div>
@@ -383,6 +391,7 @@
         </div>
       </div>
     </section>
+
     <section class="section-tabela">
       <h2 class="title" style="font-size: 1.2rem; margin-bottom: 15px;">Histórico de mensagens</h2>
       <div class="table-wrapper">
@@ -399,6 +408,7 @@
       </div>
     </section>
   </div>
+
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <script>
     "use strict";
@@ -420,10 +430,11 @@
     const ministerioSelect = document.querySelector("#ministerio");
     const loading = document.querySelector("#loading");
     const previewArea = document.querySelector("#preview-area");
+
     const vehiclesByClassification = {
       "Impresso": ["Folha de S.Paulo", "O Estado de S. Paulo", "O Globo", "Valor Econômico", "Correio Braziliense"],
       "Online Nacional": [
-       "Agência Brasil", "Agência Câmara", "Agência Senado", "BBC News Brasil", "Bloomberg Brasil",
+        "Agência Brasil", "Agência Câmara", "Agência Senado", "BBC News Brasil", "Bloomberg Brasil",
         "Bloomberg Línea", "Brasil 247", "Carta Capital online", "CBN", "CNN Brasil online",
         "Congresso em Foco", "Correio Braziliense online", "Crusoé", "Época Negócios", "Época Online",
         "Estadão online", "Exame on-line", "Exame online", "Extra online", "FDR", "Folha online",
@@ -460,6 +471,7 @@
       "TV": ["TV AgroMais", "TV BandNews", "TV Band", "TV Brasil", "TV Câmara", "TV CNN Brasil", "TV Cultura", "TV GloboNews", "TV Jovem Pan News", "TV NBR", "TV Record", "TV Record News", "TV Rede Globo Nacional", "TV RedeTV!", "TV SBT", "TV Senado", "TV Times Brasil CNBC"],
       "Rádio": ["Rádio BandNews FM", "Rádio Bandeirantes FM", "Rádio CBN FM", "Rádio Jovem Pan FM", "Rádio Nacional FM"]
     };
+
     const veiculoBlogColunaMap = {
       "BBC News Brasil": [],
       "Bloomberg Brasil": [],
@@ -488,34 +500,43 @@
         "Flávio Tavares", "Francisco Leali", "Gustavo H.B. Franco", "Guy Perelmuter",
         "Henrique Meirelles", "Jorge Caldeira", "Jorge J. Okubaro", "José Márcio Camargo",
         "José Pastore", "José Roberto Mendonça de Barros", "José Serra", "Leticia Fernandes",
-        "Luiz Carlos Trabuco Cappi", "Luiz Guilherme Schymura", "Maílson da Nóbrega", "Manoel Ventura",
-        "Marcelo de Paiva Abreu", "Marcelo Trindade", "Marcos Lisboa", "Marcos Troyjo",
-        "Maria Cristina Frias", "Maria Hermínia Tavares de Almeida", "Mauro Calliari", "Milton Seligman",
-        "Modesto Carvalhosa", "Murillo de Aragão", "Nelson Marconi", "Nizan Guanaes",
-        "Oscar Vilhena Vieira", "Paulo Furquim de Azevedo", "Paulo Hartung", "Pedro Hallal",
-        "Pedro Malan", "Pedro Passos", "Raquel Landim", "Ricardo Musse",
-        "Roberto Macedo", "Roberto Rodrigues", "Ronaldo Lemos", "Samuel Pessôa",
-        "Sérgio Fausto", "Silvio Meira", "Vera Magalhães", "William Waack",
-        "Zeina Latif"
+        "Lorenna Rodrigues", "Luís Eduardo Assis", "Luiz Carlos Trabuco Cappi", "Luiz Felipe D'Avila",
+        "Luiz Sérgio Henriques", "Marcelo Godoy", "Marco Aurélio Nogueira", "Marina Grossi",
+        "Miguel Reale Júnior", "Nicolau Da Rocha Cavalcanti", "Paulo Delgado", "Paulo Hartung",
+        "Paulo Sotero", "Pedro Fernando Nery", "Pedro S. Malan", "Raquel Landim",
+        "Renata Piazzon", "Ricardo Basaglia", "Ricardo Corrêa", "Roberto Macedo",
+        "Roberto Rodrigues", "Roberto Waack", "Rogério Werneck", "Rolf Kuntz",
+        "Roseann Kennedy", "Rubens Barbosa", "Salo Coslovsky", "Silvio Cascione",
+        "Simon Schwartzman", "Vera Rosa", "William Waack"
       ],
-      "Exame on-line": [],
       "Exame online": [],
       "Extra online": [],
       "FDR": [],
       "Folha online": [
-        "Afonso Benites", "Alexandre Schwartsman", "Ana Estela Haddad", "André Lara Resende",
-        "Angela Alonso", "Antonio Delfim Netto", "Antonio Prata", "Bernardo Mello Franco",
-        "Bruno Boghossian", "Cacique Almir Suruí", "Camila Rocha", "Carlos Andreazza",
-        "Carlos Melo", "Celso Rocha de Barros", "Christian Dunker", "Claudio Angelo",
-        "Conrado Hübner Mendes", "Cristina Serra", "Dadá Coelho", "Demétrio Magnoli",
-        "Diego Viana", "Djamila Ribeiro", "Edmar Bacha", "Eduardo Giannetti",
-        "Eliane Cantanhêde", "Elias Jabbour", "Érica Fraga", "Fabio Barbosa",
-        "Fábio Giambiagi", "Felipe Nunes", "Felipe Salto", "Fernando Canzian",
-        "Fernando Reinach", "Fernando Schüler", "Flavia Lima", "Gregorio Duvivier",
-        "Guilherme Casarões", "Gustavo Ioschpe", "Hélio Schwartsman", "Igor Gielow",
-        "Joel Pinheiro da Fonseca", "José Henrique Mariante", "Juliana Sayuri", "Laura Carvalho",
-        "Laura Mattos", "Leandro Karnal", "Lilia Schwarcz", "Luiz Felipe Pondé",
-        "Manoel Ventura", "Marcos Lisboa", "Marcos Nobre", "Maria Hermínia Tavares de Almeida",
+        "#Hashtag", "Adriana Fernandes", "Ailton Krenak", "Alexandra Moraes - Ombudsman",
+        "Alvaro Costa e Silva", "Álvaro Machado Dias", "Amor Crônico", "Ana Cristina Rosa",
+        "Ana Paula Vescovi", "Andanças na metrópole", "Antonio Prata", "Baú do Cinema",
+        "Becky S. Korich", "Bernardo Carvalho", "Bernardo Guimarães", "Bianca Santana",
+        "Bibi Bailas", "Bom Pra Cachorro", "Brasília Hoje", "Bráulio Borges",
+        "Bruno Gualano", "C-Level Plano Brasília", "Café na Prensa", "Candido Bracher",
+        "Caos Planejado", "Cecilia Machado", "Celso Rocha de Barros", "Ciência Fundamental",
+        "Claudio Bernardes", "Cláudio Hebdô", "Conrado Hübner Mendes", "Copo Cheio",
+        "Cozinha Bruta", "Darwin e Deus", "De faixa a coroa", "De Grão em Grão",
+        "Deborah Bizarria", "Deirdre Nansen McCloskey", "Demétrio Magnoli", "Denise Mota",
+        "Djamila Ribeiro", "Dora Kramer", "Drauzio Varella", "Econometria Fácil",
+        "Eduardo Sodré", "Eliane Trindade", "Elio Gaspari", "Encaminhado com Frequência",
+        "Evangélicos", "Ezra Klein", "Fernanda Torres", "Frederico Vasconcellos",
+        "Gatices", "Gelo e gim", "Giovana Madalosso", "Glenn Greenwald",
+        "Gustavo Alonso", "Haja Vista", "Hélio Schwartsman", "Ian Bremmer",
+        "Igor Patrick", "Ilona Szabó de Carvalho", "Isabelle Moreira Lima", "Jairo Marques",
+        "Jerson Kelman", "Joanna Moura", "João Pereira Coutinho", "Joel Pinheiro da Fonseca",
+        "Joisa Dutra", "Jorge Abrahão", "José Simão", "Juliana de Albuquerque",
+        "Juliano Spyer", "K-cultura", "Lara Mesquita", "Latinoamérica21",
+        "Laura Greenhalgh", "Laura Muller", "Laura Müller Machado", "Lorena Hakak",
+        "Lúcia Guimarães", "Luciana Coelho", "Luís Francisco Carvalho Filho", "Luiz Felipe Pondé",
+        "Lygia Maria", "Mafalda Anjos", "Maína Mello", "Marcelo Bechler",
+        "Marcelo Leite", "Marcelo Viana", "Marcos Augusto Gonçalves", "Marcos de Vasconcellos",
+        "Marcos Lisboa", "Marcos Mendes", "Marcus André Melo", "Maria Hermínia Tavares",
         "Maria Inês Dolci", "Mariliz Pereira Jorge", "Marina Izidro", "Mario Sergio Conti",
         "Martin Wolf", "Maternar", "Mauricio Portugal Ribeiro", "Mauricio Stycer",
         "Mauro Calliari", "Mensageiro Sideral", "Michael França", "Mirian Goldenberg",
@@ -612,6 +633,7 @@
       ],
       "Yahoo!": []
     };
+
     const dominioVeiculoMap = {
       "bbc.com": "BBC News Brasil",
       "bloomberg.com.br": "Bloomberg Brasil",
@@ -656,6 +678,7 @@
       "yahoo.com": "Yahoo!",
       "yahoo.com.br": "Yahoo!"
     };
+
     const orgaosPorCargo = {
       nenhum: ["CAIXA", "CGU", "SRI", "Cultura", "Agricultura", "Desenvolvimento Social", "Comunicações", "MME", "CNI", "Turismo", "Embratur", "MPOR", "Esporte"],
       presidente: ["CAIXA", "Câmara dos Deputados", "CNI", "Embratur"],
@@ -666,7 +689,7 @@
       CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "SRI",
       Cultura: "Ministério da Cultura", Agricultura: "Ministério da Agricultura", "Desenvolvimento Social": "Ministério do Desenvolvimento Social",
       Comunicações: "Ministério das Comunicações", MME: "MME", Turismo: "Ministério do Turismo", Embratur: "Embratur",
-      MPOR: "Portos e Aeroportos", Esporte: "Ministério do Esporte"
+      MPOR: "MPOR", Esporte: "Ministério do Esporte"
     };
     const nomeSimplificadoOrgao = {
       CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "Relações Institucionais",
@@ -674,6 +697,7 @@
       Comunicações: "Comunicações", MME: "Minas e Energia", Turismo: "Turismo", Embratur: "Embratur",
       MPOR: "Portos e Aeroportos", Esporte: "Esporte"
     };
+
     function saveToLocal(materia) {
       const materias = JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
       const now = new Date();
@@ -684,15 +708,18 @@
       localStorage.setItem('materias_clipping_final_v5', JSON.stringify(materias));
       return novoItem;
     }
+
     function deleteFromLocal(id) {
       let materias = JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
       materias = materias.filter(item => item.id != id);
       localStorage.setItem('materias_clipping_final_v5', JSON.stringify(materias));
       return true;
     }
+
     function loadFromLocal() {
       return JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
     }
+
     function updateVehicleDropdown(classification) {
       const datalist = document.getElementById("veiculo-dropdown");
       datalist.innerHTML = "";
@@ -703,6 +730,7 @@
         datalist.appendChild(option);
       });
     }
+
     function updateColumnDropdown(classification, veiculo) {
       const datalist = document.getElementById("coluna-dropdown");
       datalist.innerHTML = "";
@@ -713,42 +741,51 @@
         datalist.appendChild(option);
       });
     }
+
     function updateMinisterioOptions() {
       const selectedTipoMinistro = tipoMinistroSelect.value;
-      const orgaos = orgaosPorCargo[selectedTipoMinistro] || [];
-      ministerioSelect.innerHTML = '<option value="">Selecionar o órgão</option>';
-      orgaos.forEach(orgao => {
-        const option = document.createElement("option");
-        option.value = orgao;
-        option.textContent = orgao;
-        ministerioSelect.appendChild(option);
-      });
+      const currentMinisterio = ministerioSelect.value;
+      const orgaosToShow = orgaosPorCargo[selectedTipoMinistro] || [];
+      ministerioSelect.innerHTML = `
+        <option value="">Selecionar o órgão</option>
+        ${orgaosToShow.map(orgao => `<option value="${orgao}">${orgao}</option>`).join('')}
+      `;
+      const options = Array.from(ministerioSelect.options).map(opt => opt.value);
+      ministerioSelect.value = options.includes(currentMinisterio) ? currentMinisterio : "";
       atualizarTexto();
     }
+
     function atualizarTexto() {
       const tipoMinistro = tipoMinistroSelect.value;
       const ministerio = ministerioSelect.value;
       let ministerioStr = "";
       let alertaPrefix = "";
-      if (ministerio) {
-        const nomeComp = nomeCompletoOrgao[ministerio];
-        const nomeSimp = nomeSimplificadoOrgao[ministerio];
-        if (tipoMinistro === "presidente") {
-          ministerioStr = `Presidência da ${nomeComp}`;
-        } else if (tipoMinistro === "ministro") {
-          ministerioStr = `Ministro da ${nomeSimp}`;
-        } else if (tipoMinistro === "ministra") {
-          ministerioStr = `Ministra da ${nomeSimp}`;
+      if (ministerio && orgaosPorCargo[tipoMinistro].includes(ministerio)) {
+        const nomeOrgao = tipoMinistro === "nenhum" ? nomeCompletoOrgao[ministerio] : nomeSimplificadoOrgao[ministerio] || ministerio;
+        const useDas = ["Comunicações"];
+        const useDa = ["CAIXA", "CGU", "CNI", "SRI", "Embratur", "Câmara dos Deputados", "Cultura", "Agricultura"];
+        const useFeminino = ["CAIXA", "CGU", "CNI", "SRI", "Embratur"];
+        const useDe = ["SRI", "MME", "MPOR"];
+        let artigo = tipoMinistro === "nenhum"
+          ? (useFeminino.includes(ministerio) ? "a" : "o")
+          : (tipoMinistro === "ministra" ? "a" : "o");
+        let preposicao = useDas.includes(ministerio) ? "das"
+          : useDe.includes(ministerio) ? "de"
+          : useDa.includes(ministerio) ? "da"
+          : "do";
+        if (ministerio === "Comunicações") {
+          ministerioStr = tipoMinistro === "nenhum"
+            ? `cita ${artigo} ${nomeOrgao}`
+            : `cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao}`;
+          alertaPrefix = "⚠ ";
         } else {
-          ministerioStr = nomeComp;
+          ministerioStr = tipoMinistro === "nenhum"
+            ? `(cita ${artigo} ${nomeOrgao})`
+            : `(cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao})`;
+          if (tipoMinistro === "presidente" && ministerio === "CAIXA") {
+            alertaPrefix = "⚠ ";
+          }
         }
-        if (ministerio === "Comunicações") alertaPrefix = "🔔 ";
-        else if (ministerio === "CGU") alertaPrefix = "🔎 ";
-        else if (ministerio === "MME") alertaPrefix = "⚡ ";
-        else if (ministerio === "Turismo") alertaPrefix = "✈️ ";
-        else if (ministerio === "Embratur") alertaPrefix = "🇧🇷 ";
-        else if (ministerio === "MPOR") alertaPrefix = "⚓ ";
-        else if (ministerio === "Esporte") alertaPrefix = "🏅 ";
       }
       blueParrot.tipoMinistro = tipoMinistro;
       blueParrot.ministerio = ministerio;
@@ -756,6 +793,7 @@
       blueParrot.alertaPrefix = alertaPrefix;
       renderPreview();
     }
+
     function renderPreview() {
       const classif = blueParrot.classificação.trim();
       const isSingleLine = (classif === "🗞" || classif === "📺" || classif === "📻");
@@ -768,14 +806,15 @@
         const colunaLimpa = blueParrot.coluna.replace(/ - _|_$/g, "").trim();
         html += `<span> - ${colunaLimpa}</span>`;
       }
-      if (isSingleLine) {
-        html += `<span> - _${blueParrot.tags}_</span>`;
-      } else {
+      if (isSingleLine && blueParrot.tags) {
+        html += ` - <em>${blueParrot.tags}</em>`;
+      } else if (blueParrot.tags) {
         html += `\n<span>${blueParrot.tags}</span>`;
       }
       if (blueParrot.linkCurto) html += `\n<span>${blueParrot.linkCurto}</span>`;
       previewArea.innerHTML = html;
     }
+
     radioButtons.forEach(radio => {
       radio.addEventListener("change", (e) => {
         const val = e.target.value;
@@ -785,6 +824,7 @@
         renderPreview();
       });
     });
+
     veiculos.addEventListener("input", (e) => {
       const val = e.target.value.trim();
       blueParrot.veiculo = val ? `*${val}*` : "";
@@ -792,117 +832,256 @@
       updateColumnDropdown(classifLabel, val);
       renderPreview();
     });
+
     blogColuna.addEventListener("input", (e) => {
       const val = e.target.value.trim();
       blueParrot.coluna = val ? ` - _${val}_` : "";
       renderPreview();
     });
+
     tagInput.addEventListener("input", (e) => {
       blueParrot.tags = e.target.value;
       renderPreview();
     });
+
     linkCurto.addEventListener("input", (e) => {
       const val = e.target.value.trim();
       blueParrot.linkCurto = val;
       renderPreview();
       if (val) processarShortlink(val);
     });
+
     dataHoraInput.addEventListener("input", (e) => {
       blueParrot.dataHoraPublicacao = e.target.value.trim();
       dataHoraInput.classList.remove("auto-filled");
     });
+
     tipoMinistroSelect.addEventListener("change", updateMinisterioOptions);
     ministerioSelect.addEventListener("change", atualizarTexto);
+
     document.getElementById("btn-colar-link").addEventListener("click", async () => {
       try {
-        const text = await navigator.clipboard.readText();
-        linkCurto.value = text.trim();
+        const texto = await navigator.clipboard.readText();
+        linkCurto.value = texto;
         linkCurto.dispatchEvent(new Event('input'));
-      } catch (err) { alert("Erro ao acessar área de transferência."); }
+      } catch (err) {}
     });
+
     document.getElementById("btn-colar-materia").addEventListener("click", async () => {
       try {
-        const text = await navigator.clipboard.readText();
-        tagInput.value = text.trim();
-        tagInput.dispatchEvent(new Event('input'));
-      } catch (err) { alert("Erro ao acessar área de transferência."); }
-    });
-    async function processarShortlink(url) {
-      loading.style.display = "inline";
-      try {
-        const { veiculo, coluna } = await identificarVeiculoEColuna(url);
-        if (veiculo) {
-          veiculos.value = veiculo;
-          veiculos.dispatchEvent(new Event('input'));
-        }
-        if (coluna) {
-          blogColuna.value = coluna;
-          blogColuna.dispatchEvent(new Event('input'));
-        }
-        const texto = await extrairConteudo(url);
+        const texto = await navigator.clipboard.readText();
         tagInput.value = texto;
         tagInput.dispatchEvent(new Event('input'));
-        const { dataHora, isExtraida } = await extrairDataHora(url);
-        if (dataHora) {
-          dataHoraInput.value = dataHora;
-          blueParrot.dataHoraPublicacao = dataHora;
-          if (isExtraida) {
-            dataHoraInput.classList.add("auto-filled");
-            blueParrot.dataHoraPublicacaoExtraida = dataHora;
-          }
+      } catch (err) {}
+    });
+
+    async function processarShortlink(shortlink) {
+      loading.style.display = "inline";
+      console.log("[processarShortlink] Iniciando com:", shortlink);
+
+      let urlFinal;
+      const cachedUrl = localStorage.getItem(`shortlink:${shortlink}`);
+      if (cachedUrl && !cachedUrl.includes("tinyurl.com")) {
+        urlFinal = cachedUrl;
+        console.log("[processarShortlink] Usou cache:", urlFinal);
+      } else {
+        try {
+          const response = await fetch(`https://unshorten.me/json/${shortlink}`);
+          const data = await response.json();
+          urlFinal = data.resolved_url || shortlink;
+          localStorage.setItem(`shortlink:${shortlink}`, urlFinal);
+          console.log("[processarShortlink] Resolveu shortlink:", urlFinal);
+        } catch (err) {
+          console.error("[processarShortlink] Erro no unshorten.me:", err);
+          urlFinal = shortlink;
         }
-      } catch (e) { console.error(e); }
-      finally { loading.style.display = "none"; }
-    }
-    async function extrairDataHora(url) {
+      }
+
+      blueParrot.link = urlFinal;
+
       try {
-        const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
-        const response = await fetch(proxyUrl, { headers: { "X-Requested-With": "XMLHttpRequest" } });
+        const veiculoData = await identificarVeiculoEColuna(urlFinal);
+        const texto = await extrairTexto(urlFinal);
+        console.log("[processarShortlink] Veículo encontrado:", veiculoData.veiculo);
+        console.log("[processarShortlink] Coluna encontrada:", veiculoData.coluna);
+        console.log("[processarShortlink] Texto extraído:", texto.substring(0, 100) + "...");
+
+        veiculos.value = veiculoData.veiculo || "";
+        veiculos.dispatchEvent(new Event('input'));
+        blogColuna.value = veiculoData.coluna || "";
+        blogColuna.dispatchEvent(new Event('input'));
+        tagInput.value = texto;
+        tagInput.dispatchEvent(new Event('input'));
+
+        const classif = determinarClassificacao(veiculoData.veiculo);
+        console.log("[processarShortlink] Classificação determinada:", classif);
+
+        const radio = document.querySelector(`input[value="${classif}"]`);
+        if (radio) {
+          radio.checked = true;
+          radio.dispatchEvent(new Event('change'));
+          console.log("[processarShortlink] Radio selecionado:", radio.nextElementSibling.textContent);
+        } else {
+          console.warn("[processarShortlink] Nenhum radio para value:", classif);
+        }
+      } catch (err) {
+        console.error("[processarShortlink] Erro na extração:", err);
+        alert("Falha ao extrair conteúdo.\nVerifique se ativou o CORS em https://cors-anywhere.herokuapp.com/");
+      } finally {
+        loading.style.display = "none";
+      }
+    }
+
+    async function extrairTexto(url) {
+      const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+      console.log("[extrairTexto] Fetch com proxy:", proxyUrl);
+      try {
+        const response = await fetch(proxyUrl, {
+          headers: { "X-Requested-With": "XMLHttpRequest" }
+        });
+        if (!response.ok) {
+          console.error("[extrairTexto] Status não OK:", response.status);
+          return "Erro ao acessar (status " + response.status + ")";
+        }
         const html = await response.text();
         const doc = new DOMParser().parseFromString(html, "text/html");
-        let dataHora = "";
-        const selectors = [
-          'meta[property="article:published_time"]',
-          'meta[name="publish-date"]',
-          'time[datetime]',
-          '.p-time', '.entry-date', '.published-at'
+        let dataHoraExtraida = null;
+        const meses = {
+          "janeiro": "01", "fevereiro": "02", "março": "03", "abril": "04", "maio": "05", "junho": "06",
+          "julho": "07", "agosto": "08", "setembro": "09", "outubro": "10", "novembro": "11", "dezembro": "12"
+        };
+        const metaTags = [
+          'meta[name="pubdate"]', 'meta[property="article:published_time"]', 'meta[name="date"]',
+          'meta[name="publish_date"]', 'meta[property="og:updated_time"]', 'meta[name="datePublished"]',
+          'meta[itemprop="datePublished"]'
         ];
-        for (const s of selectors) {
-          const el = doc.querySelector(s);
-          if (el) {
-            const val = el.getAttribute("datetime") || el.getAttribute("content") || el.innerText;
-            if (val) {
-              const d = new Date(val);
-              if (!isNaN(d.getTime())) {
-                dataHora = d.toLocaleDateString('pt-BR') + ' ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        for (const sel of metaTags) {
+          const meta = doc.querySelector(sel);
+          if (meta && meta.content) {
+            const dateStr = meta.content;
+            try {
+              const date = new Date(dateStr);
+              if (!isNaN(date.getTime())) {
+                const dia = String(date.getDate()).padStart(2, '0');
+                const mes = String(date.getMonth() + 1).padStart(2, '0');
+                const ano = date.getFullYear();
+                const horas = String(date.getHours()).padStart(2, '0');
+                const minutos = String(date.getMinutes()).padStart(2, '0');
+                dataHoraExtraida = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
+                break;
+              }
+            } catch {}
+          }
+        }
+        if (!dataHoraExtraida) {
+          const timeTag = doc.querySelector('time[datetime], .c-timestamp, .c-data-publicacao, [itemprop="datePublished"]');
+          if (timeTag) {
+            const dateStr = timeTag.getAttribute('datetime') || timeTag.textContent.trim();
+            try {
+              const date = new Date(dateStr);
+              if (!isNaN(date.getTime())) {
+                const dia = String(date.getDate()).padStart(2, '0');
+                const mes = String(date.getMonth() + 1).padStart(2, '0');
+                const ano = date.getFullYear();
+                const horas = String(date.getHours()).padStart(2, '0');
+                const minutos = String(date.getMinutes()).padStart(2, '0');
+                dataHoraExtraida = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
+              }
+            } catch {}
+          }
+        }
+        if (!dataHoraExtraida) {
+          const dateRegexes = [
+            /\b(\d{2}\/\d{2}\/\d{4})\s*\|\s*(\d{2}:\d{2})\b/,
+            /\b(\d{2}\/\d{2}\/\d{4})\s*(\d{2}h\d{2})\b/,
+            /\b(\d{2})\.(\d{2})\.(\d{4})\s*(\d{2}:\d{2})\b/,
+            /\b(\d{2})\s*de\s*([a-zç]+)\s*de\s*(\d{4})\s*(\d{2}:\d{2})\b/i,
+            /\b(\d{2})\s*de\s*([a-zç]+)\s*de\s*(\d{4})\s*(\d{2}h\d{2})\b/i,
+            /\b(\d{2}\/\d{2}\/\d{4})\b/,
+            /\b(\d{2})\.(\d{2})\.(\d{4})\b/,
+            /\b(\d{2})\s*de\s*([a-zç]+)\s*de\s*(\d{4})\b/i,
+            /\b(\d{4}\/\d{2}\/\d{2})\b/
+          ];
+          const textElements = doc.querySelectorAll('p, span, div, time, .published-date, .article-date, .post-date, .date-published, .c-content-head__publish-date');
+          for (const el of textElements) {
+            const text = el.textContent.trim();
+            for (const regex of dateRegexes) {
+              const match = text.match(regex);
+              if (match) {
+                let dia, mes, ano, hora = "00:00";
+                if (match[1].includes('/')) {
+                  [dia, mes, ano] = match[1].split('/');
+                  if (match[2]) hora = match[2].replace('h', ':');
+                } else if (match.length >= 4) {
+                  dia = match[1];
+                  mes = meses[match[2]?.toLowerCase()] || match[2];
+                  ano = match[3];
+                  if (match[4]) hora = match[4].replace('h', ':');
+                }
+                dataHoraExtraida = `${dia}/${mes}/${ano} ${hora}`;
                 break;
               }
             }
+            if (dataHoraExtraida) break;
           }
         }
-        return { dataHora, isExtraida: !!dataHora };
-      } catch (e) { return { dataHora: "", isExtraida: false }; }
-    }
-    async function extrairConteudo(url) {
-      try {
-        const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
-        const response = await fetch(proxyUrl, { headers: { "X-Requested-With": "XMLHttpRequest" } });
-        const html = await response.text();
-        const doc = new DOMParser().parseFromString(html, "text/html");
-        ["script", "style", "nav", "footer", "header", "aside", ".ads", ".sidebar"].forEach(s => {
-          doc.querySelectorAll(s).forEach(el => el.remove());
-        });
-        let conteudo = "";
-        const selectors = ["article", ".content-body", ".entry-content", ".post-content", "main"];
-        for (const s of selectors) {
-          const el = doc.querySelector(s);
-          if (el) { conteudo = el.innerText; break; }
+        if (!dataHoraExtraida && url.includes("folha.uol.com.br")) {
+          const urlMatch = url.match(/\/(\d{4})\/(\d{2})\//);
+          if (urlMatch) {
+            const ano = urlMatch[1];
+            const mes = urlMatch[2];
+            const now = new Date();
+            const dia = String(now.getDate()).padStart(2, '0');
+            const horas = String(now.getHours()).padStart(2, '0');
+            const minutos = String(now.getMinutes()).padStart(2, '0');
+            dataHoraExtraida = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
+          }
         }
-        if (!conteudo) {
+        blueParrot.dataHoraPublicacaoExtraida = dataHoraExtraida || "";
+        if (dataHoraExtraida && dataHoraInput) {
+  dataHoraInput.value = dataHoraExtraida;
+  blueParrot.dataHoraPublicacao = dataHoraExtraida;
+  dataHoraInput.classList.add("auto-filled");
+}
+        let conteudo = "";
+        const seletoresPrioritarios = [
+          'div.c-article__body',
+          'article[itemprop="articleBody"]',
+          'div.article__content',
+          '.c-news__body',
+          'main article p',
+          'div[class*="paywall"] ~ * p',
+          'main p'
+        ];
+        for (const sel of seletoresPrioritarios) {
+          const paragrafos = Array.from(doc.querySelectorAll(sel + ' p, ' + sel));
+          if (paragrafos.length >= 2) {
+            const textosFiltrados = paragrafos
+              .map(el => el.textContent.trim())
+              .filter(t =>
+                t.length > 50 &&
+                t.split(/\s+/).length > 8 &&
+                !t.toLowerCase().includes('gostaria de receber') &&
+                !t.toLowerCase().includes('minha folha') &&
+                !t.toLowerCase().includes('acessos por dia') &&
+                !t.toLowerCase().includes('assinante') &&
+                !t.toLowerCase().includes('assinatura') &&
+                !t.toLowerCase().includes('paywall') &&
+                !t.includes('Você tem') &&
+                !t.includes('dar de presente') &&
+                !t.includes('área personalizada')
+              );
+            if (textosFiltrados.length >= 2) {
+              conteudo = textosFiltrados.slice(0, 5).join(" ");
+              break;
+            }
+          }
+        }
+        if (conteudo.length < 100) {
           const todosP = Array.from(doc.querySelectorAll("p"))
-            .map(p => p.innerText.trim())
+            .map(p => p.textContent.trim())
             .filter(t =>
-              t.length > 40 &&
+              t.length > 60 &&
               t.split(/\s+/).length > 10 &&
               !t.toLowerCase().includes('gostaria de receber') &&
               !t.toLowerCase().includes('minha folha') &&
@@ -923,50 +1102,91 @@
           ? conteudo
           : "Não foi possível extrair texto relevante (possível paywall ou página sem conteúdo acessível).";
       } catch (err) {
-        console.error("Erro na extração:", err);
+        console.error("[extrairTexto] Erro:", err);
         return "Erro ao processar a página: " + err.message;
       }
     }
+
     async function identificarVeiculoEColuna(url) {
-      let veiculo = "", coluna = "";
-      try {
-        const urlObj = new URL(url);
-        const hostname = urlObj.hostname.toLowerCase();
-        for (const [dom, nome] of Object.entries(dominioVeiculoMap)) {
-          if (hostname.includes(dom)) { veiculo = nome; break; }
-        }
-        const path = urlObj.pathname.toLowerCase();
-        if (veiculo && veiculoBlogColunaMap[veiculo]) {
-          for (const col of veiculoBlogColunaMap[veiculo]) {
-            let norm = col.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
-              .replace("blog da ", "").replace("blog do ", "")
-              .replace(/\s+/g, "");
-            if (veiculo.includes("Folha")) {
-              norm = norm.replace(/-/g, "");
-              let pathSemHifen = path.replace(/-/g, "");
-              if (pathSemHifen.includes(norm)) {
-                coluna = col;
-                break;
-              }
-            } else {
-              if (path.includes(norm)) {
-                coluna = col;
-                break;
-              }
-            }
+  let veiculo = "", coluna = "";
+  try {
+    const urlObj = new URL(url);
+    const hostname = urlObj.hostname.toLowerCase();
+    for (const [dom, nome] of Object.entries(dominioVeiculoMap)) {
+      if (hostname.includes(dom)) {
+        veiculo = nome;
+        break;
+      }
+    }
+
+    // Tenta achar veículo pelo domínio
+    console.log("[identificarVeiculoEColuna] Veículo detectado pelo domínio:", veiculo);
+
+    const path = urlObj.pathname.toLowerCase();
+    if (veiculo && veiculoBlogColunaMap[veiculo]) {
+      for (const col of veiculoBlogColunaMap[veiculo]) {
+        // Normalização mais agressiva
+        let norm = col.normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")   // remove acentos
+          .replace(/blog (da|do|de|d[aã])\s*/gi, "")  // remove "blog da/do/de"
+          .replace(/[-_ ]+/g, "")             // remove hifens, underscores, espaços
+          .toLowerCase();
+
+        let pathNorm = path.replace(/[-_ ]+/g, "");  // normaliza path também
+
+        if (veiculo.includes("Folha")) {
+          // Folha usa slugs sem hifens em alguns casos
+          if (pathNorm.includes(norm)) {
+            coluna = col;
+            break;
+          }
+        } else {
+          if (path.includes(norm) || pathNorm.includes(norm)) {
+            coluna = col;
+            break;
           }
         }
-        if (!coluna) {
-          const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
-          const response = await fetch(proxyUrl, { headers: { "X-Requested-With": "XMLHttpRequest" } });
-          const html = await response.text();
-          const doc = new DOMParser().parseFromString(html, "text/html");
-          const author = doc.querySelector('meta[name="author"], meta[property="article:author"]');
-          if (author) coluna = author.getAttribute("content");
-        }
-      } catch (err) {}
-      return { veiculo, coluna };
+      }
     }
+
+    // Se ainda não achou coluna, tenta extrair de meta author ou byline
+    if (!coluna) {
+      const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+      const response = await fetch(proxyUrl, { headers: { "X-Requested-With": "XMLHttpRequest" } });
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, "text/html");
+
+      // Prioridade 1: meta author
+      const metaAuthor = doc.querySelector('meta[name="author"], meta[property="article:author"]');
+      if (metaAuthor && metaAuthor.content) {
+        coluna = metaAuthor.content.trim();
+        console.log("[identificarVeiculoEColuna] Coluna extraída de meta author:", coluna);
+      }
+
+      // Prioridade 2: elementos comuns de byline/author
+      if (!coluna) {
+        const bylineSelectors = [
+          '.byline', '.author', '.author-name', '.entry-author', '.post-author',
+          '[rel="author"]', '.content-head__author', '.c-headline__author'
+        ];
+        for (const sel of bylineSelectors) {
+          const el = doc.querySelector(sel);
+          if (el && el.textContent.trim()) {
+            coluna = el.textContent.trim().replace(/Por\s*/i, '').trim();
+            console.log("[identificarVeiculoEColuna] Coluna extraída de byline:", coluna);
+            break;
+          }
+        }
+      }
+    }
+
+    console.log("[identificarVeiculoEColuna] Resultado final:", { veiculo, coluna });
+  } catch (err) {
+    console.error("[identificarVeiculoEColuna] Erro:", err);
+  }
+  return { veiculo, coluna };
+}
+
     function determinarClassificacao(veiculo) {
       for (const [cl, list] of Object.entries(vehiclesByClassification)) {
         if (list.includes(veiculo)) {
@@ -978,6 +1198,7 @@
       }
       return "🌐";
     }
+
     document.querySelector(".btn-copiar").addEventListener("click", () => {
       if (!blueParrot.veiculo || !blueParrot.tags) return;
       const classif = blueParrot.classificação.trim();
@@ -1047,6 +1268,7 @@
         adicionarMateriaTabela(data.id, materia, data.timestamp);
       });
     });
+
     document.querySelector(".btn-resetar").addEventListener("click", () => {
       backup = { ...blueParrot };
       veiculos.value = ""; blogColuna.value = ""; tagInput.value = ""; linkCurto.value = "";
@@ -1056,6 +1278,7 @@
       [veiculos, blogColuna, tagInput, linkCurto, dataHoraInput, tipoMinistroSelect].forEach(el => el.dispatchEvent(new Event('input')));
       updateMinisterioOptions();
     });
+
     document.querySelector(".btn-desfazer").addEventListener("click", () => {
       if (Object.keys(backup).length) {
         blueParrot = { ...backup };
@@ -1074,6 +1297,7 @@
         [veiculos, blogColuna, tagInput, linkCurto, dataHoraInput, ministerioSelect].forEach(el => el.dispatchEvent(new Event('input')));
       }
     });
+
     function adicionarMateriaTabela(id, materia, timestamp) {
       const tbody = document.querySelector("#materias-tabela tbody");
       const row = document.createElement("tr");
@@ -1094,6 +1318,7 @@
       `;
       tbody.prepend(row);
     }
+
     window.copiarTabela = (txt) => {
       try {
         navigator.clipboard.writeText(txt);
@@ -1102,12 +1327,14 @@
         alert("Não foi possível copiar o texto.");
       }
     };
+
     window.excluirTabela = (id, btn) => {
       if (confirm("Tem certeza que deseja excluir esta mensagem?")) {
         deleteFromLocal(id);
         btn.closest("tr").remove();
       }
     };
+
     window.onload = () => {
       updateVehicleDropdown("Online Nacional");
       updateMinisterioOptions();
@@ -1119,7 +1346,3 @@
   </script>
 </body>
 </html>
-
-
-
-
