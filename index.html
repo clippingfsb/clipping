@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clipping de Notícias</title>
+  <title>Clipping de Notícias - Final TV/Rádio</title>
   <style>
     :root {
       --primary-color: #4a90e2;
@@ -229,7 +229,7 @@
       background-color: #fffacd !important;
     }
 
-    /* RESPONSIVIDADE MOBILE - AJUSTE FINAL PARA O LABEL E BOTÕES */
+    /* RESPONSIVIDADE MOBILE */
     @media (max-width: 768px) {
       body { padding: 10px; font-size: 1rem; }
       .form-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -241,7 +241,6 @@
       }
       .shortlink-container input, .shortlink-container .btn, .btn { width: 100%; }
 
-      /* Tabela em cartões */
       .table-wrapper { overflow-x: hidden; }
       #materias-tabela thead { display: none; }
       #materias-tabela tr {
@@ -268,11 +267,11 @@
         font-weight: 600;
         color: #444;
         font-size: 1rem;
-        white-space: nowrap; /* impede quebra indesejada dentro da palavra */
+        white-space: nowrap;
       }
       #materias-tabela td[data-label="Data/Hora"]:before { content: "Data/Hora"; }
       #materias-tabela td[data-label="Matéria Completa"]:before {
-        content: "Matéria" " " "Completa"; /* força espaço e quebra controlada */
+        content: "Matéria Completa";
         white-space: normal;
         line-height: 1.3;
         width: 35%;
@@ -281,9 +280,9 @@
         border-bottom: none;
         padding: 16px;
         display: flex !important;
-        justify-content: center !important; /* centraliza horizontalmente */
+        justify-content: center !important;
         align-items: center;
-        gap: 32px; /* espaço bom entre os dois botões */
+        gap: 32px;
         flex-wrap: nowrap;
       }
       .materia-cell {
@@ -292,7 +291,6 @@
         hyphens: auto;
       }
 
-      /* Botões de ação - centralizados, lado a lado, maiores */
       #materias-tabela .btn-outline {
         flex: 0 0 auto;
         width: 60px;
@@ -343,7 +341,7 @@
           <div class="shortlink-container">
             <input id="link-curto" type="text" placeholder="Cole o link encurtado aqui">
             <div class="btn-container">
-              <button class="btn btn-secondary" id="btn-colar-link" type="button">Colar link curto</button>
+              <button class="btn btn-secondary" id="btn-colar-link" type="button">🔗 Colar link curto</button>
             </div>
           </div>
         </div>
@@ -450,166 +448,167 @@
     };
 
     const veiculoBlogColunaMap = {
-  "BBC News Brasil": [],
-  "Bloomberg Brasil": [],
-  "Bloomberg Línea": [],
-  "Brasil 247": [],
-  "Carta Capital online": [],
-  "CBN": [],
-  "CNN Brasil online": [
-    "Caio Junqueira", "Clarissa Oliveira", "Gustavo Uribe", "Iuri Pitta",
-    "Jussara Soares", "Pedro Venceslau", "Tainá Falcão", "Teo Cury"
-  ],
-  "Congresso em Foco": ["Opinião"],
-  "Correio Braziliense online": ["Blog da Denise", "Blog do Vicente", "Blog CB Poder"],
-  "Crusoé": [],
-  "Estadão online": [
-    "Adriano Pires", "Albert Fishlow", "Alexandre Chiavegatto Filho", "Alexandre Schwartsman",
-    "Alvaro Gribel", "Antônio Penteado Mendonça", "Blog do Fausto Macedo", "Bolívar Lamounier",
-    "Bruno Soller", "Camila Farani", "Carlos Alberto Di Franco", "Carlos Andreazza",
-    "Carlos Pereira", "Carolina Brígido", "Celso Lafer", "Celso Ming",
-    "Claudio Adilson Gonçalez", "Claudio de Moura Castro", "Cláudio Considera", "Coluna do Estadão",
-    "Demi Getschko", "Denis Lerrer Rosenfield", "Diogo Schelp", "Dom Odilo Pedro Scherer",
-    "Duquesa de Tax", "E-Investidor", "Eduardo Barretto", "Elena Landau",
-    "Eliane Cantanhêde", "Everardo Maciel", "Fabiano Lana", "Fábio Alves",
-    "Fabio Gallo", "Fabio Giambiagi", "Fausto Macedo", "Felipe Salto",
-    "Fernando Dantas", "Fernando Gabeira", "Fernando Henrique Cardoso", "Fernando Schüler",
-    "Flávio Tavares", "Francisco Leali", "Gustavo H.B. Franco", "Guy Perelmuter",
-    "Henrique Meirelles", "Jorge Caldeira", "Jorge J. Okubaro", "José Márcio Camargo",
-    "José Pastore", "José Roberto Mendonça de Barros", "José Serra", "Leticia Fernandes",
-    "Lorenna Rodrigues", "Luís Eduardo Assis", "Luiz Carlos Trabuco Cappi", "Luiz Felipe D'Avila",
-    "Luiz Sérgio Henriques", "Marcelo Godoy", "Marco Aurélio Nogueira", "Marina Grossi",
-    "Miguel Reale Júnior", "Nicolau Da Rocha Cavalcanti", "Paulo Delgado", "Paulo Hartung",
-    "Paulo Sotero", "Pedro Fernando Nery", "Pedro S. Malan", "Raquel Landim",
-    "Renata Piazzon", "Ricardo Basaglia", "Ricardo Corrêa", "Roberto Macedo",
-    "Roberto Rodrigues", "Roberto Waack", "Rogério Werneck", "Rolf Kuntz",
-    "Roseann Kennedy", "Rubens Barbosa", "Salo Coslovsky", "Silvio Cascione",
-    "Simon Schwartzman", "Vera Rosa", "William Waack"
-  ],
-  "Exame online": [],
-  "Extra online": [],
-  "FDR": [],
-  "Folha online": [
-    "#Hashtag", "Adriana Fernandes", "Ailton Krenak", "Alexandra Moraes - Ombudsman",
-    "Alvaro Costa e Silva", "Álvaro Machado Dias", "Amor Crônico", "Ana Cristina Rosa",
-    "Ana Paula Vescovi", "Andanças na metrópole", "Antonio Prata", "Baú do Cinema",
-    "Becky S. Korich", "Bernardo Carvalho", "Bernardo Guimarães", "Bianca Santana",
-    "Bibi Bailas", "Bom Pra Cachorro", "Brasília Hoje", "Bráulio Borges",
-    "Bruno Gualano", "C-Level Plano Brasília", "Café na Prensa", "Candido Bracher",
-    "Caos Planejado", "Cecilia Machado", "Celso Rocha de Barros", "Ciência Fundamental",
-    "Claudio Bernardes", "Cláudio Hebdô", "Conrado Hübner Mendes", "Copo Cheio",
-    "Cozinha Bruta", "Darwin e Deus", "De faixa a coroa", "De Grão em Grão",
-    "Deborah Bizarria", "Deirdre Nansen McCloskey", "Demétrio Magnoli", "Denise Mota",
-    "Djamila Ribeiro", "Dora Kramer", "Drauzio Varella", "Econometria Fácil",
-    "Eduardo Sodré", "Eliane Trindade", "Elio Gaspari", "Encaminhado com Frequência",
-    "Evangélicos", "Ezra Klein", "Fernanda Torres", "Frederico Vasconcellos",
-    "Gatices", "Gelo e gim", "Giovana Madalosso", "Glenn Greenwald",
-    "Gustavo Alonso", "Haja Vista", "Hélio Schwartsman", "Ian Bremmer",
-    "Igor Patrick", "Ilona Szabó de Carvalho", "Isabelle Moreira Lima", "Jairo Marques",
-    "Jerson Kelman", "Joanna Moura", "João Pereira Coutinho", "Joel Pinheiro da Fonseca",
-    "Joisa Dutra", "Jorge Abrahão", "José Simão", "Juliana de Albuquerque",
-    "Juliano Spyer", "K-cultura", "Lara Mesquita", "Latinoamérica21",
-    "Laura Greenhalgh", "Laura Muller", "Laura Müller Machado", "Lorena Hakak",
-    "Lúcia Guimarães", "Luciana Coelho", "Luís Francisco Carvalho Filho", "Luiz Felipe Pondé",
-    "Lygia Maria", "Mafalda Anjos", "Maína Mello", "Marcelo Bechler",
-    "Marcelo Leite", "Marcelo Viana", "Marcos Augusto Gonçalves", "Marcos de Vasconcellos",
-    "Marcos Lisboa", "Marcos Mendes", "Marcus André Melo", "Maria Hermínia Tavares",
-    "Maria Inês Dolci", "Mariliz Pereira Jorge", "Marina Izidro", "Mario Sergio Conti",
-    "Martin Wolf", "Maternar", "Mauricio Portugal Ribeiro", "Mauricio Stycer",
-    "Mauro Calliari", "Mensageiro Sideral", "Michael França", "Mirian Goldenberg",
-    "Mise-en-scène", "Mônica Bergamo", "Morte Sem Tabu", "Muniz Sodré",
-    "Músculo", "Música em Letras", "Nação churrasqueira", "Natalia Beauty",
-    "Não Tem Cabimento", "No Corre", "Novo em Folha", "O Mundo É uma Bola",
-    "Oscar Vilhena Vieira", "Outro Canal", "Painel", "Painel das Letras",
-    "Painel S.A.", "Papo de Responsa", "Plástico", "Políticas e Justiça",
-    "Praça do Leitor", "Pretos Olhares", "Primeira Pele", "Priscilla Bacalhau",
-    "Que imposto é esse", "Reinaldo José Lopes", "Ricardo Araújo Pereira", "Roberto Campos Neto",
-    "Rodrigo Tavares", "Rogério Gentile", "Rômulo Saraiva", "Ronaldo Lemos",
-    "Rosana Hermann", "Ross Douthat", "Rui Tavares", "Ruy Castro",
-    "Samuel Pessôa", "Saúde Mental", "Sérgio Rodrigues", "Sobre Trilhos",
-    "Solange Srour", "Sons da Perifa", "Suzana Herculano-Houzel", "Sylvia Colombo",
-    "Tati Bernardi", "Thiago Amparo", "Thiago Stivaletti", "Thomas L. Friedman",
-    "Tom Farias", "Tostão", "Transparência pública", "Tudo + um pouco",
-    "Txai Suruí", "Vaivém das Commodities", "Vera Iaconelli", "Vida de Alcoólatra",
-    "Vidas Atípicas", "Vinicius Mota", "Vinicius Torres Freire", "Virada Psicodélica",
-    "Wilson Gomes", "X de Sexo por Bruna Maia", "Zeca Camargo"
-  ],
-  "g1": [
-    "Blog da Ana Flor", "Blog do André Trigueiro", "Blog da Andréia Sadi", "Blog da Camila Bomfim",
-    "Blog da Daniela Lima", "Blog do Edimilson Ávila", "Blog do Gerson Camarotti", "Blog da Julia Duailibi",
-    "Blog da Mariza Tavares", "Blog do Mauro Ferreira", "Blog da Natuza Nery", "Blog do Octavio Guedes",
-    "Blog Pela Lente da Gente", "Blog da Sandra Cohen", "Blog do Valdo Cruz", "Legendado"
-  ],
-  "ICL Notícias": [],
-  "InfoMoney": [],
-  "iG": [],
-  "IstoÉ Dinheiro online": ["PlatôBR"],
-  "IstoÉ online": ["PlatôBR", "Coluna do Mazzini"],
-  "Jota": [],
-  "Jovem Pan online": [],
-  "Metrópoles": [
-    "Andreza Matais", "Blog do Noblat", "Carlos Carone", "Claudia Meireles",
-    "Dinheiro & Negócios", "Fábia Oliveira", "Grande Angular", "Igor Gadelha",
-    "Ilca Maria Estevão", "Isadora Teixeira", "Lilian Tahan", "Mario Sabino",
-    "Mirelle Pinheiro", "Paulo Cappelli", "Tácio Lorran", "Tiago Pavinatto"
-  ],
-  "Money Times": [],
-  "O Antagonista": [],
-  "O Bastidor": [],
-  "O Globo online": [
-    "Ana Carla Abrão", "Ancelmo.com", "Antônio Gois", "Bela Megale",
-    "Bernardo Mello Franco", "Bruno Astuto", "Capital", "Carlos Alberto Sardenberg",
-    "Carlos Eduardo Mansur", "Carlos Góes", "Carlota", "Clima Extremo",
-    "Conte mais uma", "Cora Rónai", "Correria", "Daniel Becker",
-    "Demétrio Magnoli", "Diogo Dantas", "Dorrit Harazim", "Eduardo Affonso",
-    "Elio Gaspari", "Espiritualidade e Bem-estar", "Fabio Giambiagi", "Fabio Graner",
-    "Fernando Gabeira", "Fernando Kallás", "Flávia Oliveira", "Fumus Boni Iuris",
-    "Guga Chacra", "Gustavo Franco", "Gustavo Pinheiro", "Gustavo Poli",
-    "IAí?", "Ingrid Guimarães", "Irapuã Santana", "Janaína Figueiredo",
-    "Joaquim Ferreira dos Santos", "José Eduardo Agualusa", "Julia Duailibi", "Julio Maria",
-    "Lauro Jardim", "Leo Aversa", "Luana Génot", "Luciana Fróes",
-    "Malu Gaspar", "Manoel Ventura", "Marcelo Barreto", "Marcelo Ninio",
-    "Martha Batalha", "Martha Medeiros", "Merval Pereira", "Meus Filhos, Minhas Regras?",
-    "Michel Alcoforado", "Miguel de Almeida", "Míriam Leitão", "Nelson Motta",
-    "Pablo Ortellado", "Patrícia Kogut", "Paulo Tafner", "Pedro Doria",
-    "Pedro Pacífico", "Pedro Parente", "Pense Grande", "Play",
-    "Portugal Giro", "Preto Zezé", "Priscila Cruz", "Pulso",
-    "Pé-Sujo & Pé-Limpo", "Receita de Médico", "Renata Agostini", "Repinique",
-    "Roberto DaMatta", "Rogério Furquim Werneck", "Ruth de Aquino", "Saideira",
-    "Segredos do crime", "Sonar", "Thales Machado", "Thaís Oyama",
-    "Thiago Gomide", "Tony Volpon", "Vera Magalhães", "Zeina Latif"
-  ],
-  "Poder360": ["Opinião"],
-  "R7": ["Christina Lemos", "R7 Planalto"],
-  "Terra": [],
-  "UOL": [
-    "Alexandre Borges", "Alicia Klein", "Amanda Cotrim", "Amanda Klein",
-    "André Santana", "Aline Sordili", "Carla Araújo", "Carlos Juliano Barros",
-    "Carlos Madeiro", "Casagrande", "Danilo Lavieri", "Daniela Lima",
-    "Fabio Serapião", "Felipe Salto", "Graciliano Rocha", "Jeferson Tenório",
-    "Joildo Santos", "Josias de Souza", "Josmar Jozino", "José Fucs",
-    "José Paulo Kupfer", "José Roberto de Toledo", "Juca Kfouri", "Julio Gomes",
-    "Leonardo Sakamoto", "Letícia Casado", "Marco Antonio Sabino", "Mariana Barbosa",
-    "Mariana Sanches", "Mauro Cezar", "Milly Lacombe", "Milton Neves",
-    "Natália Portinari", "Nelson de Sá", "Paulo Camargo", "Paulo Vinicius Coelho (PVC)",
-    "Presença Histórica", "Reinaldo Azevedo", "Ricardo Nunes", "Rodrigo Mattos",
-    "Rogério Gentile", "Ronilso Pacheco", "Sílvio Crespo", "Thais Bilenky",
-    "Thiago Herdy", "Tiago Mali", "Tilt", "Tostão",
-    "Wálter Maierovitch"
-  ],
-  "Valor online": [],
-  "Veja online": [
-    "Al Vino", "Alexandre Schwartsman", "Balanço Social", "Cannabiz",
-    "Conta-Gotas", "Em Cartaz", "Giro pelo Oriente", "Jorge Pontes",
-    "José Casado", "Letra de Médico", "Lucília Diniz", "Luiz Gustavo Bichara",
-    "Maquiavel", "Marcela Rahal", "Matheus Leitão", "Mens Sana",
-    "Mundialista", "Murillo de Aragão", "Na Ponta da Língua", "Neuza Sanches",
-    "O Som e a Fúria", "Planeta IA", "Radar", "Radar Econômico",
-    "Real Estate", "Tela Plana", "Veja Gente", "Vitrine",
-    "Virou Viral"
-  ],
-  "Yahoo!": []
-};
+      "BBC News Brasil": [],
+      "Bloomberg Brasil": [],
+      "Bloomberg Línea": [],
+      "Brasil 247": [],
+      "Carta Capital online": [],
+      "CBN": [],
+      "CNN Brasil online": [
+        "Caio Junqueira", "Clarissa Oliveira", "Gustavo Uribe", "Iuri Pitta",
+        "Jussara Soares", "Pedro Venceslau", "Tainá Falcão", "Teo Cury"
+      ],
+      "Congresso em Foco": ["Opinião"],
+      "Correio Braziliense online": ["Blog da Denise", "Blog do Vicente", "Blog CB Poder"],
+      "Crusoé": [],
+      "Estadão online": [
+        "Adriano Pires", "Albert Fishlow", "Alexandre Chiavegatto Filho", "Alexandre Schwartsman",
+        "Alvaro Gribel", "Antônio Penteado Mendonça", "Blog do Fausto Macedo", "Bolívar Lamounier",
+        "Bruno Soller", "Camila Farani", "Carlos Alberto Di Franco", "Carlos Andreazza",
+        "Carlos Pereira", "Carolina Brígido", "Celso Lafer", "Celso Ming",
+        "Claudio Adilson Gonçalez", "Claudio de Moura Castro", "Cláudio Considera", "Coluna do Estadão",
+        "Demi Getschko", "Denis Lerrer Rosenfield", "Diogo Schelp", "Dom Odilo Pedro Scherer",
+        "Duquesa de Tax", "E-Investidor", "Eduardo Barretto", "Elena Landau",
+        "Eliane Cantanhêde", "Everardo Maciel", "Fabiano Lana", "Fábio Alves",
+        "Fabio Gallo", "Fabio Giambiagi", "Fausto Macedo", "Felipe Salto",
+        "Fernando Dantas", "Fernando Gabeira", "Fernando Henrique Cardoso", "Fernando Schüler",
+        "Flávio Tavares", "Francisco Leali", "Gustavo H.B. Franco", "Guy Perelmuter",
+        "Henrique Meirelles", "Jorge Caldeira", "Jorge J. Okubaro", "José Márcio Camargo",
+        "José Pastore", "José Roberto Mendonça de Barros", "José Serra", "Leticia Fernandes",
+        "Lorenna Rodrigues", "Luís Eduardo Assis", "Luiz Carlos Trabuco Cappi", "Luiz Felipe D'Avila",
+        "Luiz Sérgio Henriques", "Marcelo Godoy", "Marco Aurélio Nogueira", "Marina Grossi",
+        "Miguel Reale Júnior", "Nicolau Da Rocha Cavalcanti", "Paulo Delgado", "Paulo Hartung",
+        "Paulo Sotero", "Pedro Fernando Nery", "Pedro S. Malan", "Raquel Landim",
+        "Renata Piazzon", "Ricardo Basaglia", "Ricardo Corrêa", "Roberto Macedo",
+        "Roberto Rodrigues", "Roberto Waack", "Rogério Werneck", "Rolf Kuntz",
+        "Roseann Kennedy", "Rubens Barbosa", "Salo Coslovsky", "Silvio Cascione",
+        "Simon Schwartzman", "Vera Rosa", "William Waack"
+      ],
+      "Exame online": [],
+      "Extra online": [],
+      "FDR": [],
+      "Folha online": [
+        "#Hashtag", "Adriana Fernandes", "Ailton Krenak", "Alexandra Moraes - Ombudsman",
+        "Alvaro Costa e Silva", "Álvaro Machado Dias", "Amor Crônico", "Ana Cristina Rosa",
+        "Ana Paula Vescovi", "Andanças na metrópole", "Antonio Prata", "Baú do Cinema",
+        "Becky S. Korich", "Bernardo Carvalho", "Bernardo Guimarães", "Bianca Santana",
+        "Bibi Bailas", "Bom Pra Cachorro", "Brasília Hoje", "Bráulio Borges",
+        "Bruno Gualano", "C-Level Plano Brasília", "Café na Prensa", "Candido Bracher",
+        "Caos Planejado", "Cecilia Machado", "Celso Rocha de Barros", "Ciência Fundamental",
+        "Claudio Bernardes", "Cláudio Hebdô", "Conrado Hübner Mendes", "Copo Cheio",
+        "Cozinha Bruta", "Darwin e Deus", "De faixa a coroa", "De Grão em Grão",
+        "Deborah Bizarria", "Deirdre Nansen McCloskey", "Demétrio Magnoli", "Denise Mota",
+        "Djamila Ribeiro", "Dora Kramer", "Drauzio Varella", "Econometria Fácil",
+        "Eduardo Sodré", "Eliane Trindade", "Elio Gaspari", "Encaminhado com Frequência",
+        "Evangélicos", "Ezra Klein", "Fernanda Torres", "Frederico Vasconcellos",
+        "Gatices", "Gelo e gim", "Giovana Madalosso", "Glenn Greenwald",
+        "Gustavo Alonso", "Haja Vista", "Hélio Schwartsman", "Ian Bremmer",
+        "Igor Patrick", "Ilona Szabó de Carvalho", "Isabelle Moreira Lima", "Jairo Marques",
+        "Jerson Kelman", "Joanna Moura", "João Pereira Coutinho", "Joel Pinheiro da Fonseca",
+        "Joisa Dutra", "Jorge Abrahão", "José Simão", "Juliana de Albuquerque",
+        "Juliano Spyer", "K-cultura", "Lara Mesquita", "Latinoamérica21",
+        "Laura Greenhalgh", "Laura Muller", "Laura Müller Machado", "Lorena Hakak",
+        "Lúcia Guimarães", "Luciana Coelho", "Luís Francisco Carvalho Filho", "Luiz Felipe Pondé",
+        "Lygia Maria", "Mafalda Anjos", "Maína Mello", "Marcelo Bechler",
+        "Marcelo Leite", "Marcelo Viana", "Marcos Augusto Gonçalves", "Marcos de Vasconcellos",
+        "Marcos Lisboa", "Marcos Mendes", "Marcus André Melo", "Maria Hermínia Tavares",
+        "Maria Inês Dolci", "Mariliz Pereira Jorge", "Marina Izidro", "Mario Sergio Conti",
+        "Martin Wolf", "Maternar", "Mauricio Portugal Ribeiro", "Mauricio Stycer",
+        "Mauro Calliari", "Mensageiro Sideral", "Michael França", "Mirian Goldenberg",
+        "Mise-en-scène", "Mônica Bergamo", "Morte Sem Tabu", "Muniz Sodré",
+        "Músculo", "Música em Letras", "Nação churrasqueira", "Natalia Beauty",
+        "Não Tem Cabimento", "No Corre", "Novo em Folha", "O Mundo É uma Bola",
+        "Oscar Vilhena Vieira", "Outro Canal", "Painel", "Painel das Letras",
+        "Painel S.A.", "Papo de Responsa", "Plástico", "Políticas e Justiça",
+        "Praça do Leitor", "Pretos Olhares", "Primeira Pele", "Priscilla Bacalhau",
+        "Que imposto é esse", "Reinaldo José Lopes", "Ricardo Araújo Pereira", "Roberto Campos Neto",
+        "Rodrigo Tavares", "Rogério Gentile", "Rômulo Saraiva", "Ronaldo Lemos",
+        "Rosana Hermann", "Ross Douthat", "Rui Tavares", "Ruy Castro",
+        "Samuel Pessôa", "Saúde Mental", "Sérgio Rodrigues", "Sobre Trilhos",
+        "Solange Srour", "Sons da Perifa", "Suzana Herculano-Houzel", "Sylvia Colombo",
+        "Tati Bernardi", "Thiago Amparo", "Thiago Stivaletti", "Thomas L. Friedman",
+        "Tom Farias", "Tostão", "Transparência pública", "Tudo + um pouco",
+        "Txai Suruí", "Vaivém das Commodities", "Vera Iaconelli", "Vida de Alcoólatra",
+        "Vidas Atípicas", "Vinicius Mota", "Vinicius Torres Freire", "Virada Psicodélica",
+        "Wilson Gomes", "X de Sexo por Bruna Maia", "Zeca Camargo"
+      ],
+      "g1": [
+        "Blog da Ana Flor", "Blog do André Trigueiro", "Blog da Andréia Sadi", "Blog da Camila Bomfim",
+        "Blog da Daniela Lima", "Blog do Edimilson Ávila", "Blog do Gerson Camarotti", "Blog da Julia Duailibi",
+        "Blog da Mariza Tavares", "Blog do Mauro Ferreira", "Blog da Natuza Nery", "Blog do Octavio Guedes",
+        "Blog Pela Lente da Gente", "Blog da Sandra Cohen", "Blog do Valdo Cruz", "Legendado"
+      ],
+      "ICL Notícias": [],
+      "InfoMoney": [],
+      "iG": [],
+      "IstoÉ Dinheiro online": ["PlatôBR"],
+      "IstoÉ online": ["PlatôBR", "Coluna do Mazzini"],
+      "Jota": [],
+      "Jovem Pan online": [],
+      "Metrópoles": [
+        "Andreza Matais", "Blog do Noblat", "Carlos Carone", "Claudia Meireles",
+        "Dinheiro & Negócios", "Fábia Oliveira", "Grande Angular", "Igor Gadelha",
+        "Ilca Maria Estevão", "Isadora Teixeira", "Lilian Tahan", "Mario Sabino",
+        "Mirelle Pinheiro", "Paulo Cappelli", "Tácio Lorran", "Tiago Pavinatto"
+      ],
+      "Money Times": [],
+      "O Antagonista": [],
+      "O Bastidor": [],
+      "O Globo online": [
+        "Ana Carla Abrão", "Ancelmo.com", "Antônio Gois", "Bela Megale",
+        "Bernardo Mello Franco", "Bruno Astuto", "Capital", "Carlos Alberto Sardenberg",
+        "Carlos Eduardo Mansur", "Carlos Góes", "Carlota", "Clima Extremo",
+        "Conte mais uma", "Cora Rónai", "Correria", "Daniel Becker",
+        "Demétrio Magnoli", "Diogo Dantas", "Dorrit Harazim", "Eduardo Affonso",
+        "Elio Gaspari", "Espiritualidade e Bem-estar", "Fabio Giambiagi", "Fabio Graner",
+        "Fernando Gabeira", "Fernando Kallás", "Flávia Oliveira", "Fumus Boni Iuris",
+        "Guga Chacra", "Gustavo Franco", "Gustavo Pinheiro", "Gustavo Poli",
+        "IAí?", "Ingrid Guimarães", "Irapuã Santana", "Janaína Figueiredo",
+        "Joaquim Ferreira dos Santos", "José Eduardo Agualusa", "Julia Duailibi", "Julio Maria",
+        "Lauro Jardim", "Leo Aversa", "Luana Génot", "Luciana Fróes",
+        "Malu Gaspar", "Manoel Ventura", "Marcelo Barreto", "Marcelo Ninio",
+        "Martha Batalha", "Martha Medeiros", "Merval Pereira", "Meus Filhos, Minhas Regras?",
+        "Michel Alcoforado", "Miguel de Almeida", "Míriam Leitão", "Nelson Motta",
+        "Pablo Ortellado", "Patrícia Kogut", "Paulo Tafner", "Pedro Doria",
+        "Pedro Pacífico", "Pedro Parente", "Pense Grande", "Play",
+        "Portugal Giro", "Preto Zezé", "Priscila Cruz", "Pulso",
+        "Pé-Sujo & Pé-Limpo", "Receita de Médico", "Renata Agostini", "Repinique",
+        "Roberto DaMatta", "Rogério Furquim Werneck", "Ruth de Aquino", "Saideira",
+        "Segredos do crime", "Sonar", "Thales Machado", "Thaís Oyama",
+        "Thiago Gomide", "Tony Volpon", "Vera Magalhães", "Zeina Latif"
+      ],
+      "Poder360": ["Opinião"],
+      "R7": ["Christina Lemos", "R7 Planalto"],
+      "Terra": [],
+      "UOL": [
+        "Alexandre Borges", "Alicia Klein", "Amanda Cotrim", "Amanda Klein",
+        "André Santana", "Aline Sordili", "Carla Araújo", "Carlos Juliano Barros",
+        "Carlos Madeiro", "Casagrande", "Danilo Lavieri", "Daniela Lima",
+        "Fabio Serapião", "Felipe Salto", "Graciliano Rocha", "Jeferson Tenório",
+        "Joildo Santos", "Josias de Souza", "Josmar Jozino", "José Fucs",
+        "José Paulo Kupfer", "José Roberto de Toledo", "Juca Kfouri", "Julio Gomes",
+        "Leonardo Sakamoto", "Letícia Casado", "Marco Antonio Sabino", "Mariana Barbosa",
+        "Mariana Sanches", "Mauro Cezar", "Milly Lacombe", "Milton Neves",
+        "Natália Portinari", "Nelson de Sá", "Paulo Camargo", "Paulo Vinicius Coelho (PVC)",
+        "Presença Histórica", "Reinaldo Azevedo", "Ricardo Nunes", "Rodrigo Mattos",
+        "Rogério Gentile", "Ronilso Pacheco", "Sílvio Crespo", "Thais Bilenky",
+        "Thiago Herdy", "Tiago Mali", "Tilt", "Tostão",
+        "Wálter Maierovitch"
+      ],
+      "Valor online": [],
+      "Veja online": [
+        "Al Vino", "Alexandre Schwartsman", "Balanço Social", "Cannabiz",
+        "Conta-Gotas", "Em Cartaz", "Giro pelo Oriente", "Jorge Pontes",
+        "José Casado", "Letra de Médico", "Lucília Diniz", "Luiz Gustavo Bichara",
+        "Maquiavel", "Marcela Rahal", "Matheus Leitão", "Mens Sana",
+        "Mundialista", "Murillo de Aragão", "Na Ponta da Língua", "Neuza Sanches",
+        "O Som e a Fúria", "Planeta IA", "Radar", "Radar Econômico",
+        "Real Estate", "Tela Plana", "Veja Gente", "Vitrine",
+        "Virou Viral"
+      ],
+      "Yahoo!": []
+    };
+
     const dominioVeiculoMap = {
       "bbc.com": "BBC News Brasil",
       "bloomberg.com.br": "Bloomberg Brasil",
@@ -1118,11 +1117,14 @@
         const diasSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
         const diaSemana = diasSemana[dateObj.getDay()];
         const formattedDateTime = `${diaSemana}, ${dia}/${mes}, ${hh}h${mm}`;
-        materia = `🚨 *ALERTA DE IMPRENSA* - ${formattedDateTime}\n` +
-                  `${blueParrot.alertaPrefix}${blueParrot.ministerioStr}\n` +
-                  `${linhaComLink}\n` +
+
+        // Padrão antigo com espaços em branco (quebras duplas)
+        materia = `🚨 *ALERTA DE IMPRENSA* - ${formattedDateTime}\n\n` +
+                  `${blueParrot.alertaPrefix}${blueParrot.ministerioStr}\n\n` +
+                  `${linhaComLink}\n\n` +
                   `${blueParrot.tags}`;
       } else if (isCGU) {
+        // CGU sem espaços extras (linhas coladas)
         const linhas = blueParrot.tags.trim().split('\n').filter(l => l.trim() !== '');
         let conteudoFormatado = "";
         if (linhas.length >= 1) {
@@ -1196,8 +1198,8 @@
         <td data-label="Data/Hora">${dataStr}</td>
         <td data-label="Matéria Completa" class="materia-cell">${materia}</td>
         <td data-label="Ações">
-          <button class="btn btn-outline" style="padding: 6px 10px;" onclick="copiarTabela('${materiaEscapada}')" title="Copiar mensagem">🔗</button>
-          <button class="btn btn-outline" style="padding: 6px 10px;" onclick="excluirTabela(${id}, this)" title="Excluir esta mensagem">🗑️</button>
+          <button class="btn btn-outline" onclick="copiarTabela('${materiaEscapada}')" title="Copiar mensagem">🔗</button>
+          <button class="btn btn-outline" onclick="excluirTabela(${id}, this)" title="Excluir esta mensagem">🗑️</button>
         </td>
       `;
       tbody.prepend(row);
@@ -1227,7 +1229,3 @@
   </script>
 </body>
 </html>
-
-
-
-
