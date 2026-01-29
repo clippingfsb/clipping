@@ -329,12 +329,12 @@
         <div class="form-group full-width">
           <p class="title">Classificação</p>
           <div class="radio-group" id="classificacao">
-            <div class="radio-option"><input type="radio" name="classificacao" id="option1" value="🗞" /><label for="option1">Impresso</label></div>
-            <div class="radio-option"><input type="radio" name="classificacao" id="option2" value="🌐" checked /><label for="option2">Online</label></div>
-            <div class="radio-option"><input type="radio" name="classificacao" id="option3" value="📺" /><label for="option3">TV</label></div>
-            <div class="radio-option"><input type="radio" name="classificacao" id="option4" value="📻" /><label for="option4">Rádio</label></div>
-          </div>
-        </div>
+  <div class="radio-option"><input type="radio" name="classificacao" id="option1" value="🗞" /><label for="option1">Impresso</label></div>
+  <div class="radio-option"><input type="radio" name="classificacao" id="option2" value="🌐" checked /><label for="option2">Online Nacional</label></div>
+  <div class="radio-option"><input type="radio" name="classificacao" id="option5" value="🌐" /><label for="option5">Internacional</label></div>
+  <div class="radio-option"><input type="radio" name="classificacao" id="option3" value="📺" /><label for="option3">TV</label></div>
+  <div class="radio-option"><input type="radio" name="classificacao" id="option4" value="📻" /><label for="option4">Rádio</label></div>
+</div>
 
         <div class="form-group full-width">
           <p class="title">Link curto (cole aqui para preencher os campos abaixo automaticamente) <span id="loading">Processando...</span></p>
@@ -432,20 +432,132 @@
     const previewArea = document.querySelector("#preview-area");
 
     const vehiclesByClassification = {
-      "Impresso": ["Folha de S.Paulo", "O Estado de S. Paulo", "O Globo", "Valor Econômico", "Correio Braziliense"],
-      "Online": [
-       "Agência Brasil", "Agência Câmara", "Agência Senado", "BBC News Brasil", "Bloomberg Brasil",
-        "Bloomberg Línea", "Brasil 247", "Carta Capital online", "CBN", "CNN Brasil online",
-        "Congresso em Foco", "Correio Braziliense online", "Crusoé", "Época Negócios", "Época Online",
-        "Estadão online", "Exame on-line", "Exame online", "Extra online", "FDR", "Folha online",
-        "g1", "ICL Notícias", "iG", "InfoMoney", "IstoÉ Dinheiro online", "IstoÉ online",
-        "Jota", "Jovem Pan online", "Metrópoles", "Money Times", "O Antagonista", "O Bastidor",
-        "O Globo online", "PlatôBR", "Poder360", "R7", "Terra", "UOL", "Valor Investe", "Valor online",
-        "Veja online", "Yahoo!"
-      ],
-      "TV": ["TV AgroMais", "TV BandNews", "TV Band", "TV Brasil", "TV Câmara", "TV CNN Brasil", "TV Cultura", "TV GloboNews", "TV Jovem Pan News", "TV NBR", "TV Record", "TV Record News", "TV Rede Globo Nacional", "TV RedeTV!", "TV SBT", "TV Senado", "TV Times Brasil CNBC"],
-      "Rádio": ["Rádio BandNews FM", "Rádio Bandeirantes FM", "Rádio CBN FM", "Rádio Jovem Pan FM", "Rádio Nacional FM"]
-    };
+  "Impresso": ["Folha de S.Paulo", "O Estado de S. Paulo", "O Globo", "Valor Econômico", "Correio Braziliense"],
+  "Online": [  // Agora corresponde ao label "Online Nacional"
+    "Agência Brasil", "Agência Câmara", "Agência Senado", "BBC News Brasil", "Bloomberg Brasil",
+    "Bloomberg Línea", "Brasil 247", "Carta Capital online", "CBN", "CNN Brasil online",
+    "Congresso em Foco", "Correio Braziliense online", "Crusoé", "Época Negócios", "Época Online",
+    "Estadão online", "Exame on-line", "Exame online", "Extra online", "FDR", "Folha online",
+    "g1", "ICL Notícias", "iG", "InfoMoney", "IstoÉ Dinheiro online", "IstoÉ online",
+    "Jota", "Jovem Pan online", "Metrópoles", "Money Times", "O Antagonista", "O Bastidor",
+    "O Globo online", "PlatôBR", "Poder360", "R7", "Terra", "UOL", "Valor Investe", "Valor online",
+    "Veja online", "Yahoo!"
+  ],
+  "Internacional": [  // Nova categoria, ordenada alfabeticamente
+    "AFP – Agence France Presse",
+    "Agência EFE",
+    "Agência EFE – Espanhol",
+    "Agência EFE – Inglês",
+    "Agência Xinhua",
+    "ANSA Brasil",
+    "Associated Press",
+    "BBC News",
+    "Bloomberg",
+    "Bloomberg Markets",
+    "CCTV News",
+    "CGTN Online",
+    "Chicago Tribune",
+    "Clarín Online – Argentina",
+    "Corriere della Sera",
+    "Corriere della Sera Online",
+    "Daily Maverick – África do Sul",
+    "Daily Sabah – Turquia",
+    "Dallas News",
+    "Dan Tri",
+    "De Telegraaf",
+    "Der Spiegel Online",
+    "Deutsche Welle",
+    "Diario Clarín – Argentina",
+    "Die Zeit",
+    "El Comercio – Equador",
+    "El Comercio – Peru",
+    "El Comercio Online – Peru",
+    "El Mercurio",
+    "El Nacional Online – Venezuela",
+    "El País – Espanha",
+    "El País – Uruguai",
+    "El País Online – Espanha",
+    "El País Online – Uruguai",
+    "El Tiempo – Colômbia",
+    "El Universal – México",
+    "El Universal – Venezuela",
+    "El Universal Diario – Venezuela",
+    "Expresso",
+    "Financial Times Online",
+    "Foreign Affairs",
+    "Foreign Policy",
+    "Fox Business",
+    "Fox News",
+    "France 24 Online",
+    "Frankfurter Allgemeine Zeitung",
+    "Global Times",
+    "Jiji",
+    "Jornal de Angola",
+    "Jornal Expansão Online",
+    "Kyodo",
+    "La Nación – Argentina",
+    "La Nación – Paraguai",
+    "La Nación Online – Argentina",
+    "La Nación Online – Paraguai",
+    "La Razão Online – Bolívia",
+    "La República – Peru",
+    "Le Courrier du Vietnam",
+    "Le Figaro",
+    "Le Figaro Online",
+    "Le Monde Online",
+    "Les Echos Online",
+    "Libération",
+    "Los Angeles Times",
+    "Los Angeles Times Online",
+    "México – El Universal Online",
+    "Nation – Quênia",
+    "Nature Online",
+    "Nhãn Dân",
+    "Nikkei",
+    "Notícias Moçambique",
+    "Novo Jornal – Angola",
+    "Página Siete Online – Bolívia",
+    "Politico Online",
+    "Público – Portugal",
+    "Reuters",
+    "SABC News – África do Sul",
+    "South China Morning Post – Hong Kong",
+    "Sputnik News",
+    "TBS – Japão",
+    "TBS News Dig",
+    "The Economist",
+    "The Epoch Times",
+    "The Globe and Mail",
+    "The Globe and Mail Online",
+    "The Guardian",
+    "The Guardian – Nigéria",
+    "The Hindu",
+    "The Jakarta Post",
+    "The Jerusalem Post",
+    "The Korea Times Online",
+    "The New York Times",
+    "The New York Times Online",
+    "The Spectator",
+    "The Sydney Morning Herald",
+    "The Telegraph Online",
+    "The Tehran Times",
+    "The Times – África do Sul",
+    "The Times of India",
+    "The Wall Street Journal",
+    "The Wall Street Journal Online",
+    "The Washington Post",
+    "The Washington Post Online",
+    "The Washington Times",
+    "The Yomiuri Shimbun",
+    "Tuoi Tre Online",
+    "USA Today",
+    "Vanguard – Nigéria",
+    "Viet Nam News",
+    "VN Express"
+  ],
+  "TV": ["TV AgroMais", "TV BandNews", "TV Band", "TV Brasil", "TV Câmara", "TV CNN Brasil", "TV Cultura", "TV GloboNews", "TV Jovem Pan News", "TV NBR", "TV Record", "TV Record News", "TV Rede Globo Nacional", "TV RedeTV!", "TV SBT", "TV Senado", "TV Times Brasil CNBC"],
+  "Rádio": ["Rádio BandNews FM", "Rádio Bandeirantes FM", "Rádio CBN FM", "Rádio Jovem Pan FM", "Rádio Nacional FM"]
+};
 
     const veiculoBlogColunaMap = {
       "BBC News Brasil": [],
@@ -1229,6 +1341,7 @@
   </script>
 </body>
 </html>
+
 
 
 
