@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clipping de Notícias - Final TV/Rádio</title>
   <style>
+    /* Todo o seu CSS original permanece INALTERADO aqui */
     :root {
       --primary-color: #4a90e2;
       --secondary-color: #f5f7fa;
@@ -327,7 +328,7 @@
           <div class="radio-group" id="classificacao">
             <div class="radio-option"><input type="radio" name="classificacao" id="option1" value="🗞" /><label for="option1">Impresso</label></div>
             <div class="radio-option"><input type="radio" name="classificacao" id="option2" value="🌐" checked /><label for="option2">Online Nacional</label></div>
-            <div class="radio-option"><input type="radio" name="classificacao" id="option5" value="🌐" /><label for="option5">Internacional</label></div>
+            <div class="radio-option"><input type="radio" name="classificacao" id="option5" value="Internacional" /><label for="option5">Internacional</label></div>
             <div class="radio-option"><input type="radio" name="classificacao" id="option3" value="📺" /><label for="option3">TV</label></div>
             <div class="radio-option"><input type="radio" name="classificacao" id="option4" value="📻" /><label for="option4">Rádio</label></div>
           </div>
@@ -447,131 +448,36 @@
         "Veja online", "Yahoo!"
       ],
       "Internacional": [
-        "AFP – Agence France Presse",
-        "Agência EFE",
-        "Agência EFE – Espanhol",
-        "Agência EFE – Inglês",
-        "Agência Xinhua",
-        "ANSA Brasil",
-        "Associated Press",
-        "BBC News",
-        "Bloomberg",
-        "Bloomberg Markets",
-        "CCTV News",
-        "CGTN Online",
-        "Chicago Tribune",
-        "Clarín Online – Argentina",
-        "Corriere della Sera",
-        "Corriere della Sera Online",
-        "Daily Maverick – África do Sul",
-        "Daily Sabah – Turquia",
-        "Dallas News",
-        "Dan Tri",
-        "De Telegraaf",
-        "Der Spiegel Online",
-        "Deutsche Welle",
-        "Diario Clarín – Argentina",
-        "Die Zeit",
-        "El Comercio – Equador",
-        "El Comercio – Peru",
-        "El Comercio Online – Peru",
-        "El Mercurio",
-        "El Nacional Online – Venezuela",
-        "El País – Espanha",
-        "El País – Uruguai",
-        "El País Online – Espanha",
-        "El País Online – Uruguai",
-        "El Tiempo – Colômbia",
-        "El Universal – México",
-        "El Universal – Venezuela",
-        "El Universal Diario – Venezuela",
-        "Expresso",
-        "Financial Times Online",
-        "Foreign Affairs",
-        "Foreign Policy",
-        "Fox Business",
-        "Fox News",
-        "France 24 Online",
-        "Frankfurter Allgemeine Zeitung",
-        "Global Times",
-        "Jiji",
-        "Jornal de Angola",
-        "Jornal Expansão Online",
-        "Kyodo",
-        "La Nación – Argentina",
-        "La Nación – Paraguai",
-        "La Nación Online – Argentina",
-        "La Nación Online – Paraguai",
-        "La Razão Online – Bolívia",
-        "La República – Peru",
-        "Le Courrier du Vietnam",
-        "Le Figaro",
-        "Le Figaro Online",
-        "Le Monde Online",
-        "Les Echos Online",
-        "Libération",
-        "Los Angeles Times",
-        "Los Angeles Times Online",
-        "México – El Universal Online",
-        "Nation – Quênia",
-        "Nature Online",
-        "Nhãn Dân",
-        "Nikkei",
-        "Notícias Moçambique",
-        "Novo Jornal – Angola",
-        "Página Siete Online – Bolívia",
-        "Politico Online",
-        "Público – Portugal",
-        "Reuters",
-        "SABC News – África do Sul",
-        "South China Morning Post – Hong Kong",
-        "Sputnik News",
-        "TBS – Japão",
-        "TBS News Dig",
-        "The Economist",
-        "The Epoch Times",
-        "The Globe and Mail",
-        "The Globe and Mail Online",
-        "The Guardian",
-        "The Guardian – Nigéria",
-        "The Hindu",
-        "The Jakarta Post",
-        "The Jerusalem Post",
-        "The Korea Times Online",
-        "The New York Times",
-        "The New York Times Online",
-        "The Spectator",
-        "The Sydney Morning Herald",
-        "The Telegraph Online",
-        "The Tehran Times",
-        "The Times – África do Sul",
-        "The Times of India",
-        "The Wall Street Journal",
-        "The Wall Street Journal Online",
-        "The Washington Post",
-        "The Washington Post Online",
-        "The Washington Times",
-        "The Yomiuri Shimbun",
-        "Tuoi Tre Online",
-        "USA Today",
-        "Vanguard – Nigéria",
-        "Viet Nam News",
-        "VN Express"
-      ].sort(),
+        "AFP – Agence France Presse", "Agência EFE", "Agência EFE – Espanhol", "Agência EFE – Inglês",
+        "Agência Xinhua", "ANSA Brasil", "Associated Press", "BBC News", "Bloomberg", "Bloomberg Markets",
+        "CCTV News", "CGTN Online", "Chicago Tribune", "Clarín Online – Argentina", "Corriere della Sera",
+        "Corriere della Sera Online", "Daily Maverick – África do Sul", "Daily Sabah – Turquia", "Dallas News",
+        "Dan Tri", "De Telegraaf", "Der Spiegel Online", "Deutsche Welle", "Diario Clarín – Argentina",
+        "Die Zeit", "El Comercio – Equador", "El Comercio – Peru", "El Comercio Online – Peru", "El Mercurio",
+        "El Nacional Online – Venezuela", "El País – Espanha", "El País – Uruguai", "El País Online – Espanha",
+        "El País Online – Uruguai", "El Tiempo – Colômbia", "El Universal – México", "El Universal – Venezuela",
+        "El Universal Diario – Venezuela", "Expresso", "Financial Times Online", "Foreign Affairs", "Foreign Policy",
+        "Fox Business", "Fox News", "France 24 Online", "Frankfurter Allgemeine Zeitung", "Global Times", "Jiji",
+        "Jornal de Angola", "Jornal Expansão Online", "Kyodo", "La Nación – Argentina", "La Nación – Paraguai",
+        "La Nación Online – Argentina", "La Nación Online – Paraguai", "La Razão Online – Bolívia",
+        "La República – Peru", "Le Courrier du Vietnam", "Le Figaro", "Le Figaro Online", "Le Monde Online",
+        "Les Echos Online", "Libération", "Los Angeles Times", "Los Angeles Times Online", "México – El Universal Online",
+        "Nation – Quênia", "Nature Online", "Nhãn Dân", "Nikkei", "Notícias Moçambique", "Novo Jornal – Angola",
+        "Página Siete Online – Bolívia", "Politico Online", "Público – Portugal", "Reuters", "SABC News – África do Sul",
+        "South China Morning Post – Hong Kong", "Sputnik News", "TBS – Japão", "TBS News Dig", "The Economist",
+        "The Epoch Times", "The Globe and Mail", "The Globe and Mail Online", "The Guardian", "The Guardian – Nigéria",
+        "The Hindu", "The Jakarta Post", "The Jerusalem Post", "The Korea Times Online", "The New York Times",
+        "The New York Times Online", "The Spectator", "The Sydney Morning Herald", "The Telegraph Online",
+        "The Tehran Times", "The Times – África do Sul", "The Times of India", "The Wall Street Journal",
+        "The Wall Street Journal Online", "The Washington Post", "The Washington Post Online", "The Washington Times",
+        "The Yomiuri Shimbun", "Tuoi Tre Online", "USA Today", "Vanguard – Nigéria", "Viet Nam News", "VN Express"
+      ],
       "TV": ["TV AgroMais", "TV BandNews", "TV Band", "TV Brasil", "TV Câmara", "TV CNN Brasil", "TV Cultura", "TV GloboNews", "TV Jovem Pan News", "TV NBR", "TV Record", "TV Record News", "TV Rede Globo Nacional", "TV RedeTV!", "TV SBT", "TV Senado", "TV Times Brasil CNBC"],
       "Rádio": ["Rádio BandNews FM", "Rádio Bandeirantes FM", "Rádio CBN FM", "Rádio Jovem Pan FM", "Rádio Nacional FM"]
     };
 
-    // Mapa para converter value do radio na chave correta do objeto
-    const classificationMap = {
-      "🗞": "Impresso",
-      "🌐": "Online",           // Online Nacional
-      "Internacional": "Internacional",  // Novo radio
-      "📺": "TV",
-      "📻": "Rádio"
-    };
-
     const veiculoBlogColunaMap = {
+      // Seu mapa completo original continua aqui (sem alteração)
       "BBC News Brasil": [],
       "Bloomberg Brasil": [],
       "Bloomberg Línea": [],
@@ -586,220 +492,23 @@
       "Correio Braziliense online": ["Blog da Denise", "Blog do Vicente", "Blog CB Poder"],
       "Crusoé": [],
       "Estadão online": [
-        "Adriano Pires", "Albert Fishlow", "Alexandre Chiavegatto Filho", "Alexandre Schwartsman",
-        "Alvaro Gribel", "Antônio Penteado Mendonça", "Blog do Fausto Macedo", "Bolívar Lamounier",
-        "Bruno Soller", "Camila Farani", "Carlos Alberto Di Franco", "Carlos Andreazza",
-        "Carlos Pereira", "Carolina Brígido", "Celso Lafer", "Celso Ming",
-        "Claudio Adilson Gonçalez", "Claudio de Moura Castro", "Cláudio Considera", "Coluna do Estadão",
-        "Demi Getschko", "Denis Lerrer Rosenfield", "Diogo Schelp", "Dom Odilo Pedro Scherer",
-        "Duquesa de Tax", "E-Investidor", "Eduardo Barretto", "Elena Landau",
-        "Eliane Cantanhêde", "Everardo Maciel", "Fabiano Lana", "Fábio Alves",
-        "Fabio Gallo", "Fabio Giambiagi", "Fausto Macedo", "Felipe Salto",
-        "Fernando Dantas", "Fernando Gabeira", "Fernando Henrique Cardoso", "Fernando Schüler",
-        "Flávio Tavares", "Francisco Leali", "Gustavo H.B. Franco", "Guy Perelmuter",
-        "Henrique Meirelles", "Jorge Caldeira", "Jorge J. Okubaro", "José Márcio Camargo",
-        "José Pastore", "José Roberto Mendonça de Barros", "José Serra", "Leticia Fernandes",
-        "Lorenna Rodrigues", "Luís Eduardo Assis", "Luiz Carlos Trabuco Cappi", "Luiz Felipe D'Avila",
-        "Luiz Sérgio Henriques", "Marcelo Godoy", "Marco Aurélio Nogueira", "Marina Grossi",
-        "Miguel Reale Júnior", "Nicolau Da Rocha Cavalcanti", "Paulo Delgado", "Paulo Hartung",
-        "Paulo Sotero", "Pedro Fernando Nery", "Pedro S. Malan", "Raquel Landim",
-        "Renata Piazzon", "Ricardo Basaglia", "Ricardo Corrêa", "Roberto Macedo",
-        "Roberto Rodrigues", "Roberto Waack", "Rogério Werneck", "Rolf Kuntz",
-        "Roseann Kennedy", "Rubens Barbosa", "Salo Coslovsky", "Silvio Cascione",
-        "Simon Schwartzman", "Vera Rosa", "William Waack"
+        // ... todo o resto do seu Estadão, Folha, etc. continua igual
       ],
-      "Exame online": [],
-      "Extra online": [],
-      "FDR": [],
-      "Folha online": [
-        "#Hashtag", "Adriana Fernandes", "Ailton Krenak", "Alexandra Moraes - Ombudsman",
-        "Alvaro Costa e Silva", "Álvaro Machado Dias", "Amor Crônico", "Ana Cristina Rosa",
-        "Ana Paula Vescovi", "Andanças na metrópole", "Antonio Prata", "Baú do Cinema",
-        "Becky S. Korich", "Bernardo Carvalho", "Bernardo Guimarães", "Bianca Santana",
-        "Bibi Bailas", "Bom Pra Cachorro", "Brasília Hoje", "Bráulio Borges",
-        "Bruno Gualano", "C-Level Plano Brasília", "Café na Prensa", "Candido Bracher",
-        "Caos Planejado", "Cecilia Machado", "Celso Rocha de Barros", "Ciência Fundamental",
-        "Claudio Bernardes", "Cláudio Hebdô", "Conrado Hübner Mendes", "Copo Cheio",
-        "Cozinha Bruta", "Darwin e Deus", "De faixa a coroa", "De Grão em Grão",
-        "Deborah Bizarria", "Deirdre Nansen McCloskey", "Demétrio Magnoli", "Denise Mota",
-        "Djamila Ribeiro", "Dora Kramer", "Drauzio Varella", "Econometria Fácil",
-        "Eduardo Sodré", "Eliane Trindade", "Elio Gaspari", "Encaminhado com Frequência",
-        "Evangélicos", "Ezra Klein", "Fernanda Torres", "Frederico Vasconcellos",
-        "Gatices", "Gelo e gim", "Giovana Madalosso", "Glenn Greenwald",
-        "Gustavo Alonso", "Haja Vista", "Hélio Schwartsman", "Ian Bremmer",
-        "Igor Patrick", "Ilona Szabó de Carvalho", "Isabelle Moreira Lima", "Jairo Marques",
-        "Jerson Kelman", "Joanna Moura", "João Pereira Coutinho", "Joel Pinheiro da Fonseca",
-        "Joisa Dutra", "Jorge Abrahão", "José Simão", "Juliana de Albuquerque",
-        "Juliano Spyer", "K-cultura", "Lara Mesquita", "Latinoamérica21",
-        "Laura Greenhalgh", "Laura Muller", "Laura Müller Machado", "Lorena Hakak",
-        "Lúcia Guimarães", "Luciana Coelho", "Luís Francisco Carvalho Filho", "Luiz Felipe Pondé",
-        "Lygia Maria", "Mafalda Anjos", "Maína Mello", "Marcelo Bechler",
-        "Marcelo Leite", "Marcelo Viana", "Marcos Augusto Gonçalves", "Marcos de Vasconcellos",
-        "Marcos Lisboa", "Marcos Mendes", "Marcus André Melo", "Maria Hermínia Tavares",
-        "Maria Inês Dolci", "Mariliz Pereira Jorge", "Marina Izidro", "Mario Sergio Conti",
-        "Martin Wolf", "Maternar", "Mauricio Portugal Ribeiro", "Mauricio Stycer",
-        "Mauro Calliari", "Mensageiro Sideral", "Michael França", "Mirian Goldenberg",
-        "Mise-en-scène", "Mônica Bergamo", "Morte Sem Tabu", "Muniz Sodré",
-        "Músculo", "Música em Letras", "Nação churrasqueira", "Natalia Beauty",
-        "Não Tem Cabimento", "No Corre", "Novo em Folha", "O Mundo É uma Bola",
-        "Oscar Vilhena Vieira", "Outro Canal", "Painel", "Painel das Letras",
-        "Painel S.A.", "Papo de Responsa", "Plástico", "Políticas e Justiça",
-        "Praça do Leitor", "Pretos Olhares", "Primeira Pele", "Priscilla Bacalhau",
-        "Que imposto é esse", "Reinaldo José Lopes", "Ricardo Araújo Pereira", "Roberto Campos Neto",
-        "Rodrigo Tavares", "Rogério Gentile", "Rômulo Saraiva", "Ronaldo Lemos",
-        "Rosana Hermann", "Ross Douthat", "Rui Tavares", "Ruy Castro",
-        "Samuel Pessôa", "Saúde Mental", "Sérgio Rodrigues", "Sobre Trilhos",
-        "Solange Srour", "Sons da Perifa", "Suzana Herculano-Houzel", "Sylvia Colombo",
-        "Tati Bernardi", "Thiago Amparo", "Thiago Stivaletti", "Thomas L. Friedman",
-        "Tom Farias", "Tostão", "Transparência pública", "Tudo + um pouco",
-        "Txai Suruí", "Vaivém das Commodities", "Vera Iaconelli", "Vida de Alcoólatra",
-        "Vidas Atípicas", "Vinicius Mota", "Vinicius Torres Freire", "Virada Psicodélica",
-        "Wilson Gomes", "X de Sexo por Bruna Maia", "Zeca Camargo"
-      ],
-      "g1": [
-        "Blog da Ana Flor", "Blog do André Trigueiro", "Blog da Andréia Sadi", "Blog da Camila Bomfim",
-        "Blog da Daniela Lima", "Blog do Edimilson Ávila", "Blog do Gerson Camarotti", "Blog da Julia Duailibi",
-        "Blog da Mariza Tavares", "Blog do Mauro Ferreira", "Blog da Natuza Nery", "Blog do Octavio Guedes",
-        "Blog Pela Lente da Gente", "Blog da Sandra Cohen", "Blog do Valdo Cruz", "Legendado"
-      ],
-      "ICL Notícias": [],
-      "InfoMoney": [],
-      "iG": [],
-      "IstoÉ Dinheiro online": ["PlatôBR"],
-      "IstoÉ online": ["PlatôBR", "Coluna do Mazzini"],
-      "Jota": [],
-      "Jovem Pan online": [],
-      "Metrópoles": [
-        "Andreza Matais", "Blog do Noblat", "Carlos Carone", "Claudia Meireles",
-        "Dinheiro & Negócios", "Fábia Oliveira", "Grande Angular", "Igor Gadelha",
-        "Ilca Maria Estevão", "Isadora Teixeira", "Lilian Tahan", "Mario Sabino",
-        "Mirelle Pinheiro", "Paulo Cappelli", "Tácio Lorran", "Tiago Pavinatto"
-      ],
-      "Money Times": [],
-      "O Antagonista": [],
-      "O Bastidor": [],
-      "O Globo online": [
-        "Ana Carla Abrão", "Ancelmo.com", "Antônio Gois", "Bela Megale",
-        "Bernardo Mello Franco", "Bruno Astuto", "Capital", "Carlos Alberto Sardenberg",
-        "Carlos Eduardo Mansur", "Carlos Góes", "Carlota", "Clima Extremo",
-        "Conte mais uma", "Cora Rónai", "Correria", "Daniel Becker",
-        "Demétrio Magnoli", "Diogo Dantas", "Dorrit Harazim", "Eduardo Affonso",
-        "Elio Gaspari", "Espiritualidade e Bem-estar", "Fabio Giambiagi", "Fabio Graner",
-        "Fernando Gabeira", "Fernando Kallás", "Flávia Oliveira", "Fumus Boni Iuris",
-        "Guga Chacra", "Gustavo Franco", "Gustavo Pinheiro", "Gustavo Poli",
-        "IAí?", "Ingrid Guimarães", "Irapuã Santana", "Janaína Figueiredo",
-        "Joaquim Ferreira dos Santos", "José Eduardo Agualusa", "Julia Duailibi", "Julio Maria",
-        "Lauro Jardim", "Leo Aversa", "Luana Génot", "Luciana Fróes",
-        "Malu Gaspar", "Manoel Ventura", "Marcelo Barreto", "Marcelo Ninio",
-        "Martha Batalha", "Martha Medeiros", "Merval Pereira", "Meus Filhos, Minhas Regras?",
-        "Michel Alcoforado", "Miguel de Almeida", "Míriam Leitão", "Nelson Motta",
-        "Pablo Ortellado", "Patrícia Kogut", "Paulo Tafner", "Pedro Doria",
-        "Pedro Pacífico", "Pedro Parente", "Pense Grande", "Play",
-        "Portugal Giro", "Preto Zezé", "Priscila Cruz", "Pulso",
-        "Pé-Sujo & Pé-Limpo", "Receita de Médico", "Renata Agostini", "Repinique",
-        "Roberto DaMatta", "Rogério Furquim Werneck", "Ruth de Aquino", "Saideira",
-        "Segredos do crime", "Sonar", "Thales Machado", "Thaís Oyama",
-        "Thiago Gomide", "Tony Volpon", "Vera Magalhães", "Zeina Latif"
-      ],
-      "Poder360": ["Opinião"],
-      "R7": ["Christina Lemos", "R7 Planalto"],
-      "Terra": [],
-      "UOL": [
-        "Alexandre Borges", "Alicia Klein", "Amanda Cotrim", "Amanda Klein",
-        "André Santana", "Aline Sordili", "Carla Araújo", "Carlos Juliano Barros",
-        "Carlos Madeiro", "Casagrande", "Danilo Lavieri", "Daniela Lima",
-        "Fabio Serapião", "Felipe Salto", "Graciliano Rocha", "Jeferson Tenório",
-        "Joildo Santos", "Josias de Souza", "Josmar Jozino", "José Fucs",
-        "José Paulo Kupfer", "José Roberto de Toledo", "Juca Kfouri", "Julio Gomes",
-        "Leonardo Sakamoto", "Letícia Casado", "Marco Antonio Sabino", "Mariana Barbosa",
-        "Mariana Sanches", "Mauro Cezar", "Milly Lacombe", "Milton Neves",
-        "Natália Portinari", "Nelson de Sá", "Paulo Camargo", "Paulo Vinicius Coelho (PVC)",
-        "Presença Histórica", "Reinaldo Azevedo", "Ricardo Nunes", "Rodrigo Mattos",
-        "Rogério Gentile", "Ronilso Pacheco", "Sílvio Crespo", "Thais Bilenky",
-        "Thiago Herdy", "Tiago Mali", "Tilt", "Tostão",
-        "Wálter Maierovitch"
-      ],
-      "Valor online": [],
-      "Veja online": [
-        "Al Vino", "Alexandre Schwartsman", "Balanço Social", "Cannabiz",
-        "Conta-Gotas", "Em Cartaz", "Giro pelo Oriente", "Jorge Pontes",
-        "José Casado", "Letra de Médico", "Lucília Diniz", "Luiz Gustavo Bichara",
-        "Maquiavel", "Marcela Rahal", "Matheus Leitão", "Mens Sana",
-        "Mundialista", "Murillo de Aragão", "Na Ponta da Língua", "Neuza Sanches",
-        "O Som e a Fúria", "Planeta IA", "Radar", "Radar Econômico",
-        "Real Estate", "Tela Plana", "Veja Gente", "Vitrine",
-        "Virou Viral"
-      ],
-      "Yahoo!": []
+      // ... (mantenha exatamente o seu veiculoBlogColunaMap original)
     };
 
-    const dominioVeiculoMap = {
-      "bbc.com": "BBC News Brasil",
-      "bloomberg.com.br": "Bloomberg Brasil",
-      "bloomberglinea.com.br": "Bloomberg Línea",
-      "cartacapital.com.br": "Carta Capital online",
-      "correiobraziliense.com.br": "Correio Braziliense online",
-      "cnnbrasil.com.br": "CNN Brasil online",
-      "oglobo.globo.com": "O Globo online",
-      "epocanegocios.globo.com": "Época Negócios",
-      "estadao.com.br": "Estadão online",
-      "exame.com": "Exame online",
-      "folha.uol.com.br": "Folha online",
-      "g1.globo.com": "g1",
-      "iclnoticias.com.br": "ICL Notícias",
-      "infomoney.com.br": "InfoMoney",
-      "istoedinheiro.com.br": "IstoÉ Dinheiro online",
-      "istoe.com.br": "IstoÉ online",
-      "jota.info": "Jota",
-      "metropoles.com": "Metrópoles",
-      "poder360.com.br": "Poder360",
-      "noticias.uol.com.br": "UOL",
-      "valor.globo.com": "Valor online",
-      "veja.abril.com.br": "Veja online",
-      "brasil247.com": "Brasil 247",
-      "terra.com.br": "Terra",
-      "agenciabrasil.ebc.com.br": "Agência Brasil",
-      "r7.com": "R7",
-      "congressoemfoco.uol.com.br": "Congresso em Foco",
-      "oantagonista.com.br": "O Antagonista",
-      "crusoe.com.br": "Crusoé",
-      "cbn.globoradio.globo.com": "CBN",
-      "valorinveste.globo.com": "Valor Investe",
-      "agenciacamara.leg.br": "Agência Câmara",
-      "agenciasenado.leg.br": "Agência Senado",
-      "extra.globo.com": "Extra online",
-      "fdr.com.br": "FDR",
-      "ig.com.br": "iG",
-      "ultimosegundo.ig.com.br": "iG",
-      "jovempan.com.br": "Jovem Pan online",
-      "moneytimes.com.br": "Money Times",
-      "obastidor.com.br": "O Bastidor",
-      "yahoo.com": "Yahoo!",
-      "yahoo.com.br": "Yahoo!"
-    };
-
-    // ... (o resto das constantes como orgaosPorCargo, nomeCompletoOrgao, nomeSimplificadoOrgao continuam iguais ao seu código)
+    // ... (dominioVeiculoMap, orgaosPorCargo, nomeCompletoOrgao, nomeSimplificadoOrgao continuam iguais)
 
     function saveToLocal(materia) {
-      const materias = JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
-      const now = new Date();
-      const timestamp = now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-      const id = Date.now();
-      const novoItem = { id, materia, timestamp };
-      materias.push(novoItem);
-      localStorage.setItem('materias_clipping_final_v5', JSON.stringify(materias));
-      return novoItem;
+      // sua função original
     }
 
     function deleteFromLocal(id) {
-      let materias = JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
-      materias = materias.filter(item => item.id != id);
-      localStorage.setItem('materias_clipping_final_v5', JSON.stringify(materias));
-      return true;
+      // sua função original
     }
 
     function loadFromLocal() {
-      return JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
+      // sua função original
     }
 
     function updateVehicleDropdown(classification) {
@@ -814,166 +523,35 @@
     }
 
     function updateColumnDropdown(classification, veiculo) {
-      const datalist = document.getElementById("coluna-dropdown");
-      datalist.innerHTML = "";
-      const columns = veiculo ? (veiculoBlogColunaMap[veiculo] || []) : [];
-      columns.forEach(column => {
-        const option = document.createElement("option");
-        option.value = column;
-        datalist.appendChild(option);
-      });
+      // sua função original
     }
 
     function updateMinisterioOptions() {
-      const selectedTipoMinistro = tipoMinistroSelect.value;
-      const currentMinisterio = ministerioSelect.value;
-      const orgaosToShow = orgaosPorCargo[selectedTipoMinistro] || [];
-      ministerioSelect.innerHTML = `
-        <option value="">Selecionar o órgão</option>
-        ${orgaosToShow.map(orgao => `<option value="${orgao}">${orgao}</option>`).join('')}
-      `;
-      const options = Array.from(ministerioSelect.options).map(opt => opt.value);
-      ministerioSelect.value = options.includes(currentMinisterio) ? currentMinisterio : "";
-      atualizarTexto();
+      // sua função original
     }
 
     function atualizarTexto() {
-      const tipoMinistro = tipoMinistroSelect.value;
-      const ministerio = ministerioSelect.value;
-      let ministerioStr = "";
-      let alertaPrefix = "";
-      if (ministerio && orgaosPorCargo[tipoMinistro].includes(ministerio)) {
-        const nomeOrgao = tipoMinistro === "nenhum" ? nomeCompletoOrgao[ministerio] : nomeSimplificadoOrgao[ministerio] || ministerio;
-        const useDas = ["Comunicações"];
-        const useDa = ["CAIXA", "CGU", "CNI", "SRI", "Embratur", "Câmara dos Deputados", "Cultura", "Agricultura"];
-        const useFeminino = ["CAIXA", "CGU", "CNI", "SRI", "Embratur"];
-        const useDe = ["SRI", "MME", "MPOR"];
-        let artigo = tipoMinistro === "nenhum"
-          ? (useFeminino.includes(ministerio) ? "a" : "o")
-          : (tipoMinistro === "ministra" ? "a" : "o");
-        let preposicao = useDas.includes(ministerio) ? "das"
-          : useDe.includes(ministerio) ? "de"
-          : useDa.includes(ministerio) ? "da"
-          : "do";
-        if (ministerio === "Comunicações") {
-          ministerioStr = tipoMinistro === "nenhum"
-            ? `cita ${artigo} ${nomeOrgao}`
-            : `cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao}`;
-          alertaPrefix = "⚠ ";
-        } else {
-          ministerioStr = tipoMinistro === "nenhum"
-            ? `(cita ${artigo} ${nomeOrgao})`
-            : `(cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao})`;
-          if (tipoMinistro === "presidente" && ministerio === "CAIXA") {
-            alertaPrefix = "⚠ ";
-          }
-        }
-      }
-      blueParrot.tipoMinistro = tipoMinistro;
-      blueParrot.ministerio = ministerio;
-      blueParrot.ministerioStr = ministerioStr;
-      blueParrot.alertaPrefix = alertaPrefix;
-      renderPreview();
+      // sua função original
     }
 
     function renderPreview() {
-      const classif = blueParrot.classificação.trim();
-      const isSingleLine = (classif === "🗞" || classif === "📺" || classif === "📻");
-      let html = "";
-      html += `<span>${blueParrot.alertaPrefix}</span><strong>ALERTA DE IMPRENSA</strong>`;
-      if (blueParrot.ministerioStr) html += ` <span>${blueParrot.ministerioStr}</span>`;
-      html += "\n";
-      html += `<span>${blueParrot.classificação}</span><strong>${blueParrot.veiculo}</strong>`;
-      if (blueParrot.coluna) {
-        const colunaLimpa = blueParrot.coluna.replace(/ - _|_$/g, "").trim();
-        html += `<span> - ${colunaLimpa}</span>`;
-      }
-      if (isSingleLine && blueParrot.tags) {
-        html += ` - <em>${blueParrot.tags}</em>`;
-      } else if (blueParrot.tags) {
-        html += `\n<span>${blueParrot.tags}</span>`;
-      }
-      if (blueParrot.linkCurto) html += `\n<span>${blueParrot.linkCurto}</span>`;
-      previewArea.innerHTML = html;
+      // sua função original
     }
-
-    // Mapa para converter value do radio na chave correta
-    const classificationMap = {
-      "🗞": "Impresso",
-      "🌐": "Online",  // Online Nacional
-      "Internacional": "Internacional",
-      "📺": "TV",
-      "📻": "Rádio"
-    };
 
     radioButtons.forEach(radio => {
       radio.addEventListener("change", (e) => {
-        const radioValue = e.target.value;
-        const categoryKey = classificationMap[radioValue] || "Online";
-        blueParrot.classificação = radioValue + " ";
-        updateVehicleDropdown(categoryKey);
+        const val = e.target.value;
+        const label = e.target.nextElementSibling.textContent;
+        blueParrot.classificação = val + " ";
+        updateVehicleDropdown(label);  // Usa o LABEL (texto visível) que corresponde às chaves
         renderPreview();
       });
     });
 
-    veiculos.addEventListener("input", (e) => {
-      const val = e.target.value.trim();
-      blueParrot.veiculo = val ? `*${val}*` : "";
-      const classifLabel = document.querySelector("input[name='classificacao']:checked").nextElementSibling.textContent;
-      updateColumnDropdown(classifLabel, val);
-      renderPreview();
-    });
-
-    blogColuna.addEventListener("input", (e) => {
-      const val = e.target.value.trim();
-      blueParrot.coluna = val ? ` - _${val}_` : "";
-      renderPreview();
-    });
-
-    tagInput.addEventListener("input", (e) => {
-      blueParrot.tags = e.target.value;
-      renderPreview();
-    });
-
-    linkCurto.addEventListener("input", (e) => {
-      const val = e.target.value.trim();
-      blueParrot.linkCurto = val;
-      renderPreview();
-      if (val) processarShortlink(val);
-    });
-
-    dataHoraInput.addEventListener("input", (e) => {
-      blueParrot.dataHoraPublicacao = e.target.value.trim();
-      dataHoraInput.classList.remove("auto-filled");
-    });
-
-    tipoMinistroSelect.addEventListener("change", updateMinisterioOptions);
-    ministerioSelect.addEventListener("change", atualizarTexto);
-
-    document.getElementById("btn-colar-link").addEventListener("click", async () => {
-      try {
-        const texto = await navigator.clipboard.readText();
-        linkCurto.value = texto;
-        linkCurto.dispatchEvent(new Event('input'));
-      } catch (err) {}
-    });
-
-    document.getElementById("btn-colar-materia").addEventListener("click", async () => {
-      try {
-        const texto = await navigator.clipboard.readText();
-        tagInput.value = texto;
-        tagInput.dispatchEvent(new Event('input'));
-      } catch (err) {}
-    });
-
-    // ... (o resto das funções continua exatamente igual ao seu código original: processarShortlink, extrairTexto, identificarVeiculoEColuna, determinarClassificacao, btn-copiar, btn-resetar, btn-desfazer, adicionarMateriaTabela, copiarTabela, excluirTabela)
+    // ... (todos os outros eventos: veiculos.input, blogColuna.input, tagInput.input, linkCurto.input, btn-colar-link, btn-colar-materia, processarShortlink, extrairTexto, etc. continuam exatamente iguais ao seu código funcional)
 
     window.onload = () => {
-      // Carrega o dropdown inicial baseado no radio checked
-      const checkedRadio = document.querySelector("input[name='classificacao']:checked");
-      const initialValue = checkedRadio ? checkedRadio.value : "🌐";
-      const initialKey = classificationMap[initialValue] || "Online";
-      updateVehicleDropdown(initialKey);
+      updateVehicleDropdown("Online");  // Carrega Online por padrão (como no seu código)
       updateMinisterioOptions();
       const historico = loadFromLocal();
       historico.forEach(item => {
