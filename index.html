@@ -212,7 +212,9 @@
       font-size: var(--font-size-small);
       white-space: pre-wrap;
       word-break: break-word;
-      line-height: 1.4;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      line-height: 1.45;
     }
     #loading {
       font-weight: 800;
@@ -227,99 +229,94 @@
       background-color: #fffacd !important;
     }
 
-    /* === RESPONSIVIDADE MELHORADA PARA CELULAR (atualizado) === */
+    /* RESPONSIVIDADE MOBILE - VERSÃO FINAL AJUSTADA */
     @media (max-width: 768px) {
       body { padding: 10px; font-size: 1rem; }
       .form-grid { grid-template-columns: 1fr; gap: 16px; }
-      #btn-colar-materia { width: 100%; max-width: 240px; margin: 16px auto 0; }
+      #btn-colar-materia { width: 100%; max-width: 260px; margin: 16px auto 0; }
       .btn-container, .shortlink-container, .preview-actions {
         flex-direction: column;
         gap: 12px;
         align-items: stretch;
       }
-      .shortlink-container input, .shortlink-container .btn, .btn {
-        width: 100%;
-      }
-      .preview-actions .btn { justify-content: center; }
+      .shortlink-container input, .shortlink-container .btn, .btn { width: 100%; }
 
-      /* Tabela em cartões verticais - melhorias */
-      .table-wrapper { overflow-x: hidden; } /* evita scroll horizontal desnecessário */
+      /* Tabela em cartões verticais */
+      .table-wrapper { overflow-x: hidden; }
       #materias-tabela thead { display: none; }
       #materias-tabela tr {
         display: block;
-        margin-bottom: 20px; /* mais espaço entre cartões */
+        margin-bottom: 24px;
         border: 1px solid #ddd;
         border-radius: 12px;
         background: white;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.08);
-        overflow: hidden;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
       }
       #materias-tabela td {
         display: block;
-        text-align: left;
-        padding: 14px 16px;
-        border: none;
+        padding: 16px;
         border-bottom: 1px solid #f0f0f0;
         position: relative;
-        padding-left: 42%; /* reduzido para dar mais espaço ao conteúdo */
-        min-height: 48px;
-        box-sizing: border-box;
+        padding-left: 40%; /* mais espaço para o texto */
       }
       #materias-tabela td:before {
         content: attr(data-label);
         position: absolute;
         left: 16px;
-        top: 14px;
-        width: 38%;
+        top: 16px;
+        width: 35%;
         font-weight: 600;
-        color: #555;
-        font-size: 0.95rem;
-        line-height: 1.3;
+        color: #444;
+        font-size: 1rem;
       }
-      #materias-tabela td[data-label="Data/Hora"]:before {
-        content: "Data/Hora";
-      }
+      #materias-tabela td[data-label="Data/Hora"]:before { content: "Data/Hora"; }
       #materias-tabela td[data-label="Matéria Completa"]:before {
-        content: "Matéria\nCompleta"; /* quebra em duas linhas */
-        white-space: pre-line;
+        content: "Matéria Completa";
+        white-space: normal;
+        line-height: 1.3;
+        width: 35%;
       }
       #materias-tabela td:last-child {
         border-bottom: none;
-        padding: 12px 16px;
-        text-align: center;
-        display: flex;
+        padding: 16px;
+        display: flex !important;
         justify-content: center;
-        gap: 16px; /* botões lado a lado */
+        align-items: center;
+        gap: 24px; /* espaço maior entre botões */
         flex-wrap: nowrap;
       }
       .materia-cell {
-        padding-left: 42% !important;
-        word-break: break-word;
-        hyphens: auto; /* quebra de palavra mais natural */
+        padding-left: 40% !important;
+        overflow-wrap: break-word;
+        hyphens: auto;
       }
 
-      /* Botões de ação maiores e lado a lado */
+      /* Botões de ação lado a lado, maiores e destacados */
       #materias-tabela .btn-outline {
-        padding: 10px 14px;
-        font-size: 1.1rem;
-        min-width: 48px;
-        height: 48px;
-        border-radius: 10px;
+        flex: 0 0 auto;
+        width: 56px;
+        height: 56px;
+        font-size: 1.4rem;
+        padding: 0;
+        border-radius: 12px;
+        background: #f8f9fa;
+        border: 1px solid #ccc;
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: background 0.2s;
       }
-      #materias-tabela .btn-outline:hover {
-        background: #f0f0f0;
+      #materias-tabela .btn-outline:hover,
+      #materias-tabela .btn-outline:active {
+        background: #e8e8e8;
       }
     }
 
     @media (max-width: 480px) {
-      body { font-size: 0.95rem; }
-      .title { font-size: 1.1rem; }
       #materias-tabela td { padding-left: 45%; }
       #materias-tabela td:before { width: 40%; }
       .materia-cell { padding-left: 45% !important; }
+      #materias-tabela td:last-child { gap: 20px; }
     }
   </style>
 </head>
