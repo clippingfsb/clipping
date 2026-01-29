@@ -164,32 +164,45 @@
       flex: 1;
       min-width: 160px;
     }
-    .preview-box {
-      background-color: #f8f9fa;
-      border: 2px dashed var(--border-color);
-      border-radius: 12px;
-      padding: 15px;
-      margin-top: 15px;
-      width: 100%;
-      position: relative;
-    }
-    .preview-content {
-      white-space: pre-wrap;
-      font-size: var(--font-size-base);
-      color: #333;
-      min-height: 60px;
-      width: 100%;
-      line-height: 1.4;
-    }
-    .preview-actions {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 15px;
-      padding-top: 15px;
-      width: 100%;
-      border-top: 2px solid var(--border-color);
-    }
+   /* Corrige overflow da prévia */
+.preview-box {
+  width: 100%;
+  max-width: 100%;               /* Impede que exceda o container */
+  box-sizing: border-box;        /* Garante que padding + border não somem ao width */
+  margin: 15px 0 0 0;            /* Remove margens laterais indesejadas */
+  padding: 15px;
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  background-color: #f8f9fa;
+  overflow: hidden;              /* Corta qualquer conteúdo que tente vazar */
+}
+
+.preview-content {
+  width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;     /* Quebra palavras longas para não estourar */
+  word-break: break-all;         /* Mais agressivo em links longos */
+}
+
+.preview-actions {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid var(--border-color);
+}
+
+/* No media query mobile, reforçar */
+@media (max-width: 768px) {
+  .preview-box {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 12px;               /* Reduz um pouco no mobile para caber melhor */
+  }
+}
     .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     table {
       width: 100%;
@@ -1349,6 +1362,7 @@
   </script>
 </body>
 </html>
+
 
 
 
