@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clipping de Notícias - Final TV/Rádio</title>
   <style>
+    /* Seu CSS inteiro permanece igual — não alterei nada aqui */
     :root {
       --primary-color: #4a90e2;
       --secondary-color: #f5f7fa;
@@ -573,14 +574,14 @@
       "📻": "Rádio"
     };
 
-    // ... (o resto do seu código continua igual, só substitua o bloco abaixo)
+    // ... (resto do código igual)
 
     radioButtons.forEach(radio => {
       radio.addEventListener("change", (e) => {
         const radioValue = e.target.value;
-        const categoryKey = classificationMap[radioValue] || radioValue; // Mapeia para a chave certa
-        blueParrot.classificação = radioValue + " ";  // Mantém o emoji correto
-        updateVehicleDropdown(categoryKey);           // Usa a chave mapeada
+        const categoryKey = classificationMap[radioValue] || "Online"; // Fallback para Online se não mapeado
+        blueParrot.classificação = radioValue + " ";  // Usa o emoji do radio selecionado
+        updateVehicleDropdown(categoryKey);
         renderPreview();
       });
     });
@@ -596,10 +597,14 @@
       });
     }
 
-    // ... (o resto do seu script permanece exatamente igual: updateColumnDropdown, atualizarTexto, renderPreview, eventos de input, processarShortlink, extrairTexto, etc.)
+    // ... (o resto do seu script continua exatamente igual: updateColumnDropdown, atualizarTexto, renderPreview, eventos de input, processarShortlink, etc.)
 
     window.onload = () => {
-      updateVehicleDropdown("Online");  // Carrega Online Nacional por padrão
+      // Carrega o dropdown inicial baseado no radio checked (Online Nacional)
+      const checkedRadio = document.querySelector("input[name='classificacao']:checked");
+      const initialValue = checkedRadio ? checkedRadio.value : "Online";
+      const initialKey = classificationMap[initialValue] || "Online";
+      updateVehicleDropdown(initialKey);
       updateMinisterioOptions();
       const historico = loadFromLocal();
       historico.forEach(item => {
