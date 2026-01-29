@@ -1007,17 +1007,27 @@
         tagInput.value = texto;
         tagInput.dispatchEvent(new Event('input'));
 
-        const classif = determinarClassificacao(veiculoData.veiculo);
-        console.log("[processarShortlink] Classificação determinada:", classif);
+     const classif = determinarClassificacao(veiculoData.veiculo);
+console.log("[processarShortlink] Classificação determinada:", classif);
 
-        const radio = document.querySelector(`input[value="${classif}"]`);
-        if (radio) {
-          radio.checked = true;
-          radio.dispatchEvent(new Event('change'));
-          console.log("[processarShortlink] Radio selecionado:", radio.nextElementSibling.textContent);
-        } else {
-          console.warn("[processarShortlink] Nenhum radio para value:", classif);
-        }
+// Seleciona o radio correto baseado no valor único
+let radioSelector;
+if (classif === "🌐nacional") {
+  radioSelector = 'input[value="🌐"][id="option2"]';  // Online Nacional
+} else if (classif === "🌐internacional") {
+  radioSelector = 'input[value="🌐"][id="option5"]';  // Internacional (mude id se for diferente)
+} else {
+  radioSelector = `input[value="${classif}"]`;  // outros
+}
+
+const radio = document.querySelector(radioSelector);
+if (radio) {
+  radio.checked = true;
+  radio.dispatchEvent(new Event('change'));
+  console.log("[processarShortlink] Radio selecionado:", radio.nextElementSibling.textContent);
+} else {
+  console.warn("[processarShortlink] Nenhum radio encontrado para:", classif);
+}
       } catch (err) {
         console.error("[processarShortlink] Erro na extração:", err);
         alert("Falha ao extrair conteúdo.\nVerifique se ativou o CORS em https://cors-anywhere.herokuapp.com/");
@@ -1282,16 +1292,17 @@
 }
 
     function determinarClassificacao(veiculo) {
-      for (const [cl, list] of Object.entries(vehiclesByClassification)) {
-        if (list.includes(veiculo)) {
-          if (cl === "Impresso") return "🗞";
-          if (cl === "Online Nacional" || cl === "Internacional") return "🌐";
-          if (cl === "TV") return "📺";
-          if (cl === "Rádio") return "📻";
-        }
-      }
-      return "🌐";
+  for (const [cl, list] of Object.entries(vehiclesByClassification)) {
+    if (list.includes(veiculo)) {
+      if (cl === "Impresso") return "🗞";
+      if (cl === "TV") return "📺";
+      if (cl === "Rádio") return "📻";
+      if (cl === "Online Nacional") return "🌐nacional";  // valor único
+      if (cl === "Internacional") return "🌐internacional";  // valor único
     }
+  }
+  return "🌐nacional"; // fallback para Nacional
+}
 
     document.querySelector(".btn-copiar").addEventListener("click", () => {
       if (!blueParrot.veiculo || !blueParrot.tags) return;
