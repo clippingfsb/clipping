@@ -229,7 +229,7 @@
       background-color: #fffacd !important;
     }
 
-    /* RESPONSIVIDADE MOBILE (mantida igual) */
+    /* RESPONSIVIDADE MOBILE */
     @media (max-width: 768px) {
       body { padding: 10px; font-size: 1rem; }
       .form-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -431,7 +431,7 @@
     const loading = document.querySelector("#loading");
     const previewArea = document.querySelector("#preview-area");
 
-    // Veículos em ORDEM ALFABÉTICA
+    // Veículos em ORDEM ALFABÉTICA completa (dentro de cada categoria)
     const vehiclesByClassification = {
       "Impresso": [
         "Correio Braziliense",
@@ -439,7 +439,7 @@
         "O Estado de S. Paulo",
         "O Globo",
         "Valor Econômico"
-      ].sort(),
+      ],
       "Online": [
         "Agência Brasil",
         "Agência Câmara",
@@ -479,7 +479,7 @@
         "Valor online",
         "Veja online",
         "Yahoo!"
-      ].sort(),
+      ],
       "TV": [
         "TV AgroMais",
         "TV Band",
@@ -498,14 +498,14 @@
         "TV SBT",
         "TV Senado",
         "TV Times Brasil CNBC"
-      ].sort(),
+      ],
       "Rádio": [
         "Rádio BandNews FM",
         "Rádio Bandeirantes FM",
         "Rádio CBN FM",
         "Rádio Jovem Pan FM",
         "Rádio Nacional FM"
-      ].sort()
+      ]
     };
 
     // Colunas por veículo (chaves em ordem alfabética)
@@ -671,9 +671,8 @@
       "Yahoo!": []
     };
 
-    // ... (o resto do código permanece igual ao da versão anterior)
+    // ... (o resto do código permanece igual)
 
-    // Função updateVehicleDropdown agora ordena automaticamente (já que vehiclesByClassification está ordenado)
     function updateVehicleDropdown(classification) {
       const datalist = document.getElementById("veiculo-dropdown");
       datalist.innerHTML = "";
@@ -685,7 +684,7 @@
       });
     }
 
-    // ... (o resto do script continua igual)
+    // ... (o resto do script continua igual ao anterior)
 
     window.onload = () => {
       updateVehicleDropdown("Online");
