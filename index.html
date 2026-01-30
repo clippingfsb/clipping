@@ -864,9 +864,12 @@
           ? (useFeminino.includes(ministerio) ? "a" : "o")
           : (tipoMinistro === "ministra" ? "a" : "o");
         let preposicao = useDas.includes(ministerio) ? "das"
-          : useDe.includes(ministerio) ? "de"
-          : useDa.includes(ministerio) ? "da"
-          : "do";
+  : useDe.includes(ministerio) ? "de"
+  : useDa.includes(ministerio) ? "da"
+  : "do";
+if (ministerio === "Secretaria-Geral da Presidência") {
+  preposicao = "da";
+}
         if (ministerio === "Comunicações") {
           ministerioStr = tipoMinistro === "nenhum"
             ? `cita ${artigo} ${nomeOrgao}`
@@ -1451,6 +1454,7 @@ if (radio) {
   </script>
 </body>
 </html>
+
 
 
 
