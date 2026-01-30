@@ -774,25 +774,24 @@
 };
     
     const orgaosPorCargo = {
-      nenhum: ["Agricultura", "CAIXA", "CGU", "CNI", "Comunicações", "Cultura", "Desenvolvimento Social", "Embratur", "Esporte", "MME", "MPOR", "Previdência Social", "Secretaria-Geral da Presidência", "SRI", "Turismo"],
-      presidente: ["CAIXA", "Câmara dos Deputados", "CNI", "Embratur", "Previdência Social", "Secretaria-Geral da Presidência"],
-      ministro: ["CGU", "Agricultura", "Comunicações", "Desenvolvimento Social", "Esporte", "MME", "MPOR", "Previdência Social", "Secretaria-Geral da Presidência", "Turismo"],
+      nenhum: ["CAIXA", "CGU", "SRI", "Cultura", "Agricultura", "Desenvolvimento Social", "Comunicações", "MME", "CNI", "Turismo", "Embratur", "MPOR", "Esporte"],
+      presidente: ["CAIXA", "Câmara dos Deputados", "CNI", "Embratur"],
+      ministro: ["CGU", "Agricultura", "Desenvolvimento Social", "Comunicações", "MME", "Turismo", "MPOR", "Esporte"],
       ministra: ["SRI", "Cultura"]
     };
     const nomeCompletoOrgao = {
-  CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "SRI",
-  Cultura: "Ministério da Cultura", Agricultura: "Ministério da Agricultura", "Desenvolvimento Social": "Ministério do Desenvolvimento Social",
-  Comunicações: "Ministério das Comunicações", MME: "MME", Turismo: "Ministério do Turismo", Embratur: "Embratur",
-  MPOR: "MPOR", Esporte: "Ministério do Esporte", Previdência Social: "Ministério da Previdência Social", Secretaria-Geral da Presidência: "Secretaria-Geral da Presidência"
+      CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "SRI",
+      Cultura: "Ministério da Cultura", Agricultura: "Ministério da Agricultura", "Desenvolvimento Social": "Ministério do Desenvolvimento Social",
+      Comunicações: "Ministério das Comunicações", MME: "MME", Turismo: "Ministério do Turismo", Embratur: "Embratur",
+      MPOR: "MPOR", Esporte: "Ministério do Esporte"
+    };
+    const nomeSimplificadoOrgao = {
+      CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "Relações Institucionais",
+      Cultura: "Cultura", Agricultura: "Agricultura", "Desenvolvimento Social": "Desenvolvimento Social",
+      Comunicações: "Comunicações", MME: "Minas e Energia", Turismo: "Turismo", Embratur: "Embratur",
+      MPOR: "Portos e Aeroportos", Esporte: "Esporte"
     };
 
-const nomeSimplificadoOrgao = {
-  CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "Relações Institucionais",
-  Cultura: "Cultura", Agricultura: "Agricultura", "Desenvolvimento Social": "Desenvolvimento Social",
-  Comunicações: "Comunicações", MME: "Minas e Energia", Turismo: "Turismo", Embratur: "Embratur",
-  MPOR: "Portos e Aeroportos", Esporte: "Esporte", Previdência Social: "Previdência Social", Secretaria-Geral da Presidência: "Secretaria-Geral da Presidência"
-    };
-   
     function saveToLocal(materia) {
       const materias = JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
       const now = new Date();
@@ -850,76 +849,45 @@ const nomeSimplificadoOrgao = {
       atualizarTexto();
     }
 
-function atualizarTexto() {
-  const tipoMinistro = tipoMinistroSelect.value;
-  const ministerio = ministerioSelect.value;
-  let ministerioStr = "";
-  let alertaPrefix = "";
-
-  if (ministerio && orgaosPorCargo[tipoMinistro]?.includes(ministerio)) {
-    const nomeOrgaoCompleto = nomeCompletoOrgao[ministerio] || ministerio;
-    const nomeOrgaoSimples = nomeSimplificadoOrgao[ministerio] || ministerio;
-
-    // Casos especiais - texto fixo, sem lógica dinâmica
-    if (ministerio === "Secretaria-Geral da Presidência") {
-      if (tipoMinistro === "nenhum") {
-        ministerioStr = `cita a Secretaria-Geral da Presidência`;
-      } else if (tipoMinistro === "ministro") {
-        ministerioStr = `cita o ministro da Secretaria-Geral da Presidência`;
-      } else if (tipoMinistro === "ministra") {
-        ministerioStr = `cita a ministra da Secretaria-Geral da Presidência`;
-      } else if (tipoMinistro === "presidente") {
-        ministerioStr = `cita o presidente da Secretaria-Geral da Presidência`;
-      }
-    } else if (ministerio === "Previdência Social") {
-      if (tipoMinistro === "nenhum") {
-        ministerioStr = `cita o Ministério da Previdência Social`;
-      } else if (tipoMinistro === "ministro") {
-        ministerioStr = `cita o ministro da Previdência Social`;
-      } else if (tipoMinistro === "ministra") {
-        ministerioStr = `cita a ministra da Previdência Social`;
-      } else if (tipoMinistro === "presidente") {
-        ministerioStr = `cita o presidente da Previdência Social`;
-      }
-    } else {
-      // Apenas os órgãos antigos usam a lógica dinâmica de artigo/preposição
-      const useDas = ["Comunicações"];
-      const useDa = ["CAIXA", "CGU", "CNI", "SRI", "Embratur", "Câmara dos Deputados", "Cultura", "Agricultura"];
-      const useFeminino = ["CAIXA", "CGU", "CNI", "SRI", "Embratur"];
-      const useDe = ["SRI", "MME", "MPOR"];
-
-      let artigo = tipoMinistro === "nenhum"
-        ? (useFeminino.includes(ministerio) ? "a" : "o")
-        : (tipoMinistro === "ministra" ? "a" : "o");
-
-      let preposicao = useDas.includes(ministerio) ? "das"
-        : useDe.includes(ministerio) ? "de"
-        : useDa.includes(ministerio) ? "da"
-        : "do";
-
-      if (ministerio === "Comunicações") {
-        ministerioStr = tipoMinistro === "nenhum"
-          ? `cita ${artigo} ${nomeOrgaoCompleto}`
-          : `cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgaoSimples}`;
-        alertaPrefix = "⚠ ";
-      } else {
-        ministerioStr = tipoMinistro === "nenhum"
-          ? `(cita ${artigo} ${nomeOrgaoCompleto})`
-          : `(cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgaoSimples})`;
-
-        if (tipoMinistro === "presidente" && ministerio === "CAIXA") {
+    function atualizarTexto() {
+      const tipoMinistro = tipoMinistroSelect.value;
+      const ministerio = ministerioSelect.value;
+      let ministerioStr = "";
+      let alertaPrefix = "";
+      if (ministerio && orgaosPorCargo[tipoMinistro].includes(ministerio)) {
+        const nomeOrgao = tipoMinistro === "nenhum" ? nomeCompletoOrgao[ministerio] : nomeSimplificadoOrgao[ministerio] || ministerio;
+        const useDas = ["Comunicações"];
+        const useDa = ["CAIXA", "CGU", "CNI", "SRI", "Embratur", "Câmara dos Deputados", "Cultura", "Agricultura"];
+        const useFeminino = ["CAIXA", "CGU", "CNI", "SRI", "Embratur"];
+        const useDe = ["SRI", "MME", "MPOR"];
+        let artigo = tipoMinistro === "nenhum"
+          ? (useFeminino.includes(ministerio) ? "a" : "o")
+          : (tipoMinistro === "ministra" ? "a" : "o");
+        let preposicao = useDas.includes(ministerio) ? "das"
+          : useDe.includes(ministerio) ? "de"
+          : useDa.includes(ministerio) ? "da"
+          : "do";
+        if (ministerio === "Comunicações") {
+          ministerioStr = tipoMinistro === "nenhum"
+            ? `cita ${artigo} ${nomeOrgao}`
+            : `cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao}`;
           alertaPrefix = "⚠ ";
+        } else {
+          ministerioStr = tipoMinistro === "nenhum"
+            ? `(cita ${artigo} ${nomeOrgao})`
+            : `(cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao})`;
+          if (tipoMinistro === "presidente" && ministerio === "CAIXA") {
+            alertaPrefix = "⚠ ";
+          }
         }
       }
+      blueParrot.tipoMinistro = tipoMinistro;
+      blueParrot.ministerio = ministerio;
+      blueParrot.ministerioStr = ministerioStr;
+      blueParrot.alertaPrefix = alertaPrefix;
+      renderPreview();
     }
-  }
 
-  blueParrot.tipoMinistro = tipoMinistro;
-  blueParrot.ministerio = ministerio;
-  blueParrot.ministerioStr = ministerioStr;
-  blueParrot.alertaPrefix = alertaPrefix;
-  renderPreview();
-}
     function renderPreview() {
       const classif = blueParrot.classificação.trim();
       const isSingleLine = (classif === "🗞" || classif === "📺" || classif === "📻");
@@ -1483,10 +1451,6 @@ if (radio) {
   </script>
 </body>
 </html>
-
-
-
-
 
 
 
