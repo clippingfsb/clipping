@@ -774,22 +774,22 @@
 };
     
     const orgaosPorCargo = {
-      nenhum: ["CAIXA", "CGU", "SRI", "Cultura", "Agricultura", "Desenvolvimento Social", "Comunicações", "MME", "CNI", "Turismo", "Embratur", "MPOR", "Esporte"],
+      nenhum: ["Agricultura", "CAIXA", "CGU", "CNI", "Comunicações", "Cultura", "Desenvolvimento Social", "Embratur", "Esporte", "MME", "MPOR", "SRI", "Turismo"],
       presidente: ["CAIXA", "Câmara dos Deputados", "CNI", "Embratur"],
-      ministro: ["CGU", "Agricultura", "Desenvolvimento Social", "Comunicações", "MME", "Turismo", "MPOR", "Esporte"],
-      ministra: ["SRI", "Cultura"]
+      ministro: ["Agricultura", "CGU", "Comunicações", "Desenvolvimento Social", "Esporte", "MME", "MPOR", "Turismo"],
+      ministra: ["Cultura", "SRI"]
     };
     const nomeCompletoOrgao = {
       CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "SRI",
       Cultura: "Ministério da Cultura", Agricultura: "Ministério da Agricultura", "Desenvolvimento Social": "Ministério do Desenvolvimento Social",
       Comunicações: "Ministério das Comunicações", MME: "MME", Turismo: "Ministério do Turismo", Embratur: "Embratur",
-      MPOR: "MPOR", Esporte: "Ministério do Esporte"
+      MPOR: "MPOR", Esporte: "Ministério do Esporte", "Secretaria-Geral da Presidência": "Secretaria-Geral da Presidência", "Previdência Social": "Ministério da Previdência Social"
     };
     const nomeSimplificadoOrgao = {
       CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "Relações Institucionais",
       Cultura: "Cultura", Agricultura: "Agricultura", "Desenvolvimento Social": "Desenvolvimento Social",
       Comunicações: "Comunicações", MME: "Minas e Energia", Turismo: "Turismo", Embratur: "Embratur",
-      MPOR: "Portos e Aeroportos", Esporte: "Esporte"
+      MPOR: "Portos e Aeroportos", Esporte: "Esporte", "Secretaria-Geral da Presidência": "Secretaria-Geral da Presidência", "Previdência Social": "Ministério da Previdência Social"
     };
 
     function saveToLocal(materia) {
@@ -1451,6 +1451,7 @@ if (radio) {
   </script>
 </body>
 </html>
+
 
 
 
