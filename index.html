@@ -775,7 +775,7 @@
     
     const orgaosPorCargo = {
       nenhum: ["Agricultura", "CAIXA", "CGU", "CNI", "Comunicações", "Cultura", "Desenvolvimento Social", "Embratur", "Esporte", "MME", "MPOR", "Previdência Social", "Secretaria-Geral da Presidência", "SRI", "Turismo"],
-      presidente: ["CAIXA", "Câmara dos Deputados", "CNI", "Embratur"],
+      presidente: ["CAIXA", "Câmara dos Deputados", "CNI", "Embratur", "Previdência Social", "Secretaria-Geral da Presidência"],
       ministro: ["CGU", "Agricultura", "Comunicações", "Desenvolvimento Social", "Esporte", "MME", "MPOR", "Previdência Social", "Secretaria-Geral da Presidência", "Turismo"],
       ministra: ["SRI", "Cultura"]
     };
@@ -784,14 +784,14 @@
   Cultura: "Ministério da Cultura", Agricultura: "Ministério da Agricultura", "Desenvolvimento Social": "Ministério do Desenvolvimento Social",
   Comunicações: "Ministério das Comunicações", MME: "MME", Turismo: "Ministério do Turismo", Embratur: "Embratur",
   MPOR: "MPOR", Esporte: "Ministério do Esporte", Previdência Social: "Ministério da Previdência Social", Secretaria-Geral da Presidência: "Secretaria-Geral da Presidência"
-};
+    };
 
 const nomeSimplificadoOrgao = {
   CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "Relações Institucionais",
   Cultura: "Cultura", Agricultura: "Agricultura", "Desenvolvimento Social": "Desenvolvimento Social",
   Comunicações: "Comunicações", MME: "Minas e Energia", Turismo: "Turismo", Embratur: "Embratur",
   MPOR: "Portos e Aeroportos", Esporte: "Esporte", Previdência Social: "Previdência Social", Secretaria-Geral da Presidência: "Secretaria-Geral da Presidência"
-};
+    };
    
     function saveToLocal(materia) {
       const materias = JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
@@ -1452,6 +1452,7 @@ if (radio) {
   </script>
 </body>
 </html>
+
 
 
 
