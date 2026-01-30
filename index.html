@@ -773,49 +773,24 @@
   "vnexpress.net": "VN Express"
 };
     
+    const orgaosPorCargo = {
+      nenhum: ["CAIXA", "CGU", "SRI", "Cultura", "Agricultura", "Desenvolvimento Social", "Comunicações", "MME", "CNI", "Turismo", "Embratur", "MPOR", "Esporte"],
+      presidente: ["CAIXA", "Câmara dos Deputados", "CNI", "Embratur"],
+      ministro: ["CGU", "Agricultura", "Desenvolvimento Social", "Comunicações", "MME", "Turismo", "MPOR", "Esporte"],
+      ministra: ["SRI", "Cultura"]
+    };
     const nomeCompletoOrgao = {
-  // ... todos os itens antigos que já estavam sem aspas continuam assim ...
-  CAIXA: "CAIXA",
-  "Câmara dos Deputados": "Câmara dos Deputados",
-  CGU: "CGU",
-  CNI: "CNI",
-  SRI: "SRI",
-  Cultura: "Ministério da Cultura",
-  Agricultura: "Ministério da Agricultura",
-  "Desenvolvimento Social": "Ministério do Desenvolvimento Social",
-  Comunicações: "Ministério das Comunicações",
-  MME: "MME",
-  Turismo: "Ministério do Turismo",
-  Embratur: "Embratur",
-  MPOR: "MPOR",
-  Esporte: "Ministério do Esporte",
-
-  // Os novos: com aspas porque têm hífen e espaços
-  "Secretaria-Geral da Presidência": "Secretaria-Geral da Presidência",
-  "Previdência Social": "Ministério da Previdência Social"
-};
-
-const nomeSimplificadoOrgao = {
-  // ... todos os antigos continuam sem aspas onde possível ...
-  CAIXA: "CAIXA",
-  "Câmara dos Deputados": "Câmara dos Deputados",
-  CGU: "CGU",
-  CNI: "CNI",
-  SRI: "Relações Institucionais",
-  Cultura: "Cultura",
-  Agricultura: "Agricultura",
-  "Desenvolvimento Social": "Desenvolvimento Social",
-  Comunicações: "Comunicações",
-  MME: "Minas e Energia",
-  Turismo: "Turismo",
-  Embratur: "Embratur",
-  MPOR: "Portos e Aeroportos",
-  Esporte: "Esporte",
-
-  // Os novos: com aspas
-  "Secretaria-Geral da Presidência": "Secretaria-Geral da Presidência",
-  "Previdência Social": "Previdência Social"
-};
+      CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "SRI",
+      Cultura: "Ministério da Cultura", Agricultura: "Ministério da Agricultura", "Desenvolvimento Social": "Ministério do Desenvolvimento Social",
+      Comunicações: "Ministério das Comunicações", MME: "MME", Turismo: "Ministério do Turismo", Embratur: "Embratur",
+      MPOR: "MPOR", Esporte: "Ministério do Esporte"
+    };
+    const nomeSimplificadoOrgao = {
+      CAIXA: "CAIXA", "Câmara dos Deputados": "Câmara dos Deputados", CGU: "CGU", CNI: "CNI", SRI: "Relações Institucionais",
+      Cultura: "Cultura", Agricultura: "Agricultura", "Desenvolvimento Social": "Desenvolvimento Social",
+      Comunicações: "Comunicações", MME: "Minas e Energia", Turismo: "Turismo", Embratur: "Embratur",
+      MPOR: "Portos e Aeroportos", Esporte: "Esporte"
+    };
 
     function saveToLocal(materia) {
       const materias = JSON.parse(localStorage.getItem('materias_clipping_final_v5') || '[]');
@@ -1476,7 +1451,6 @@ if (radio) {
   </script>
 </body>
 </html>
-
 
 
 
