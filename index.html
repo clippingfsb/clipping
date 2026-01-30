@@ -859,15 +859,15 @@
     const nomeOrgao = tipoMinistro === "nenhum" ? nomeCompletoOrgao[ministerio] : nomeSimplificadoOrgao[ministerio] || ministerio;
     if (ministerio === "Secretaria-Geral da Presidência") {
       if (tipoMinistro === "nenhum") {
-        ministerioStr = `cita a Secretaria-Geral da Presidência`;
+        ministerioStr = `(cita a Secretaria-Geral da Presidência)`;
       } else if (tipoMinistro === "ministro") {
-        ministerioStr = `cita o ministro da Secretaria-Geral da Presidência`;
+        ministerioStr = `(cita o ministro da Secretaria-Geral da Presidência)`;
       }
     } else if (ministerio === "Previdência Social") {
       if (tipoMinistro === "nenhum") {
-        ministerioStr = `cita o Ministério da Previdência Social`;
+        ministerioStr = `(cita o Ministério da Previdência Social)`;
       } else if (tipoMinistro === "ministro") {
-        ministerioStr = `cita o ministro da Previdência Social`;
+        ministerioStr = `(cita o ministro da Previdência Social)`;
       }
     } else {
       const useDas = ["Comunicações"];
@@ -1468,6 +1468,7 @@ if (radio) {
   </script>
 </body>
 </html>
+
 
 
 
