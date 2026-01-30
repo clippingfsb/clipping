@@ -849,47 +849,73 @@
       atualizarTexto();
     }
 
-    function atualizarTexto() {
-      const tipoMinistro = tipoMinistroSelect.value;
-      const ministerio = ministerioSelect.value;
-      let ministerioStr = "";
-      let alertaPrefix = "";
-      if (ministerio && orgaosPorCargo[tipoMinistro].includes(ministerio)) {
-        const nomeOrgao = tipoMinistro === "nenhum" ? nomeCompletoOrgao[ministerio] : nomeSimplificadoOrgao[ministerio] || ministerio;
-        const useDas = ["Comunicações"];
-        const useDa = ["CAIXA", "CGU", "CNI", "SRI", "Embratur", "Câmara dos Deputados", "Cultura", "Agricultura"];
-        const useFeminino = ["CAIXA", "CGU", "CNI", "SRI", "Embratur"];
-        const useDe = ["SRI", "MME", "MPOR"];
-        let artigo = tipoMinistro === "nenhum"
-          ? (useFeminino.includes(ministerio) ? "a" : "o")
-          : (tipoMinistro === "ministra" ? "a" : "o");
-        let preposicao = useDas.includes(ministerio) ? "das"
-  : useDe.includes(ministerio) ? "de"
-  : useDa.includes(ministerio) ? "da"
-  : "do";
-if (ministerio === "Secretaria-Geral da Presidência") {
-  preposicao = "da";
-}
-        if (ministerio === "Comunicações") {
-          ministerioStr = tipoMinistro === "nenhum"
-            ? `cita ${artigo} ${nomeOrgao}`
-            : `cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao}`;
+   function atualizarTexto() {
+  const tipoMinistro = tipoMinistroSelect.value;
+  const ministerio = ministerioSelect.value;
+  let ministerioStr = "";
+  let alertaPrefix = "";
+
+  if (ministerio && orgaosPorCargo[tipoMinistro]?.includes(ministerio)) {
+    const nomeOrgaoCompleto = nomeCompletoOrgao[ministerio] || ministerio;
+    const nomeOrgaoSimples = nomeSimplificadoOrgao[ministerio] || ministerio;
+
+    // Casos especiais com texto FIXO (sem risco de undefined ou preposição errada)
+    if (ministerio === "Secretaria-Geral da Presidência") {
+      if (tipoMinistro === "nenhum") {
+        ministerioStr = `cita a Secretaria-Geral da Presidência`;
+      } else if (tipoMinistro === "ministro") {
+        ministerioStr = `cita o ministro da Secretaria-Geral da Presidência`;
+      } else {
+        ministerioStr = `cita ${tipoMinistro} da Secretaria-Geral da Presidência`;
+      }
+    } else if (ministerio === "Previdência Social") {
+      if (tipoMinistro === "nenhum") {
+        ministerioStr = `cita o Ministério da Previdência Social`;
+      } else if (tipoMinistro === "ministro") {
+        ministerioStr = `cita o ministro da Previdência Social`;
+      } else {
+        ministerioStr = `cita ${tipoMinistro} da Previdência Social`;
+      }
+    } else {
+      // Lógica original para TODOS os outros órgãos (não mexe nos novos)
+      const useDas = ["Comunicações"];
+      const useDa = ["CAIXA", "CGU", "CNI", "SRI", "Embratur", "Câmara dos Deputados", "Cultura", "Agricultura"];
+      const useFeminino = ["CAIXA", "CGU", "CNI", "SRI", "Embratur"];
+      const useDe = ["SRI", "MME", "MPOR"];
+
+      let artigo = tipoMinistro === "nenhum"
+        ? (useFeminino.includes(ministerio) ? "a" : "o")
+        : (tipoMinistro === "ministra" ? "a" : "o");
+
+      let preposicao = useDas.includes(ministerio) ? "das"
+        : useDe.includes(ministerio) ? "de"
+        : useDa.includes(ministerio) ? "da"
+        : "do";
+
+      if (ministerio === "Comunicações") {
+        ministerioStr = tipoMinistro === "nenhum"
+          ? `cita ${artigo} ${nomeOrgaoCompleto}`
+          : `cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgaoSimples}`;
+        alertaPrefix = "⚠ ";
+      } else {
+        ministerioStr = tipoMinistro === "nenhum"
+          ? `(cita ${artigo} ${nomeOrgaoCompleto})`
+          : `(cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgaoSimples})`;
+
+        if (tipoMinistro === "presidente" && ministerio === "CAIXA") {
           alertaPrefix = "⚠ ";
-        } else {
-          ministerioStr = tipoMinistro === "nenhum"
-            ? `(cita ${artigo} ${nomeOrgao})`
-            : `(cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao})`;
-          if (tipoMinistro === "presidente" && ministerio === "CAIXA") {
-            alertaPrefix = "⚠ ";
-          }
         }
       }
-      blueParrot.tipoMinistro = tipoMinistro;
-      blueParrot.ministerio = ministerio;
-      blueParrot.ministerioStr = ministerioStr;
-      blueParrot.alertaPrefix = alertaPrefix;
-      renderPreview();
     }
+  }
+
+  blueParrot.tipoMinistro = tipoMinistro;
+  blueParrot.ministerio = ministerio;
+  blueParrot.ministerioStr = ministerioStr;
+  blueParrot.alertaPrefix = alertaPrefix;
+  renderPreview();
+}
+Por que isso resolve 100
 
     function renderPreview() {
       const classif = blueParrot.classificação.trim();
@@ -1454,6 +1480,7 @@ if (radio) {
   </script>
 </body>
 </html>
+
 
 
 
