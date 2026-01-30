@@ -850,43 +850,53 @@
     }
 
     function atualizarTexto() {
-      const tipoMinistro = tipoMinistroSelect.value;
-      const ministerio = ministerioSelect.value;
-      let ministerioStr = "";
-      let alertaPrefix = "";
-      if (ministerio && orgaosPorCargo[tipoMinistro].includes(ministerio)) {
-        const nomeOrgao = tipoMinistro === "nenhum" ? nomeCompletoOrgao[ministerio] : nomeSimplificadoOrgao[ministerio] || ministerio;
-        const useDas = ["Comunicações"];
-        const useDa = ["CAIXA", "CGU", "CNI", "SRI", "Embratur", "Câmara dos Deputados", "Cultura", "Agricultura"];
-        const useFeminino = ["CAIXA", "CGU", "CNI", "SRI", "Embratur"];
-        const useDe = ["SRI", "MME", "MPOR"];
-        let artigo = tipoMinistro === "nenhum"
-          ? (useFeminino.includes(ministerio) ? "a" : "o")
-          : (tipoMinistro === "ministra" ? "a" : "o");
-        let preposicao = useDas.includes(ministerio) ? "das"
-          : useDe.includes(ministerio) ? "de"
-          : useDa.includes(ministerio) ? "da"
-          : "do";
-        if (ministerio === "Comunicações") {
-          ministerioStr = tipoMinistro === "nenhum"
-            ? `cita ${artigo} ${nomeOrgao}`
-            : `cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao}`;
+  const tipoMinistro = tipoMinistroSelect.value;
+  const ministerio = ministerioSelect.value;
+  let ministerioStr = "";
+  let alertaPrefix = "";
+
+  if (ministerio && orgaosPorCargo[tipoMinistro].includes(ministerio)) {
+    const nomeOrgao = tipoMinistro === "nenhum" ? nomeCompletoOrgao[ministerio] : nomeSimplificadoOrgao[ministerio] || ministerio;
+    if (ministerio === "Secretaria-Geral da Presidência") {
+      if (tipoMinistro === "nenhum") {
+        ministerioStr = `cita a Secretaria-Geral da Presidência`;
+      } else if (tipoMinistro === "ministro") {
+        ministerioStr = `cita o ministro da Secretaria-Geral da Presidência`;
+      }
+    } else if (ministerio === "Previdência Social") {
+      if (tipoMinistro === "nenhum") {
+        ministerioStr = `cita o Ministério da Previdência Social`;
+      } else if (tipoMinistro === "ministro") {
+        ministerioStr = `cita o ministro da Previdência Social`;
+      }
+    } else {
+      const useDas = ["Comunicações"];
+      const useDa = ["CAIXA", "CGU", "CNI", "SRI", "Embratur", "Câmara dos Deputados", "Cultura", "Agricultura"];
+      const useFeminino = ["CAIXA", "CGU", "CNI", "SRI", "Embratur"];
+      const useDe = ["SRI", "MME", "MPOR"];
+      let artigo = tipoMinistro === "nenhum"
+        ? (useFeminino.includes(ministerio) ? "a" : "o")
+        : (tipoMinistro === "ministra" ? "a" : "o");
+      let preposicao = useDas.includes(ministerio) ? "das"
+        : useDe.includes(ministerio) ? "de"
+        : useDa.includes(ministerio) ? "da"
+        : "do";
+
+      if (ministerio === "Comunicações") {
+        ministerioStr = tipoMinistro === "nenhum"
+          ? `cita ${artigo} ${nomeOrgao}`
+          : `cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao}`;
+        alertaPrefix = "⚠ ";
+      } else {
+        ministerioStr = tipoMinistro === "nenhum"
+          ? `(cita ${artigo} ${nomeOrgao})`
+          : `(cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao})`;
+        if (tipoMinistro === "presidente" && ministerio === "CAIXA") {
           alertaPrefix = "⚠ ";
-        } else {
-          ministerioStr = tipoMinistro === "nenhum"
-            ? `(cita ${artigo} ${nomeOrgao})`
-            : `(cita ${artigo} ${tipoMinistro} ${preposicao} ${nomeOrgao})`;
-          if (tipoMinistro === "presidente" && ministerio === "CAIXA") {
-            alertaPrefix = "⚠ ";
-          }
         }
       }
-      blueParrot.tipoMinistro = tipoMinistro;
-      blueParrot.ministerio = ministerio;
-      blueParrot.ministerioStr = ministerioStr;
-      blueParrot.alertaPrefix = alertaPrefix;
-      renderPreview();
     }
+  }
 
   blueParrot.tipoMinistro = tipoMinistro;
   blueParrot.ministerio = ministerio;
@@ -894,7 +904,6 @@
   blueParrot.alertaPrefix = alertaPrefix;
   renderPreview();
 }
-Por que isso resolve 100
 
     function renderPreview() {
       const classif = blueParrot.classificação.trim();
@@ -1459,6 +1468,7 @@ if (radio) {
   </script>
 </body>
 </html>
+
 
 
 
