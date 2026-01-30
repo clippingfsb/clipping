@@ -856,11 +856,11 @@ function atualizarTexto() {
   let ministerioStr = "";
   let alertaPrefix = "";
 
-  if (ministerio && orgaosPorCargo[tipoMinistro].includes(ministerio)) {
+  if (ministerio && orgaosPorCargo[tipoMinistro]?.includes(ministerio)) {
     const nomeOrgaoCompleto = nomeCompletoOrgao[ministerio] || ministerio;
     const nomeOrgaoSimples = nomeSimplificadoOrgao[ministerio] || ministerio;
 
-    // Casos especiais (texto fixo, sem depender de artigo dinâmico)
+    // Casos especiais - texto fixo, sem lógica dinâmica
     if (ministerio === "Secretaria-Geral da Presidência") {
       if (tipoMinistro === "nenhum") {
         ministerioStr = `cita a Secretaria-Geral da Presidência`;
@@ -882,7 +882,7 @@ function atualizarTexto() {
         ministerioStr = `cita o presidente da Previdência Social`;
       }
     } else {
-      // Lógica original para os outros órgãos (não mexemos)
+      // Apenas os órgãos antigos usam a lógica dinâmica de artigo/preposição
       const useDas = ["Comunicações"];
       const useDa = ["CAIXA", "CGU", "CNI", "SRI", "Embratur", "Câmara dos Deputados", "Cultura", "Agricultura"];
       const useFeminino = ["CAIXA", "CGU", "CNI", "SRI", "Embratur"];
@@ -920,7 +920,6 @@ function atualizarTexto() {
   blueParrot.alertaPrefix = alertaPrefix;
   renderPreview();
 }
-
     function renderPreview() {
       const classif = blueParrot.classificação.trim();
       const isSingleLine = (classif === "🗞" || classif === "📺" || classif === "📻");
@@ -1484,6 +1483,7 @@ if (radio) {
   </script>
 </body>
 </html>
+
 
 
 
